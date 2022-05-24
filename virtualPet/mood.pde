@@ -27,21 +27,21 @@ public abstract class mood {
 }
 public class happiness extends mood {
   void display() {
-    
+    circle(100, 700, 100);
   }
 }
 public class hunger extends mood {
   void display() {
-    
+    circle(300, 700, 100);
   }
 }
 public class cleanliness extends mood {
   void display() {
-    
+    circle(500, 700, 100);
   }
 }
 public class awakeness extends mood {
   void display() {
-    
+    circle(700, 700, 100);
   }
 }
