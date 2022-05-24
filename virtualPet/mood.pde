@@ -1,6 +1,6 @@
 public abstract class mood {
   float percentage = 1;
-  float decreaseRate = 0.1;
+  float decreaseRate = 0.01;
   boolean selectedRoom;
   abstract void display();
   void decrease() {
@@ -15,7 +15,15 @@ public abstract class mood {
   float getPercentage() {
     return percentage;
   }
-  
+  void setPercentage(float amount) {
+    percentage = amount;
+  }
+  boolean isGoodLevel() {
+    if (percentage > 0.5) {
+      return true;
+    }
+    return false;
+  }
 }
 public class happiness extends mood {
   void display() {
