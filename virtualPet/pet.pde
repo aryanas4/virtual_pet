@@ -3,6 +3,15 @@ public class pet {
   boolean isBusy;
   float xPos;
   float yPos;
+  PImage catAvatar;
+  
+  public pet() {
+    xPos = width/2;
+    yPos = height/2;
+    catAvatar = loadImage("catNorm.png");
+    isBusy = false;
+    idleActions = new String[] {}; //add the idle actions later
+  }
   
   void doIdleAction() {
     if (!isBusy && (int)(Math.random()*2) > 0) { //not busy and 50% chance
@@ -12,7 +21,13 @@ public class pet {
   }
   
   void blinkBreathe() {
-    
+    if (!isBusy) {
+      if ((int)(Math.random()*100) > 92) { //blink at random times
+        catAvatar = loadImage("catBlink.png");
+      } else {
+        catAvatar = loadImage("catNorm.png");
+      }
+    }
   }
   
   void action(String actionType) {
@@ -30,6 +45,7 @@ public class pet {
   }
   
   void display() {
-    //upload image of cat resting
+    image(catAvatar, xPos-250, yPos-250, 500, 500);
+    blinkBreathe();
   }
 }
