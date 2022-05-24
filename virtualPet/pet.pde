@@ -10,7 +10,7 @@ public class pet {
     yPos = height/2;
     catAvatar = loadImage("catNorm.png");
     isBusy = false;
-    idleActions = new String[] {}; //add the idle actions later
+    idleActions = new String[] {"reachUp"}; //add the idle actions later
   }
   
   void doIdleAction() {
@@ -31,7 +31,29 @@ public class pet {
   }
   
   void action(String actionType) {
-    
+    isBusy = true;
+    if (actionType.equals("reachUp")) {
+      int midSec;
+      if (second() == 59) {
+        midSec = 0;
+      } else {
+        midSec = second()+1;
+      }
+      while (second() != midSec) {
+        catAvatar = loadImage("catReach1.png");
+      }
+      int endSec;
+      if (midSec == 59) {
+        endSec = 0;
+      } else {
+        endSec = midSec+1;
+      }
+      while (second() != endSec) {
+        catAvatar = loadImage("catReach2.png");
+      }
+    }
+    catAvatar = loadImage("catNorm.png");
+    isBusy = false;
   }
   
   void mouseClicked() {
