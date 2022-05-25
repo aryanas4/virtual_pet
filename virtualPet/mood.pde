@@ -39,6 +39,14 @@ public class happiness extends mood {
 public class hunger extends mood {
   void display() {
     circle(300, 700, 100);
+    noFill();
+    strokeWeight(4);
+    line(315, 680, 315, 730);
+    arc(315, 680, 20, 40, 0, PI);
+    fill(0);
+    strokeWeight(1);
+    arc(315, 690, 20, 20, 0, PI);
+    fill(255);
   }
 }
 public class cleanliness extends mood {
