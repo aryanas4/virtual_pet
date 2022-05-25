@@ -33,27 +33,30 @@ public class pet {
   void action(String actionType) {
     isBusy = true;
     if (actionType.equals("reachUp")) {
+      print("reaching"); //for testing
+      
       int midSec;
       if (second() == 59) {
         midSec = 0;
       } else {
         midSec = second()+1;
       }
+      boolean still1 = true; //REMINDER: left off here
       while (second() != midSec) {
         catAvatar = loadImage("catReach1.png");
       }
       int endSec;
-      if (midSec == 59) {
+      if (second() == 59) {
         endSec = 0;
       } else {
-        endSec = midSec+1;
+        endSec = second()+1;
       }
       while (second() != endSec) {
         catAvatar = loadImage("catReach2.png");
-      }
+      } 
     }
-    catAvatar = loadImage("catNorm.png");
-    isBusy = false;
+    //catAvatar = loadImage("catNorm.png");
+    //isBusy = false;
   }
   
   void mouseClicked() {
@@ -69,5 +72,6 @@ public class pet {
   void display() {
     image(catAvatar, xPos-250, yPos-250, 500, 500);
     blinkBreathe();
+    doIdleAction();
   }
 }
