@@ -1,7 +1,7 @@
 static int room = 0;
 
 void setup() {
-  size(800,800);
+  size(1000,800);
   happiness a = new happiness();
   a.display();
   hunger b = new hunger();

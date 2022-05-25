@@ -27,35 +27,40 @@ public abstract class mood {
 }
 public class happiness extends mood {
   void display() {
-    circle(100, 700, 100);
+    circle(200, 700, 100);
     noFill();
-    arc(100, 705, 70, 60, 0, PI); // smile
+    arc(200, 705, 70, 60, 0, PI); // smile
     fill(0);
-    ellipse(85, 695, 10, 15); //left eye
-    ellipse(115, 695, 10, 15); //right eye
+    ellipse(185, 695, 10, 15); //left eye
+    ellipse(215, 695, 10, 15); //right eye
     fill(255);
   }
 }
 public class hunger extends mood {
   void display() {
-    circle(300, 700, 100);
+    circle(400, 700, 100);
     noFill();
     strokeWeight(4);
-    line(315, 680, 315, 730);
-    arc(315, 680, 20, 40, 0, PI);
+    line(415, 680, 415, 730);
+    line(390, 680, 390, 730);
+    arc(415, 680, 20, 40, 0, PI);
     fill(0);
     strokeWeight(1);
-    arc(315, 690, 20, 20, 0, PI);
+    arc(391, 706, 20, 55, PI, PI+HALF_PI);
+    arc(415, 690, 18, 20, 0, PI);
     fill(255);
   }
 }
 public class cleanliness extends mood {
   void display() {
-    circle(500, 700, 100);
+    circle(600, 700, 100);
+    fill(0);
+    arc(615, 690, 25, 60, PI, PI+PI);
+    fill(255);
   }
 }
 public class awakeness extends mood {
   void display() {
-    circle(700, 700, 100);
+    circle(800, 700, 100);
   }
 }
