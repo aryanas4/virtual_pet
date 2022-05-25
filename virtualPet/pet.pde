@@ -33,7 +33,7 @@ public class pet {
   
   void draw() {
     if (countdown > 0) {
-      //countdown--;
+      countdown--;
       isBusy = true; //if we're using timer, that means the pet is likely doing something
     }
   }
@@ -41,18 +41,18 @@ public class pet {
   void action(String actionType) { //WHY DOESN't thing workkkk... REMINDER FOR SELF
     isBusy = true;
     if (actionType.equals("reachUp")) {
-      countdown = 120;
+      countdown = 120; //this keeps getting called?? maybe because it's in the display() which is in draw()
+      catAvatar = loadImage("catReach1.png");
       while (countdown > 0) {
-        catAvatar = loadImage("catReach1.png");
         if (countdown == 60) {
           catAvatar = loadImage("catReach2.png");
         }
         if (countdown == 1) {
           catAvatar = loadImage("catNorm.png");
         }
-        countdown--;
         print("reaching"); //for testing
         print(countdown); //for testing
+        print(isBusy); //for testing
       }
       /*
       int midSec;
