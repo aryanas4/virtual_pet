@@ -28,6 +28,12 @@ public abstract class mood {
 public class happiness extends mood {
   void display() {
     circle(100, 700, 100);
+    noFill();
+    arc(100, 705, 70, 60, 0, PI); // smile
+    fill(0);
+    ellipse(85, 695, 10, 15); //left eye
+    ellipse(115, 695, 10, 15); //right eye
+    fill(255);
   }
 }
 public class hunger extends mood {
