@@ -4,6 +4,7 @@ public class pet {
   float xPos;
   float yPos;
   PImage catAvatar;
+  int countdown = 0;
   
   public pet() {
     xPos = width/2;
@@ -30,11 +31,30 @@ public class pet {
     }
   }
   
-  void action(String actionType) {
+  void draw() {
+    if (countdown > 0) {
+      //countdown--;
+      isBusy = true; //if we're using timer, that means the pet is likely doing something
+    }
+  }
+  
+  void action(String actionType) { //WHY DOESN't thing workkkk... REMINDER FOR SELF
     isBusy = true;
     if (actionType.equals("reachUp")) {
-      print("reaching"); //for testing
-      
+      countdown = 120;
+      while (countdown > 0) {
+        catAvatar = loadImage("catReach1.png");
+        if (countdown == 60) {
+          catAvatar = loadImage("catReach2.png");
+        }
+        if (countdown == 1) {
+          catAvatar = loadImage("catNorm.png");
+        }
+        countdown--;
+        print("reaching"); //for testing
+        print(countdown); //for testing
+      }
+      /*
       int midSec;
       if (second() == 59) {
         midSec = 0;
@@ -54,6 +74,7 @@ public class pet {
       while (second() != endSec) {
         catAvatar = loadImage("catReach2.png");
       } 
+      */
     }
     //catAvatar = loadImage("catNorm.png");
     //isBusy = false;
