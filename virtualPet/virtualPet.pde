@@ -19,11 +19,44 @@ void draw() {
   }
   //reaching up animation:
   if (thePet.currentIdleAction.equals("reachUp")) {
-    if (countdown == 99) {
+    if (countdown == 79) {
       thePet.catAvatar = loadImage("catReach1.png");
     }
-    if (countdown == 50) {
+    if (countdown == 40) {
       thePet.catAvatar = loadImage("catReach2.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+    }
+    if (countdown == 0) {
+      thePet.currentIdleAction = "";
+    }
+  }
+  //circling animation:
+  if (thePet.currentIdleAction.equals("circle")) {
+    if (countdown == 79) {
+      thePet.catAvatar = loadImage("catCircle1.png");
+    }
+    if (countdown == 69) {
+      thePet.catAvatar = loadImage("catCircle2.png");
+    }
+    if (countdown == 59) {
+      thePet.catAvatar = loadImage("catCircle3.png");
+    }
+    if (countdown == 49) {
+      thePet.catAvatar = loadImage("catCircle4.png");
+    }
+    if (countdown == 39) {
+      thePet.catAvatar = loadImage("catCircle5.png");
+    }
+    if (countdown == 29) {
+      thePet.catAvatar = loadImage("catCircle6.png");
+    }
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catCircle7.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catCircle8.png");
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
