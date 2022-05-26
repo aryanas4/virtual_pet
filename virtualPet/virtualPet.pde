@@ -5,6 +5,14 @@ static int countdown = 0;
 void setup() {
   size(1000, 800);
   thePet = new pet();
+  happiness a = new happiness();
+  a.display();
+  hunger b = new hunger();
+  b.display();
+  cleanliness c = new cleanliness();
+  c.display();
+  awakeness d = new awakeness();
+  d.display();
 }
 
 void draw() {
