@@ -55,12 +55,25 @@ public class cleanliness extends mood {
   void display() {
     circle(600, 700, 100);
     fill(0);
-    arc(615, 690, 25, 60, PI, PI+PI);
+    arc(615, 700, 25, 60, PI, PI+PI);
+    rect(612, 660, 6, 20);
+    rect(612, 660, 21, 6, 0,100000,0,0);
+    line(615,730,615,740);
+    line(610,718,610,728);
+    line(620,715,620,725);
+    line(606,732,606,742);
+    line(605,705,605,715);
+    line(625,703,625,713);
+    line(615,704,615,714);
+    line(625,728,625,738);
     fill(255);
   }
 }
 public class awakeness extends mood {
   void display() {
     circle(800, 700, 100);
+    fill(0);
+    textSize(10);
+    text("Z", 800, 700);
   }
 }
