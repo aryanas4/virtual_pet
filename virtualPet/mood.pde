@@ -73,7 +73,11 @@ public class awakeness extends mood {
   void display() {
     circle(800, 700, 100);
     fill(0);
-    textSize(10);
-    text("Z", 800, 700);
+    textSize(35);
+    text("Z", 765, 700);
+    textSize(25);
+    text("Z", 795, 710);
+    textSize(15);
+    text("Z", 820, 720);
   }
 }
