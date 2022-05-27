@@ -1,5 +1,5 @@
 public abstract class mood {
-  float percentage = 0.5;
+  float percentage = 0.7;
   float decreaseRate = 0.01;
   boolean selectedRoom;
   color Color;
@@ -45,7 +45,7 @@ public class happiness extends mood {
     circle(200, 700, 100); //fill circle with color based on %
     fill(255);
     noStroke();
-    rect(150, 650, 100, getPercentage()*100); //decrease the circle fill
+    rect(150, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
     stroke(0);
     noFill();
     circle(200, 700, 100); //circle line around
