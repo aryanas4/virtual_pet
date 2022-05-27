@@ -1,5 +1,5 @@
 public abstract class mood {
-  float percentage = 1;
+  float percentage = 0.5;
   float decreaseRate = 0.01;
   boolean selectedRoom;
   color Color;
@@ -40,21 +40,24 @@ public abstract class mood {
 }
 public class happiness extends mood {
   void display() {
+    getColor(); 
+    fill(Color);
+    circle(200, 700, 100); //fill circle with color based on %
     fill(255);
-    circle(200, 700, 100);
+    noStroke();
+    rect(150, 650, 100, getPercentage()*100); //decrease the circle fill
+    stroke(0);
     noFill();
+    circle(200, 700, 100); //circle line around
     arc(200, 705, 70, 60, 0, PI); // smile
     fill(0);
     ellipse(185, 695, 10, 15); //left eye
     ellipse(215, 695, 10, 15); //right eye
-    getColor();
-    fill(Color);
-    arc(200, 700, 100, 100, 0, PI);
-    fill(255);
   }
 }
 public class hunger extends mood {
   void display() {
+    fill(255);
     circle(400, 700, 100);
     noFill();
     strokeWeight(4);
@@ -65,11 +68,11 @@ public class hunger extends mood {
     strokeWeight(1);
     arc(391, 706, 20, 55, PI, PI+HALF_PI);
     arc(415, 690, 18, 20, 0, PI);
-    fill(255);
   }
 }
 public class cleanliness extends mood {
   void display() {
+    fill(255);
     circle(600, 700, 100);
     fill(0);
     arc(615, 700, 25, 60, PI, PI+PI);
@@ -83,11 +86,11 @@ public class cleanliness extends mood {
     line(625,703,625,713);
     line(615,704,615,714);
     line(625,728,625,738);
-    fill(255);
   }
 }
 public class awakeness extends mood {
   void display() {
+    fill(255);
     circle(800, 700, 100);
     fill(0);
     textSize(35);
