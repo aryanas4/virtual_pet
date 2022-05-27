@@ -4,12 +4,12 @@ public abstract class clickable {
   int xPos;
   int yPos;
   void clicked() {
-    //maybe we don't need this; just like the pet
+    //maybe we don't need this; just like the pet; put into virtualPet draw()
   }
   void display(int currentRoom) {
     if (currentRoom == whichRoom) {
       image(objectImg, xPos, yPos);
-    }
+    } //REMINDER: do we need an else so that there isn't always the object?
   }
 }
 
