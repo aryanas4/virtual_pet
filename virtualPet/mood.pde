@@ -2,6 +2,7 @@ public abstract class mood {
   float percentage = 1;
   float decreaseRate = 0.01;
   boolean selectedRoom;
+  color Color;
   abstract void display();
   void decrease() {
     percentage *= (1 - decreaseRate);
@@ -24,15 +25,31 @@ public abstract class mood {
     }
     return false;
   }
+  
+  void getColor() {
+    if (percentage > .5) {
+      Color = color(0, 255, 0, 100); //green
+    }
+    else if (percentage > .1) {
+      Color = color(255, 255, 0, 100); //yellow
+    }
+    else {
+      Color = color(255, 0, 0, 100); //red
+    }
+  }
 }
 public class happiness extends mood {
   void display() {
+    fill(255);
     circle(200, 700, 100);
     noFill();
     arc(200, 705, 70, 60, 0, PI); // smile
     fill(0);
     ellipse(185, 695, 10, 15); //left eye
     ellipse(215, 695, 10, 15); //right eye
+    getColor();
+    fill(Color);
+    arc(200, 700, 100, 100, 0, PI);
     fill(255);
   }
 }

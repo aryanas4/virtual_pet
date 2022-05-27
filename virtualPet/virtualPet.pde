@@ -1,22 +1,28 @@
 static int room = 0;
 static pet thePet;
 static int countdown = 0;
+static happiness a;
+static hunger b;
+static cleanliness c;
+static awakeness d;
 
 void setup() {
   size(1000, 800);
   thePet = new pet();
-  happiness a = new happiness();
-  a.display();
-  hunger b = new hunger();
-  b.display();
-  cleanliness c = new cleanliness();
-  c.display();
-  awakeness d = new awakeness();
-  d.display();
+  a = new happiness();
+  b = new hunger();
+  c = new cleanliness();
+  d = new awakeness();
 }
 
 void draw() {
   background(255);
+  //display the bottom buttons:
+  a.display();
+  b.display();
+  c.display();
+  d.display();
+  //display the pet:
   thePet.display();
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
@@ -25,7 +31,7 @@ void draw() {
   } else {
     thePet.isBusy = false; //once the timer runs out, the pet isn't doing anything
   }
-  //reaching up animation:
+  //reaching up animation: (idle action)
   if (thePet.currentIdleAction.equals("reachUp")) {
     if (countdown == 79) {
       thePet.catAvatar = loadImage("catReach1.png");
@@ -40,7 +46,7 @@ void draw() {
       thePet.currentIdleAction = "";
     }
   }
-  //circling animation:
+  //circling animation: (idle action)
   if (thePet.currentIdleAction.equals("circle")) {
     if (countdown == 79) {
       thePet.catAvatar = loadImage("catCircle1.png");
@@ -73,5 +79,19 @@ void draw() {
       thePet.currentIdleAction = "";
     }
   }
-  
+  //getting hit animation:
+  /*if (thePet.currentIdleAction.equals("hit")) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catHit1.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+    }
+    if (countdown == 0) {
+      thePet.currentIdleAction = "";
+    }
+  }*/
+  if (mousePressed && dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
+    thePet.catAvatar = loadImage("catHit1.png");
+  }
 }
