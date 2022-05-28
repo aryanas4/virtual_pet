@@ -25,7 +25,6 @@ public abstract class mood {
     }
     return false;
   }
-  
   void getColor() {
     if (percentage > .5) {
       Color = color(0, 255, 0, 100); //green
@@ -57,9 +56,16 @@ public class happiness extends mood {
 }
 public class hunger extends mood {
   void display() {
+    getColor(); 
+    fill(Color);
+    circle(400, 700, 100); //fill circle with color based on %
     fill(255);
-    circle(400, 700, 100);
+    noStroke();
+    rect(350, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    stroke(0);
     noFill();
+    circle(400, 700, 100); //circle line around
+    
     strokeWeight(4);
     line(415, 680, 415, 730);
     line(390, 680, 390, 730);
@@ -72,13 +78,21 @@ public class hunger extends mood {
 }
 public class cleanliness extends mood {
   void display() {
+    getColor(); 
+    fill(Color);
+    circle(600, 700, 100); //fill circle with color based on %
     fill(255);
-    circle(600, 700, 100);
+    noStroke();
+    rect(550, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    stroke(0);
+    noFill();
+    circle(600, 700, 100); //circle line around
+    
     fill(0);
-    arc(615, 700, 25, 60, PI, PI+PI);
+    arc(615, 700, 25, 60, PI, PI+PI); //shower head
     rect(612, 660, 6, 20);
     rect(612, 660, 21, 6, 0,100000,0,0);
-    line(615,730,615,740);
+    line(615,730,615,740); //water lines
     line(610,718,610,728);
     line(620,715,620,725);
     line(606,732,606,742);
@@ -90,8 +104,16 @@ public class cleanliness extends mood {
 }
 public class awakeness extends mood {
   void display() {
+    getColor(); 
+    fill(Color);
+    circle(800, 700, 100); //fill circle with color based on %
     fill(255);
-    circle(800, 700, 100);
+    noStroke();
+    rect(750, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    stroke(0);
+    noFill();
+    circle(800, 700, 100); //circle line around
+    
     fill(0);
     textSize(35);
     text("Z", 765, 700);
