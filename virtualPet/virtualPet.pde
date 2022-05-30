@@ -8,6 +8,7 @@ static cleanliness c;
 static awakeness d;
 //the draggable mood objects:
 static toy ball;
+static food bowl;
 //REMINDER ADD MORE
 
 
@@ -20,7 +21,8 @@ void setup() {
   c = new cleanliness();
   d = new awakeness();
   //the draggable mood objects:
-  ball = new toy("ballStill.png", 800, 450, 80, 80); //REMINDER: edit the x and y later
+  ball = new toy("ballStill.png", 800, 450, 80, 80);
+  bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
 }
 
 void draw() {
@@ -34,6 +36,7 @@ void draw() {
   thePet.display();
   //display the draggable mood objects:
   ball.display(room);
+  bowl.display(room);
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
     countdown--;
@@ -95,19 +98,37 @@ void draw() {
     ball.beingUsed = true;
     ball.xPos = 800;
     ball.yPos = 450;
-    print("heya");
     //...animation REMINDER
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
+    a.increase(20);
     if (countdown == 0) {
       ball.beingUsed = false;
+    }
+  }
+  if (!bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    bowl.clicked(bowl.beingUsed); //sets the countdown once
+    bowl.beingUsed = true;
+    bowl.xPos = 200;
+    bowl.yPos = 450;
+    //...animation REMINDER
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+    }
+    b.increase(20);
+    if (countdown == 0) {
+      bowl.beingUsed = false;
     }
   }
   //standard x and y positions for the clickable mood objects:
   if (!mousePressed && !ball.beingUsed) {
     ball.xPos = 800;
     ball.yPos = 450;
+  }
+  if (!mousePressed && !bowl.beingUsed) {
+    bowl.xPos = 200;
+    bowl.yPos = 450;
   }
 }
 
@@ -125,5 +146,9 @@ void mouseDragged() {
     ball.xPos = mouseX-(ball.imgWidth/2);
     ball.yPos = mouseY-(ball.imgHeight/2);
   }
-  
+  //food - bowl:
+  if (dist(mouseX, mouseY, bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2)) < bowl.imgWidth/2) {
+    bowl.xPos = mouseX-(bowl.imgWidth/2);
+    bowl.yPos = mouseY-(bowl.imgHeight/2);
+  }
 }
