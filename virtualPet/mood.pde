@@ -1,5 +1,5 @@
 public abstract class mood {
-  float percentage = 0.7;
+  float percentage = 1;
   float decreaseRate = 0.01;
   boolean selectedRoom;
   color Color;
