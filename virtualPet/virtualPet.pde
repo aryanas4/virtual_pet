@@ -9,6 +9,7 @@ static awakeness d;
 //the draggable mood objects:
 static toy ball;
 static food bowl;
+static cleaner soap;
 //REMINDER ADD MORE
 
 
@@ -23,6 +24,7 @@ void setup() {
   //the draggable mood objects:
   ball = new toy("ballStill.png", 800, 450, 80, 80);
   bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
+  soap = new cleaner("soapStill.png", 800, 450, 80, 80);
 }
 
 void draw() {
@@ -143,12 +145,81 @@ void draw() {
   }
   if (bowl.beingUsed) {
     //...animation REMINDER
+    if (countdown == 79) {
+      thePet.catAvatar = loadImage("catEat1.png");
+    }
+    if (countdown == 70) {
+      thePet.catAvatar = loadImage("catEat2.png");
+    }
+    if (countdown == 61) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 52) {
+      thePet.catAvatar = loadImage("catEat4.png");
+    }
+    if (countdown == 43) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catEat4.png");
+    }
+    if (countdown == 25) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 16) {
+      thePet.catAvatar = loadImage("catEat2.png");
+    }
+    if (countdown == 7) {
+      thePet.catAvatar = loadImage("catEat1.png");
+    }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
     b.increase(20);
     if (countdown == 0) {
       bowl.beingUsed = false;
+    }
+  }
+  if (!soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    soap.clicked(soap.beingUsed); //sets the countdown once
+    soap.beingUsed = true;
+    soap.xPos = 200;
+    soap.yPos = 450;
+  }
+  if (soap.beingUsed) {
+    if (countdown == 79) {
+      thePet.catAvatar = loadImage("catSoap1.png");
+    }
+    if (countdown == 70) {
+      thePet.catAvatar = loadImage("catSoap2.png");
+    }
+    if (countdown == 61) {
+      thePet.catAvatar = loadImage("catSoap3.png");
+    }
+    if (countdown == 52) {
+      thePet.catAvatar = loadImage("catSoap4.png");
+    }
+    if (countdown == 43) {
+      thePet.catAvatar = loadImage("catSoap5.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catSoap4.png");
+    }
+    if (countdown == 25) {
+      thePet.catAvatar = loadImage("catSoap5.png");
+    }
+    if (countdown == 16) {
+      thePet.catAvatar = loadImage("catSoap6.png");
+    }
+    if (countdown == 7) {
+      thePet.catAvatar = loadImage("catSoap7.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+    }
+    c.increase(20);
+    if (countdown == 0) {
+      soap.beingUsed = false;
     }
   }
   //standard x and y positions for the clickable mood objects:
@@ -159,6 +230,10 @@ void draw() {
   if (!mousePressed) {
     bowl.xPos = 200;
     bowl.yPos = 450;
+  }
+  if (!mousePressed) {
+    soap.xPos = 800;
+    soap.yPos = 450;
   }
 }
 
