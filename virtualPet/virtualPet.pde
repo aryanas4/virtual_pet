@@ -21,6 +21,7 @@ static PImage dBackground;
 static toy ball;
 static food bowl;
 static cleaner soap;
+static lights pillow;
 //REMINDER ADD MORE
 
 void setup() {
@@ -40,6 +41,7 @@ void setup() {
   ball = new toy("ballStill.png", 800, 450, 80, 80);
   bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
   soap = new cleaner("soapStill.png", 800, 450, 80, 80);
+  pillow = new lights("pillowStill.png", 200, 400, 160,160);
 }
 
 void changeBackground(int room) {
@@ -76,6 +78,7 @@ void draw() {
   ball.display(room);
   bowl.display(room);
   soap.display(room);
+  pillow.display(room);
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
     countdown--;
@@ -138,7 +141,7 @@ void draw() {
     ball.xPos = 800;
     ball.yPos = 450;
   }
-  if (ball.beingUsed) {
+  if (room == 0 && ball.beingUsed) {
     if (countdown == 79) {
       thePet.catAvatar = loadImage("catBall1.png");
     }
@@ -179,7 +182,7 @@ void draw() {
     bowl.xPos = 200;
     bowl.yPos = 450;
   }
-  if (bowl.beingUsed) {
+  if (room == 1 && bowl.beingUsed) {
     //...animation REMINDER
     if (countdown == 79) {
       thePet.catAvatar = loadImage("catEat1.png");
@@ -221,7 +224,7 @@ void draw() {
     soap.xPos = 200;
     soap.yPos = 450;
   }
-  if (soap.beingUsed) {
+  if (room == 2 && soap.beingUsed) {
     if (countdown == 79) {
       thePet.catAvatar = loadImage("catSoap1.png");
     }
@@ -256,6 +259,47 @@ void draw() {
       soap.beingUsed = false;
     }
   }
+  if (room == 3 && !pillow.beingUsed && !mousePressed && dist(pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    pillow.clicked(pillow.beingUsed); //sets the countdown once
+    pillow.beingUsed = true;
+    pillow.xPos = 200;
+    pillow.yPos = 400;
+  }
+  if (room == 3 && pillow.beingUsed) {
+    if (countdown == 79) {
+      thePet.catAvatar = loadImage("catSleep1.png");
+    }
+    if (countdown == 70) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 61) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 52) {
+      thePet.catAvatar = loadImage("catSleep4.png");
+    }
+    if (countdown == 43) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 25) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 16) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 7) {
+      thePet.catAvatar = loadImage("catSleep1.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+    }
+    if (countdown == 0) {
+      pillow.beingUsed = false;
+    }
+  }
   //standard x and y positions for the clickable mood objects:
   if (!mousePressed) {
     ball.xPos = 800;
@@ -269,6 +313,10 @@ void draw() {
     soap.xPos = 800;
     soap.yPos = 450;
   }
+  if (!mousePressed) {
+    pillow.xPos = 200;
+    pillow.yPos = 400;
+  }
 }
 
 //when you click the cat, it gets hit:
@@ -279,15 +327,23 @@ void mouseClicked() {
   }
   if (dist(mouseX, mouseY, 200, 700) < 50) {
     room = livingRoom;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
   }
   if (dist(mouseX, mouseY, 400, 700) < 50) {
     room = kitchen;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
   }
   if (dist(mouseX, mouseY, 600, 700) < 50) {
     room = bathroom;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
   }
   if (dist(mouseX, mouseY, 800, 700) < 50) {
     room = bedroom;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
   }
 }
 
@@ -307,5 +363,10 @@ void mouseDragged() {
   if (dist(mouseX, mouseY, soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2)) < soap.imgWidth/2) {
     soap.xPos = mouseX-(soap.imgWidth/2);
     soap.yPos = mouseY-(soap.imgHeight/2);
+  }
+  //lights - pillow:
+  if (dist(mouseX, mouseY, pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2)) < pillow.imgWidth/2) {
+    pillow.xPos = mouseX-(pillow.imgWidth/2);
+    pillow.yPos = mouseY-(pillow.imgHeight/2);
   }
 }
