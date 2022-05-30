@@ -7,15 +7,15 @@ public class pet {
   PImage catAvatar;
   
   public pet() {
-    xPos = width/2;
-    yPos = height/2;
+    xPos = width/2-250;
+    yPos = height/2-250;
     catAvatar = loadImage("catNorm.png");
     isBusy = false;
     idleActions = new String[] {"reachUp", "circle"}; //REMINDER: add more idle actions later
   }
   
   void doIdleAction() {
-    if (!isBusy && (int)(Math.random()*100) > 97) { //not busy and 2% chance
+    if (!isBusy && (int)(Math.random()*100) > 98) { //not busy and 1% chance
       int randomNum = (int)(Math.random()*(idleActions.length)); //pick a random number
       currentIdleAction = idleActions[randomNum];
       countdown = 80; //set the countdown to start the animation (in virtualPet draw() )
@@ -32,18 +32,9 @@ public class pet {
     }
   }
   
-  void mouseClicked() {
-    if (Math.abs(mouseX - xPos) < 20 && Math.abs(mouseY - yPos) < 20) {//edit the exact amount later
-      clicked();
-    }
-  }
-  
-  void clicked() { //cat gets punched/hit
-    //upload images/animation of cat getting hit
-  }
   
   void display() {
-    image(catAvatar, xPos-250, yPos-250, 500, 500);
+    image(catAvatar, xPos, yPos, 500, 500);
     blinkBreathe();
     doIdleAction();
   }

@@ -27,6 +27,7 @@ public abstract class mood {
 }
 public class happiness extends mood {
   void display() {
+    fill(255);
     circle(200, 700, 100);
     noFill();
     arc(200, 705, 70, 60, 0, PI); // smile
