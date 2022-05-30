@@ -6,12 +6,18 @@ static happiness a;
 static hunger b;
 static cleanliness c;
 static awakeness d;
+
+static int livingRoom = 0;
+static int kitchen = 1;
+static int bathroom = 2;
+static int bedroom = 3;
+static PImage background;
+
 //the draggable mood objects:
 static toy ball;
 static food bowl;
 static cleaner soap;
 //REMINDER ADD MORE
-
 
 void setup() {
   size(1000, 800);
@@ -27,8 +33,44 @@ void setup() {
   soap = new cleaner("soapStill.png", 800, 450, 80, 80);
 }
 
+void changeBackground(int room) {
+  PImage aBackground = loadImage("livingRoom.jpg");
+  aBackground.resize(1000, 800);
+  PImage bBackground = loadImage("kitchen.jpg");
+  bBackground.resize(1000, 800);
+  PImage cBackground = loadImage("bathroom.jpg");
+  cBackground.resize(1000, 800);
+  PImage dBackground = loadImage("bedroom.jpg");
+  dBackground.resize(1000, 800);
+  background = aBackground; 
+  if (room == livingRoom) {
+    background = aBackground;
+  } else if (room == kitchen) {
+    background = bBackground;
+  } else if (room == bathroom) {
+    background = cBackground;
+  } else if (room == bedroom) {
+    background = dBackground;
+  }
+}
+
 void draw() {
   background(255);
+  if (mousePressed && dist(mouseX, mouseY, 200, 700) < 100) {
+    room = livingRoom;
+  } 
+  if (mousePressed && dist(mouseX, mouseY, 400, 700) < 100) {
+    room = kitchen;
+  } 
+  if (mousePressed && dist(mouseX, mouseY, 600, 700) < 100) {
+    room = bathroom;
+  } 
+  if (mousePressed && dist(mouseX, mouseY, 800, 700) < 100) { 
+    room = bedroom;
+  }
+  changeBackground(room);
+  background(background);
+
   //display the bottom buttons:
   a.display();
   b.display();
@@ -256,5 +298,11 @@ void mouseDragged() {
   if (dist(mouseX, mouseY, bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2)) < bowl.imgWidth/2) {
     bowl.xPos = mouseX-(bowl.imgWidth/2);
     bowl.yPos = mouseY-(bowl.imgHeight/2);
+
+  if (((int) Math.random()*1000) > 965) {
+    a.decrease();
+    b.decrease();
+    c.decrease();
+    d.decrease();
   }
 }
