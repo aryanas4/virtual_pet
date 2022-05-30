@@ -298,7 +298,7 @@ void mouseDragged() {
   if (dist(mouseX, mouseY, bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2)) < bowl.imgWidth/2) {
     bowl.xPos = mouseX-(bowl.imgWidth/2);
     bowl.yPos = mouseY-(bowl.imgHeight/2);
-
+  }
   if (((int) Math.random()*1000) > 965) {
     a.decrease();
     b.decrease();
