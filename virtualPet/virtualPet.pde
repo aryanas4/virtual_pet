@@ -19,25 +19,27 @@ void setup() {
   c = new cleanliness();
   d = new awakeness();
 }
-/*void mouseClicked() {
- float Adist = dist(mouseX, mouseY, 200, 700);
- if (Adist < 100) {
- room = 0;
- a.selectedRoom = true;
- }
- } */
-void draw() {
-  background(255);
-  
+void changeBackground(int room) {
   PImage aBackground = loadImage("livingRoom.jpg");
   aBackground.resize(1000,800);
-  background = aBackground;
+  PImage bBackground = loadImage("kitchen.jpg");
+  bBackground.resize(1000,800);
+  background = aBackground; 
+  if (room == livingRoom) {
+    background = aBackground;
+  }
+  else if (room == kitchen) {
+    background = bBackground;
+  }
+}
+void draw() {
+  background(255);
   if (mousePressed && dist(mouseX, mouseY, 200, 700) < 100) {
     room = livingRoom;
-    background = aBackground;
-  } else if (mousePressed && dist(mouseX, mouseY, 400, 700) < 100) {
+    //background = aBackground;
+  } if (mousePressed && dist(mouseX, mouseY, 400, 700) < 100) {
     room = kitchen;
-    //background = loadImage("kitchen.jpg");
+    //background = bBackground;
   } else if (mousePressed && dist(mouseX, mouseY, 600, 700) < 100) {
     room = bathroom;
     //background = loadImage("bathroom.jpg");
@@ -45,6 +47,7 @@ void draw() {
     room = bedroom;
     //background = loadImage("bedroom.jpg");
   }
+  changeBackground(room);
   background(background);
   
   //display the bottom buttons:
