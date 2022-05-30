@@ -8,10 +8,18 @@ public abstract class mood {
     percentage *= (1 - decreaseRate);
   }
   void decrease(float amount) {
-    percentage -= amount;
+    if (percentage - amount > 0) {
+      percentage -= amount;
+    } else {
+      percentage = 0;
+    }
   }
   void increase(float amount) {
-    percentage += amount;
+    if (percentage+amount < 1) {
+      percentage += amount;
+    } else {
+      percentage = 1;
+    }
   }
   float getPercentage() {
     return percentage;
