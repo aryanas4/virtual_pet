@@ -241,6 +241,7 @@ void draw() {
 void mouseClicked() {
    if (dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
     thePet.catAvatar = loadImage("catHit1.png");
+    a.decrease(10);
   }
 }
 
