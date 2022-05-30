@@ -41,10 +41,11 @@ public class happiness extends mood {
   void display() {
     getColor(); 
     fill(Color);
-    circle(200, 700, 100); //fill circle with color based on %
+    circle(200, 700, 100); //fill circle with color
     fill(255);
     noStroke();
-    rect(150, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    //rect(150, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    arc(200, 700, 100, 100, 0, radians((1-getPercentage())*360), PIE);
     stroke(0);
     noFill();
     circle(200, 700, 100); //circle line around
@@ -58,10 +59,11 @@ public class hunger extends mood {
   void display() {
     getColor(); 
     fill(Color);
-    circle(400, 700, 100); //fill circle with color based on %
+    circle(400, 700, 100); //fill circle with color
     fill(255);
     noStroke();
-    rect(350, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    //rect(350, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    arc(400, 700, 100, 100, 0, radians((1-getPercentage())*360), PIE);
     stroke(0);
     noFill();
     circle(400, 700, 100); //circle line around
@@ -80,10 +82,11 @@ public class cleanliness extends mood {
   void display() {
     getColor(); 
     fill(Color);
-    circle(600, 700, 100); //fill circle with color based on %
+    circle(600, 700, 100); //fill circle with color
     fill(255);
     noStroke();
-    rect(550, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    //rect(550, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    arc(600, 700, 100, 100, 0, radians((1-getPercentage())*360), PIE);
     stroke(0);
     noFill();
     circle(600, 700, 100); //circle line around
@@ -106,10 +109,11 @@ public class awakeness extends mood {
   void display() {
     getColor(); 
     fill(Color);
-    circle(800, 700, 100); //fill circle with color based on %
+    circle(800, 700, 100); //fill circle with color 
     fill(255);
     noStroke();
-    rect(750, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    //rect(750, 650, 100, 100 - getPercentage()*100); //decrease the circle fill
+    arc(800, 700, 100, 100, 0, radians((1-getPercentage())*360), PIE);
     stroke(0);
     noFill();
     circle(800, 700, 100); //circle line around
