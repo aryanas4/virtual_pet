@@ -12,6 +12,10 @@ static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
 static PImage background;
+static PImage aBackground;
+static PImage bBackground;
+static PImage cBackground;
+static PImage dBackground;
 
 //the draggable mood objects:
 static toy ball;
@@ -22,6 +26,11 @@ static cleaner soap;
 void setup() {
   size(1000, 800);
   thePet = new pet();
+  aBackground = loadImage("livingRoom.jpg");
+  bBackground = loadImage("kitchen.jpg");
+  cBackground = loadImage("bathroom.jpg");
+  dBackground = loadImage("bedroom.jpg");
+  background = aBackground;
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -34,15 +43,6 @@ void setup() {
 }
 
 void changeBackground(int room) {
-  PImage aBackground = loadImage("livingRoom.jpg");
-  aBackground.resize(1000, 800);
-  PImage bBackground = loadImage("kitchen.jpg");
-  bBackground.resize(1000, 800);
-  PImage cBackground = loadImage("bathroom.jpg");
-  cBackground.resize(1000, 800);
-  PImage dBackground = loadImage("bedroom.jpg");
-  dBackground.resize(1000, 800);
-  background = aBackground; 
   if (room == livingRoom) {
     background = aBackground;
   } else if (room == kitchen) {
@@ -56,21 +56,15 @@ void changeBackground(int room) {
 
 void draw() {
   background(255);
-  if (mousePressed && dist(mouseX, mouseY, 200, 700) < 100) {
-    room = livingRoom;
-  } 
-  if (mousePressed && dist(mouseX, mouseY, 400, 700) < 100) {
-    room = kitchen;
-  } 
-  if (mousePressed && dist(mouseX, mouseY, 600, 700) < 100) {
-    room = bathroom;
-  } 
-  if (mousePressed && dist(mouseX, mouseY, 800, 700) < 100) { 
-    room = bedroom;
-  }
   changeBackground(room);
-  background(background);
-
+  image(background, 0, 0, 1000, 800);
+  //always be decreasing all moods:
+  if ((int) (Math.random()*500) > 495) {
+    a.decrease();
+    b.decrease();
+    c.decrease();
+    d.decrease();
+  }
   //display the bottom buttons:
   a.display();
   b.display();
@@ -81,6 +75,7 @@ void draw() {
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
+  soap.display(room);
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
     countdown--;
@@ -137,7 +132,7 @@ void draw() {
     }
   }
   //when the clickable mood objects are dragged to the cat, do the animation, change moods:
-  if (!ball.beingUsed && !mousePressed && dist(ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+  if (room == 0 && !ball.beingUsed && !mousePressed && dist(ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     ball.clicked(ball.beingUsed); //sets the countdown once
     ball.beingUsed = true;
     ball.xPos = 800;
@@ -174,12 +169,11 @@ void draw() {
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
-    a.increase(20);
     if (countdown == 0) {
       ball.beingUsed = false;
     }
   }
-  if (!bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+  if (room == 1 && !bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     bowl.clicked(bowl.beingUsed); //sets the countdown once
     bowl.beingUsed = true;
     bowl.xPos = 200;
@@ -217,12 +211,11 @@ void draw() {
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
-    b.increase(20);
     if (countdown == 0) {
       bowl.beingUsed = false;
     }
   }
-  if (!soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+  if (room == 2 && !soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     soap.clicked(soap.beingUsed); //sets the countdown once
     soap.beingUsed = true;
     soap.xPos = 200;
@@ -259,7 +252,6 @@ void draw() {
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
-    c.increase(20);
     if (countdown == 0) {
       soap.beingUsed = false;
     }
@@ -281,9 +273,21 @@ void draw() {
 
 //when you click the cat, it gets hit:
 void mouseClicked() {
-   if (dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
+  if (dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 100) {
     thePet.catAvatar = loadImage("catHit1.png");
-    a.decrease(10);
+    a.decrease(0.03);
+  }
+  if (dist(mouseX, mouseY, 200, 700) < 50) {
+    room = livingRoom;
+  }
+  if (dist(mouseX, mouseY, 400, 700) < 50) {
+    room = kitchen;
+  }
+  if (dist(mouseX, mouseY, 600, 700) < 50) {
+    room = bathroom;
+  }
+  if (dist(mouseX, mouseY, 800, 700) < 50) {
+    room = bedroom;
   }
 }
 
@@ -299,10 +303,9 @@ void mouseDragged() {
     bowl.xPos = mouseX-(bowl.imgWidth/2);
     bowl.yPos = mouseY-(bowl.imgHeight/2);
   }
-  if (((int) Math.random()*1000) > 965) {
-    a.decrease();
-    b.decrease();
-    c.decrease();
-    d.decrease();
+  //cleaner - soap:
+  if (dist(mouseX, mouseY, soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2)) < soap.imgWidth/2) {
+    soap.xPos = mouseX-(soap.imgWidth/2);
+    soap.yPos = mouseY-(soap.imgHeight/2);
   }
 }

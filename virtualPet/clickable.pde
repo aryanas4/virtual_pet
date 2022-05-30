@@ -20,17 +20,20 @@ public abstract class clickable {
       image(objectImg, xPos, yPos, imgWidth, imgHeight);
     } //REMINDER: do we need an else so that the image isn't always there?
   }
-  void clicked(boolean isUsed) {
-    if(!isUsed) {
-      countdown = 80; //set countdown for the animation
-    }
-  }
 }
 
 public class toy extends clickable {
   public toy(String imageName, int x, int y, int w, int h) {
     super(imageName, x, y, w, h);
     whichRoom = 0;
+  }
+  void clicked(boolean isUsed) {
+    if(!isUsed) {
+      thePet.currentIdleAction = "";
+      countdown = 80; //set countdown for the animation
+      a.increase(0.03);
+      d.decrease(0.02);
+    }
   }
 }
 
@@ -39,6 +42,14 @@ public class food extends clickable {
     super(imageName, x, y, w, h);
     whichRoom = 1;
   }
+  void clicked(boolean isUsed) {
+    if(!isUsed) {
+      thePet.currentIdleAction = "";
+      countdown = 80; //set countdown for the animation
+      b.increase(0.03);
+      c.decrease(0.02);
+    }
+  }
 }
 
 public class cleaner extends clickable {
@@ -46,11 +57,27 @@ public class cleaner extends clickable {
     super(imageName, x, y, w, h);
     whichRoom = 2;
   }
+  void clicked(boolean isUsed) {
+    if(!isUsed) {
+      thePet.currentIdleAction = "";
+      countdown = 80; //set countdown for the animation
+      c.increase(0.03);
+      b.decrease(0.02);
+    }
+  }
 }
 
 public class lights extends clickable {
   public lights(String imageName, int x, int y, int w, int h) {
     super(imageName, x, y, w, h);
     whichRoom = 3;
+  }
+  void clicked(boolean isUsed) {
+    if(!isUsed) {
+      thePet.currentIdleAction = "";
+      countdown = 80; //set countdown for the animation
+      d.increase(0.03);
+      b.decrease(0.02);
+    }
   }
 }
