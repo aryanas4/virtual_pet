@@ -98,7 +98,35 @@ void draw() {
     ball.beingUsed = true;
     ball.xPos = 800;
     ball.yPos = 450;
-    //...animation REMINDER
+  }
+  if (ball.beingUsed) {
+    if (countdown == 79) {
+      thePet.catAvatar = loadImage("catBall1.png");
+    }
+    if (countdown == 70) {
+      thePet.catAvatar = loadImage("catBall2.png");
+    }
+    if (countdown == 61) {
+      thePet.catAvatar = loadImage("catBall3.png");
+    }
+    if (countdown == 52) {
+      thePet.catAvatar = loadImage("catBallDown.png");
+    }
+    if (countdown == 43) {
+      thePet.catAvatar = loadImage("catBallUp.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catBallDown.png");
+    }
+    if (countdown == 25) {
+      thePet.catAvatar = loadImage("catBallUp.png");
+    }
+    if (countdown == 16) {
+      thePet.catAvatar = loadImage("catBall3.png");
+    }
+    if (countdown == 7) {
+      thePet.catAvatar = loadImage("catBall2.png");
+    }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
@@ -112,6 +140,8 @@ void draw() {
     bowl.beingUsed = true;
     bowl.xPos = 200;
     bowl.yPos = 450;
+  }
+  if (bowl.beingUsed) {
     //...animation REMINDER
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
@@ -122,11 +152,11 @@ void draw() {
     }
   }
   //standard x and y positions for the clickable mood objects:
-  if (!mousePressed && !ball.beingUsed) {
+  if (!mousePressed) {
     ball.xPos = 800;
     ball.yPos = 450;
   }
-  if (!mousePressed && !bowl.beingUsed) {
+  if (!mousePressed) {
     bowl.xPos = 200;
     bowl.yPos = 450;
   }
