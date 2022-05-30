@@ -1,18 +1,26 @@
 static int room = 0;
 static pet thePet;
 static int countdown = 0;
+//the moods:
 static happiness a;
 static hunger b;
 static cleanliness c;
 static awakeness d;
+//the draggable mood objects:
+static toy ball;
+//REMINDER ADD MORE
+
 
 void setup() {
   size(1000, 800);
   thePet = new pet();
+  //the moods:
   a = new happiness();
   b = new hunger();
   c = new cleanliness();
   d = new awakeness();
+  //the draggable mood objects:
+  ball = new toy("ballStill.png", 800, 450, 80, 80); //REMINDER: edit the x and y later
 }
 
 void draw() {
@@ -24,6 +32,8 @@ void draw() {
   d.display();
   //display the pet:
   thePet.display();
+  //display the draggable mood objects:
+  ball.display(room);
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
     countdown--;
@@ -79,19 +89,41 @@ void draw() {
       thePet.currentIdleAction = "";
     }
   }
-  //getting hit animation:
-  /*if (thePet.currentIdleAction.equals("hit")) {
-    if (countdown == 19) {
-      thePet.catAvatar = loadImage("catHit1.png");
-    }
+  //when the clickable mood objects are dragged to the cat, do the animation, change moods:
+  if (!ball.beingUsed && !mousePressed && dist(ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    ball.clicked(ball.beingUsed); //sets the countdown once
+    ball.beingUsed = true;
+    ball.xPos = 800;
+    ball.yPos = 450;
+    print("heya");
+    //...animation REMINDER
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
     }
     if (countdown == 0) {
-      thePet.currentIdleAction = "";
+      ball.beingUsed = false;
     }
-  }*/
-  if (mousePressed && dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
+  }
+  //standard x and y positions for the clickable mood objects:
+  if (!mousePressed && !ball.beingUsed) {
+    ball.xPos = 800;
+    ball.yPos = 450;
+  }
+}
+
+//when you click the cat, it gets hit:
+void mouseClicked() {
+   if (dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
     thePet.catAvatar = loadImage("catHit1.png");
   }
+}
+
+//for dragging all the clickable mood objects:
+void mouseDragged() {
+  //toy - ball:
+  if (dist(mouseX, mouseY, ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2)) < ball.imgWidth/2) {
+    ball.xPos = mouseX-(ball.imgWidth/2);
+    ball.yPos = mouseY-(ball.imgHeight/2);
+  }
+  
 }
