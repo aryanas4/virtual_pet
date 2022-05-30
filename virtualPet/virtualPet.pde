@@ -1,10 +1,15 @@
 static int room = 0;
+static int livingRoom = 0;
+static int kitchen = 1;
+static int bathroom = 2;
+static int bedroom = 3;
 static pet thePet;
 static int countdown = 0;
 static happiness a;
 static hunger b;
 static cleanliness c;
 static awakeness d;
+static PImage background;
 
 void setup() {
   size(1000, 800);
@@ -14,9 +19,34 @@ void setup() {
   c = new cleanliness();
   d = new awakeness();
 }
-
+/*void mouseClicked() {
+ float Adist = dist(mouseX, mouseY, 200, 700);
+ if (Adist < 100) {
+ room = 0;
+ a.selectedRoom = true;
+ }
+ } */
 void draw() {
   background(255);
+  
+  PImage aBackground = loadImage("livingRoom.jpg");
+  aBackground.resize(1000,800);
+  background = aBackground;
+  if (mousePressed && dist(mouseX, mouseY, 200, 700) < 100) {
+    room = livingRoom;
+    background = aBackground;
+  } else if (mousePressed && dist(mouseX, mouseY, 400, 700) < 100) {
+    room = kitchen;
+    //background = loadImage("kitchen.jpg");
+  } else if (mousePressed && dist(mouseX, mouseY, 600, 700) < 100) {
+    room = bathroom;
+    //background = loadImage("bathroom.jpg");
+  } else if (mousePressed && dist(mouseX, mouseY, 800, 700) < 100) { 
+    room = bedroom;
+    //background = loadImage("bedroom.jpg");
+  }
+  background(background);
+  
   //display the bottom buttons:
   a.display();
   b.display();
@@ -81,16 +111,16 @@ void draw() {
   }
   //getting hit animation:
   /*if (thePet.currentIdleAction.equals("hit")) {
-    if (countdown == 19) {
-      thePet.catAvatar = loadImage("catHit1.png");
-    }
-    if (countdown == 1) {
-      thePet.catAvatar = loadImage("catNorm.png");
-    }
-    if (countdown == 0) {
-      thePet.currentIdleAction = "";
-    }
-  }*/
+   if (countdown == 19) {
+   thePet.catAvatar = loadImage("catHit1.png");
+   }
+   if (countdown == 1) {
+   thePet.catAvatar = loadImage("catNorm.png");
+   }
+   if (countdown == 0) {
+   thePet.currentIdleAction = "";
+   }
+   }*/
   if (mousePressed && dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 225) {
     thePet.catAvatar = loadImage("catHit1.png");
   }
