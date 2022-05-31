@@ -14,7 +14,7 @@ https://docs.google.com/document/d/1zT0yE5kdDezPBd3Bx0NLJ2_vZuhQRmfpnMFUgeLkObY/
 
 ###### Development Log:
 
-**Aryana:**
+**Aryana:** <br>
 05/23 - Experimented with merging in order to get used to the commands. <br>
 05/24 - Created the pet class and created the images for the random action animations. Also worked on code to animate the random actions, but it's not working as it should. <br>
 05/25 - Fixed animation code for the random actions by creating a countdown in the main tab. All animation code has moved to the draw() method in the main tab. <br>
@@ -24,7 +24,7 @@ https://docs.google.com/document/d/1zT0yE5kdDezPBd3Bx0NLJ2_vZuhQRmfpnMFUgeLkObY/
 05/31 - Edited UML diagram and README file. <br>
 
 
-**Zoe:**
+**Zoe:** <br>
 05/24 - Created the mood class and coded all the basic increase/decrease methods as per the UML diagram. Also added the circle displays for each of the 4 moods. <br>
 05/25 - Drew icons mood displays: smiley face, knife and fork, and shower head. <br>
 05/26 - Drew final icon for sleepy mood display: three Zs. Merged work onto main. <br>
