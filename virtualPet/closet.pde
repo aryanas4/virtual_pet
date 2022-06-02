@@ -15,7 +15,7 @@ public class closetButton {
   void display() {
     noStroke();
     fill(#B6F7E8);
-    //PImage hanger = loadImage(""); //REMINDER TO ADD THIS IMAGE
+    //PImage hanger = loadImage(""); //REMINDER TO ADD THIS IMAGE!!!
     circle(930, 70, 70);
     //image(hanger, 930-35, 70-35);
   }
