@@ -15,9 +15,10 @@ public class closetButton {
   void display() {
     noStroke();
     fill(#B6F7E8);
-    //PImage hanger = loadImage(""); //REMINDER TO ADD THIS IMAGE!!!
+    PImage hanger = loadImage("clothesHangerIcon.png"); //REMINDER TO ADD THIS IMAGE!!!
     circle(930, 70, 70);
-    //image(hanger, 930-35, 70-35);
+    hanger.resize(55, 42);
+    image(hanger, 930-28, 70-27);
   }
 }
 
@@ -26,13 +27,14 @@ public abstract class typeButton {
   boolean isSelected;
   PImage iconInside;
   void display(int xPos, int yPos) {
+    stroke(255);
     if (isSelected) {
       fill(#8379E3);
     } else {
-      fill(#BCB6F7);
+      fill(#8E1313);
     }
     circle(xPos, yPos, 70);
-    image(iconInside, xPos-35, yPos-35);
+    image(iconInside, xPos-25, yPos-25);
   }
 }
 
@@ -40,7 +42,8 @@ public class hatsButton extends typeButton {
   public hatsButton() {
     itemType = 0;
     isSelected = false;
-    //iconInside = loadImage(""); //REMINDER TO ADD THIS!!
+    iconInside = loadImage("hatIcon.png");
+    iconInside.resize(50, 37);
   }
 }
 

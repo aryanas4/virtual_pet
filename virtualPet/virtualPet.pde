@@ -7,6 +7,9 @@ static happiness a;
 static hunger b;
 static cleanliness c;
 static awakeness d;
+//closet buttons:
+static hatsButton theHatsButton;
+//REMINDER: add the rest
 
 static int livingRoom = 0;
 static int kitchen = 1;
@@ -34,9 +37,11 @@ void setup() {
   bBackground = loadImage("kitchen.jpg");
   cBackground = loadImage("bathroom.jpg");
   dBackground = loadImage("bedroom.jpg");
-  closetBackground = loadImage(""); //REMINDER TO ADD A BACKGROUND
+  closetBackground = loadImage("closetBackground.png");
   background = aBackground;
+  //closet stuff:
   theClosetButton = new closetButton();
+  theHatsButton = new hatsButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -67,7 +72,6 @@ void draw() {
   background(255);
   changeBackground(room);
   image(background, 0, 0, 1000, 800);
-  theClosetButton.display();
   //always be decreasing all moods:
   if ((int) (Math.random()*500) > 495) {
     a.decrease();
@@ -82,6 +86,12 @@ void draw() {
   d.display();
   //display the pet:
   thePet.display();
+  //display closet stuff:
+  theClosetButton.display();
+  if (room == closet) {
+    theHatsButton.display(150, 500);
+    //REMINDER: and the others
+  }
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
@@ -96,10 +106,10 @@ void draw() {
   }
   //reaching up animation: (idle action)
   if (thePet.currentIdleAction.equals("reachUp")) {
-    if (countdown == 79) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catReach1.png");
     }
-    if (countdown == 40) {
+    if (countdown == 15) {
       thePet.catAvatar = loadImage("catReach2.png");
     }
     if (countdown == 1) {
@@ -111,28 +121,28 @@ void draw() {
   }
   //circling animation: (idle action)
   if (thePet.currentIdleAction.equals("circle")) {
-    if (countdown == 79) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catCircle1.png");
     }
-    if (countdown == 69) {
+    if (countdown == 25) {
       thePet.catAvatar = loadImage("catCircle2.png");
     }
-    if (countdown == 59) {
+    if (countdown == 21) {
       thePet.catAvatar = loadImage("catCircle3.png");
     }
-    if (countdown == 49) {
+    if (countdown == 17) {
       thePet.catAvatar = loadImage("catCircle4.png");
     }
-    if (countdown == 39) {
+    if (countdown == 13) {
       thePet.catAvatar = loadImage("catCircle5.png");
     }
-    if (countdown == 29) {
+    if (countdown == 9) {
       thePet.catAvatar = loadImage("catCircle6.png");
     }
-    if (countdown == 19) {
+    if (countdown == 5) {
       thePet.catAvatar = loadImage("catCircle7.png");
     }
-    if (countdown == 9) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catCircle8.png");
     }
     if (countdown == 1) {
