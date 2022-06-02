@@ -1,7 +1,7 @@
 public class level {
   int coin;
   int levelNum;
-  float xpPercent;
+  float xpPercent = 0.2;
   public level() {
    coin = 0;
    levelNum = 1;
@@ -19,6 +19,9 @@ public class level {
     }
   }
   void display() {
-    circle(100, 100, 150);
+    fill(255);
+    rect(50, 50, 500, 50);
+    fill(0, 255, 0);
+    rect(50, 50, xpPercent*100, 50);
   }
 }

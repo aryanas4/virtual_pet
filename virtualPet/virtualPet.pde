@@ -22,6 +22,9 @@ static toy ball;
 static food bowl;
 static cleaner soap;
 static lights pillow;
+
+//level
+static level level;
 //REMINDER ADD MORE
 
 void setup() {
@@ -42,6 +45,8 @@ void setup() {
   bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
   soap = new cleaner("soapStill.png", 800, 450, 80, 80);
   pillow = new lights("pillowStill.png", 200, 400, 160,160);
+  //level
+  level = new level();
 }
 
 void changeBackground(int room) {
@@ -79,6 +84,8 @@ void draw() {
   bowl.display(room);
   soap.display(room);
   pillow.display(room);
+  //display the level
+  level.display();
   //if we set a countdown, start a countdown:
   if (countdown > 0) {
     countdown--;
