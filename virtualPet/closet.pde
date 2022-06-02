@@ -11,7 +11,17 @@ public class closet {
   this means there will be animation frames of just the closet item moving*/
 }
 
-public abstract class closetButton {
+public class closetButton {
+  void display() {
+    noStroke();
+    fill(#B6F7E8);
+    //PImage hanger = loadImage(""); //REMINDER TO ADD THIS IMAGE
+    circle(930, 70, 70);
+    //image(hanger, 930-35, 70-35);
+  }
+}
+
+public abstract class typeButton {
   int itemType;
   boolean isSelected;
   PImage iconInside;
@@ -26,7 +36,7 @@ public abstract class closetButton {
   }
 }
 
-public class hatsButton extends closetButton {
+public class hatsButton extends typeButton {
   public hatsButton() {
     itemType = 0;
     isSelected = false;
@@ -37,7 +47,10 @@ public class hatsButton extends closetButton {
 public abstract class closetItem {
   boolean wasBought;
   PImage itemImg;
-  void display(int xPos, int yPos) {
-    
+  int itemType;
+  void display(int xPos, int yPos, int currentType) {
+    if (currentType == itemType) {
+      image(itemImg, xPos, yPos);
+    }
   }
 }

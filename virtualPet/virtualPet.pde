@@ -1,6 +1,7 @@
 static int room = 0;
 static pet thePet;
 static int countdown = 0;
+static closetButton theClosetButton;
 //the moods:
 static happiness a;
 static hunger b;
@@ -11,11 +12,13 @@ static int livingRoom = 0;
 static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
+static int closet = 4;
 static PImage background;
 static PImage aBackground;
 static PImage bBackground;
 static PImage cBackground;
 static PImage dBackground;
+static PImage closetBackground;
 
 //the draggable mood objects:
 static toy ball;
@@ -31,7 +34,9 @@ void setup() {
   bBackground = loadImage("kitchen.jpg");
   cBackground = loadImage("bathroom.jpg");
   dBackground = loadImage("bedroom.jpg");
+  closetBackground = loadImage(""); //REMINDER TO ADD A BACKGROUND
   background = aBackground;
+  theClosetButton = new closetButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -53,6 +58,8 @@ void changeBackground(int room) {
     background = cBackground;
   } else if (room == bedroom) {
     background = dBackground;
+  } else if (room == closet) {
+    background = closetBackground;
   }
 }
 
@@ -60,6 +67,7 @@ void draw() {
   background(255);
   changeBackground(room);
   image(background, 0, 0, 1000, 800);
+  theClosetButton.display();
   //always be decreasing all moods:
   if ((int) (Math.random()*500) > 495) {
     a.decrease();
@@ -342,6 +350,11 @@ void mouseClicked() {
   }
   if (dist(mouseX, mouseY, 800, 700) < 50) {
     room = bedroom;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+  }
+  if (dist(mouseX, mouseY, 930, 75) < 35) {
+    room = closet;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
