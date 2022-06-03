@@ -18,7 +18,7 @@ public class pet {
     if (!isBusy && (int)(Math.random()*100) > 98) { //not busy and 1% chance
       int randomNum = (int)(Math.random()*(idleActions.length)); //pick a random number
       currentIdleAction = idleActions[randomNum];
-      countdown = 80; //set the countdown to start the animation (in virtualPet draw() )
+      countdown = 30; //set the countdown to start the animation (in virtualPet draw() )
     }
   }
   
