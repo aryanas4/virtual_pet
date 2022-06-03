@@ -128,10 +128,10 @@ public class awakeness extends mood {
     
     fill(0);
     textSize(35);
-    text("Z", 765, 700);
+    text("Z", 775, 700);
     textSize(25);
-    text("Z", 795, 710);
+    text("Z", 805, 710);
     textSize(15);
-    text("Z", 820, 720);
+    text("Z", 825, 720);
   }
 }
