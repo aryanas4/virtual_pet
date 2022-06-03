@@ -22,8 +22,8 @@ https://docs.google.com/document/d/1zT0yE5kdDezPBd3Bx0NLJ2_vZuhQRmfpnMFUgeLkObY/
 05/27 - Created clickable interface but then changed clickable to an abstract class. Added our empty methods according to the UML diagram. <br>
 05/30 - Created 4 instances of the clickable class and uploaded images for each object. Made the clickable objects draggable so that the player can drag the objects to the cat. Also drew the frames for the interaction animations (the cat eating, playing, being washed, and sleeping) and then coded the animations. <br>
 05/31 - Edited UML diagram and README file. <br>
-06/01 - Added the closet tab. Made a closet class, abstract closetButton class, and abstract closeItem class. Added instance variables and basic methods.
-
+06/01 - Added the closet tab. Made a closet class, abstract closetButton class, and abstract closeItem class. Added instance variables and basic methods. <br>
+06/02 - Added the closet room. Created buttons for each accessory item. Uploaded the necessary images for the closet. <br>
 
 **Zoe:** <br>
 05/24 - Created the mood class and coded all the basic increase/decrease methods as per the UML diagram. Also added the circle displays for each of the 4 moods. <br>

@@ -1,21 +1,27 @@
 static int room = 0;
 static pet thePet;
 static int countdown = 0;
+static closetButton theClosetButton;
 //the moods:
 static happiness a;
 static hunger b;
 static cleanliness c;
 static awakeness d;
+//closet buttons:
+static hatsButton theHatsButton;
+//REMINDER: add the rest
 
 static int livingRoom = 0;
 static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
+static int closet = 4;
 static PImage background;
 static PImage aBackground;
 static PImage bBackground;
 static PImage cBackground;
 static PImage dBackground;
+static PImage closetBackground;
 
 //the draggable mood objects:
 static toy ball;
@@ -31,7 +37,11 @@ void setup() {
   bBackground = loadImage("kitchen.jpg");
   cBackground = loadImage("bathroom.jpg");
   dBackground = loadImage("bedroom.jpg");
+  closetBackground = loadImage("closetBackground.png");
   background = aBackground;
+  //closet stuff:
+  theClosetButton = new closetButton();
+  theHatsButton = new hatsButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -53,6 +63,8 @@ void changeBackground(int room) {
     background = cBackground;
   } else if (room == bedroom) {
     background = dBackground;
+  } else if (room == closet) {
+    background = closetBackground;
   }
 }
 
@@ -74,6 +86,12 @@ void draw() {
   d.display();
   //display the pet:
   thePet.display();
+  //display closet stuff:
+  theClosetButton.display();
+  if (room == closet) {
+    theHatsButton.display(150, 500);
+    //REMINDER: and the others
+  }
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
@@ -88,10 +106,10 @@ void draw() {
   }
   //reaching up animation: (idle action)
   if (thePet.currentIdleAction.equals("reachUp")) {
-    if (countdown == 79) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catReach1.png");
     }
-    if (countdown == 40) {
+    if (countdown == 15) {
       thePet.catAvatar = loadImage("catReach2.png");
     }
     if (countdown == 1) {
@@ -103,28 +121,28 @@ void draw() {
   }
   //circling animation: (idle action)
   if (thePet.currentIdleAction.equals("circle")) {
-    if (countdown == 79) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catCircle1.png");
     }
-    if (countdown == 69) {
+    if (countdown == 25) {
       thePet.catAvatar = loadImage("catCircle2.png");
     }
-    if (countdown == 59) {
+    if (countdown == 21) {
       thePet.catAvatar = loadImage("catCircle3.png");
     }
-    if (countdown == 49) {
+    if (countdown == 17) {
       thePet.catAvatar = loadImage("catCircle4.png");
     }
-    if (countdown == 39) {
+    if (countdown == 13) {
       thePet.catAvatar = loadImage("catCircle5.png");
     }
-    if (countdown == 29) {
+    if (countdown == 9) {
       thePet.catAvatar = loadImage("catCircle6.png");
     }
-    if (countdown == 19) {
+    if (countdown == 5) {
       thePet.catAvatar = loadImage("catCircle7.png");
     }
-    if (countdown == 9) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catCircle8.png");
     }
     if (countdown == 1) {
@@ -342,6 +360,11 @@ void mouseClicked() {
   }
   if (dist(mouseX, mouseY, 800, 700) < 50) {
     room = bedroom;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+  }
+  if (dist(mouseX, mouseY, 930, 730) < 35) {
+    room = closet;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
