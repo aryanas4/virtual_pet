@@ -162,7 +162,8 @@ void draw() {
   //when the clickable mood objects are dragged to the cat, do the animation, change moods:
   if (room == 0 && !ball.beingUsed && !mousePressed && dist(ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     ball.clicked(ball.beingUsed); //sets the countdown once
-    level.coin++;
+    level.coin++; //increase coin
+    level.increase(0.05); //increase xpPercent
     ball.beingUsed = true;
     ball.xPos = 800;
     ball.yPos = 450;
@@ -205,6 +206,7 @@ void draw() {
   if (room == 1 && !bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     bowl.clicked(bowl.beingUsed); //sets the countdown once
     level.coin++;
+    level.increase(0.05); //increase xpPercent
     bowl.beingUsed = true;
     bowl.xPos = 200;
     bowl.yPos = 450;
@@ -248,6 +250,7 @@ void draw() {
   if (room == 2 && !soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     soap.clicked(soap.beingUsed); //sets the countdown once
     level.coin++;
+    level.increase(0.05); //increase xpPercent
     soap.beingUsed = true;
     soap.xPos = 200;
     soap.yPos = 450;
@@ -290,6 +293,7 @@ void draw() {
   if (room == 3 && !pillow.beingUsed && !mousePressed && dist(pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     pillow.clicked(pillow.beingUsed); //sets the countdown once
     level.coin++;
+    level.increase(0.05); //increase xpPercent
     pillow.beingUsed = true;
     pillow.xPos = 200;
     pillow.yPos = 400;
