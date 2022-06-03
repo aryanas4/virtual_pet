@@ -9,6 +9,7 @@ static cleanliness c;
 static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
+static glassesButton theGlassesButton;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -31,7 +32,6 @@ static lights pillow;
 
 //level
 static level level;
-//REMINDER ADD MORE
 
 void setup() {
   size(1000, 800);
@@ -45,6 +45,7 @@ void setup() {
   //closet stuff:
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
+  theGlassesButton = new glassesButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -95,6 +96,7 @@ void draw() {
   theClosetButton.display();
   if (room == closet) {
     theHatsButton.display(150, 500);
+    theGlassesButton.display(190, 580);
     //REMINDER: and the others
   }
   //display the draggable mood objects:

@@ -47,6 +47,15 @@ public class hatsButton extends typeButton {
   }
 }
 
+public class glassesButton extends typeButton {
+  public glassesButton() {
+    itemType = 1;
+    isSelected = false;
+    iconInside = loadImage("hatIcon.png"); //REMINDER CHANGE THIS LATER
+    iconInside.resize(50, 37);
+  }
+}
+
 public abstract class closetItem {
   boolean wasBought;
   PImage itemImg;
