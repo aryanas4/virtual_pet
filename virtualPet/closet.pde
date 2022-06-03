@@ -16,9 +16,9 @@ public class closetButton {
     noStroke();
     fill(#B6F7E8);
     PImage hanger = loadImage("clothesHangerIcon.png"); //REMINDER TO ADD THIS IMAGE!!!
-    circle(930, 70, 70);
+    circle(930, 730, 70);
     hanger.resize(55, 42);
-    image(hanger, 930-28, 70-27);
+    image(hanger, 930-28, 730-27);
   }
 }
 

@@ -363,7 +363,7 @@ void mouseClicked() {
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
-  if (dist(mouseX, mouseY, 930, 75) < 35) {
+  if (dist(mouseX, mouseY, 930, 730) < 35) {
     room = closet;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
