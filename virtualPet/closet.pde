@@ -1,5 +1,5 @@
 public class closet {
-  int selectedItemType;
+  int selectedItemType = -1;
   final int HATS = 0;
   final int GLASSES = 1;
   final int SHRITS = 2;
@@ -9,6 +9,15 @@ public class closet {
   /*for each of the animations we have, there will be separate images that go on top of
   the cat of just the closet item so that we can have several items on at once
   this means there will be animation frames of just the closet item moving*/
+  void display() {
+    if (selectedItemType != -1) {
+      fill(#FCFBCF);
+      rect(1000/5, 800/6, 600, 150);
+      fill(#284FA0);
+      triangle(240, 216, 260, 236, 260, 196); //for clicking use the point 250,216 with dist < 10
+      triangle(1000-240, 216, 1000-260, 236, 1000-260, 196); //for clicking use point 750, 216 with dist<10
+    }
+  }
 }
 
 public class closetButton {
