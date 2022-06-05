@@ -15,7 +15,7 @@ public class closetButton {
   void display() {
     noStroke();
     fill(#B6F7E8);
-    PImage hanger = loadImage("clothesHangerIcon.png"); //REMINDER TO ADD THIS IMAGE!!!
+    PImage hanger = loadImage("clothesHangerIcon.png");
     circle(930, 730, 70);
     hanger.resize(55, 42);
     image(hanger, 930-28, 730-27);
@@ -29,12 +29,11 @@ public abstract class typeButton {
   void display(int xPos, int yPos) {
     stroke(255);
     if (isSelected) {
-      fill(#8379E3);
+      fill(#D3CE37);
     } else {
-      fill(#8E1313);
+      fill(#FCF873);
     }
     circle(xPos, yPos, 70);
-    image(iconInside, xPos-25, yPos-25);
   }
 }
 
@@ -45,14 +44,74 @@ public class hatsButton extends typeButton {
     iconInside = loadImage("hatIcon.png");
     iconInside.resize(50, 37);
   }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-25);
+  }
 }
 
 public class glassesButton extends typeButton {
   public glassesButton() {
     itemType = 1;
     isSelected = false;
-    iconInside = loadImage("hatIcon.png"); //REMINDER CHANGE THIS LATER
-    iconInside.resize(50, 37);
+    iconInside = loadImage("glassesIcon.png");
+    iconInside.resize(50, 18);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-10);
+  }
+}
+
+public class shirtsButton extends typeButton {
+  public shirtsButton() {
+    itemType = 2;
+    isSelected = false;
+    iconInside = loadImage("shirtIcon.png");
+    iconInside.resize(50, 42);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-23);
+  }
+}
+
+public class pantsButton extends typeButton {
+  public pantsButton() {
+    itemType = 3;
+    isSelected = false;
+    iconInside = loadImage("pantsIcon.png");
+    iconInside.resize(27, 57);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-13, yPos-25);
+  }
+}
+
+public class shoesButton extends typeButton {
+  public shoesButton() {
+    itemType = 4;
+    isSelected = false;
+    iconInside = loadImage("shoesIcon.png");
+    iconInside.resize(53, 40);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-22);
+  }
+}
+
+public class miscButton extends typeButton {
+  public miscButton() {
+    itemType = 5;
+    isSelected = false;
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    fill(0);
+    textSize(35);
+    text("...", xPos, yPos);
   }
 }
 

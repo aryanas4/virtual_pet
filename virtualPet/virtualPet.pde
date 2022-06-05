@@ -10,6 +10,10 @@ static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
 static glassesButton theGlassesButton;
+static shirtsButton theShirtsButton;
+static pantsButton thePantsButton;
+static shoesButton theShoesButton;
+static miscButton theMiscButton;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -46,6 +50,10 @@ void setup() {
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
   theGlassesButton = new glassesButton();
+  theShirtsButton = new shirtsButton();
+  thePantsButton = new pantsButton();
+  theShoesButton = new shoesButton();
+  theMiscButton = new miscButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -95,9 +103,12 @@ void draw() {
   //display closet stuff:
   theClosetButton.display();
   if (room == closet) {
-    theHatsButton.display(150, 500);
-    theGlassesButton.display(190, 580);
-    //REMINDER: and the others
+    theHatsButton.display(150, 480);
+    theGlassesButton.display(200, 550);
+    theShirtsButton.display(280, 590);
+    thePantsButton.display(360, 600);
+    theShoesButton.display(450, 605);
+    theMiscButton.display(540, 607);
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -169,31 +180,31 @@ void draw() {
     ball.yPos = 450;
   }
   if (room == 0 && ball.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catBall1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catBall2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catBall3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catBallDown.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catBallUp.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catBallDown.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catBallUp.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catBallDown.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catBallUp.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catBall3.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catBall2.png");
     }
     if (countdown == 1) {
@@ -211,31 +222,31 @@ void draw() {
   }
   if (room == 1 && bowl.beingUsed) {
     //...animation REMINDER
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catEat1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catEat2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catEat3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catEat4.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catEat3.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catEat4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catEat3.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catEat4.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catEat2.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catEat1.png");
     }
     if (countdown == 1) {
@@ -252,31 +263,31 @@ void draw() {
     soap.yPos = 450;
   }
   if (room == 2 && soap.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catSoap1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catSoap2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catSoap3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catSoap4.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catSoap5.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catSoap4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catSoap5.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catSoap4.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catSoap5.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catSoap6.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catSoap7.png");
     }
     if (countdown == 1) {
@@ -293,31 +304,31 @@ void draw() {
     pillow.yPos = 400;
   }
   if (room == 3 && pillow.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
-    if (countdown == 70) {
-      thePet.catAvatar = loadImage("catSleep2.png");
-    }
-    if (countdown == 61) {
-      thePet.catAvatar = loadImage("catSleep3.png");
-    }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catSleep4.png");
-    }
     if (countdown == 43) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 34) {
-      thePet.catAvatar = loadImage("catSleep2.png");
+    if (countdown == 31) {
+      thePet.catAvatar = loadImage("catSleep4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
       thePet.catAvatar = loadImage("catSleep2.png");
     }
-    if (countdown == 7) {
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 8) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
     if (countdown == 1) {
