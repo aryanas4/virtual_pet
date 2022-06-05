@@ -18,7 +18,7 @@ static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
 static int closet = 4;
-static int game = 4;
+static int game = 5;
 static PImage background;
 static PImage aBackground;
 static PImage bBackground;
@@ -77,6 +77,8 @@ void changeBackground(int room) {
     background = dBackground;
   } else if (room == closet) {
     background = closetBackground;
+  } else if (room == game) {
+    background = gameBackground;
   }
 }
 
@@ -388,6 +390,11 @@ void mouseClicked() {
   }
   if (dist(mouseX, mouseY, 930, 730) < 35) {
     room = closet;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+  }
+  if (dist(mouseX, mouseY, 930, 650) < 35) {
+    room = game;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
