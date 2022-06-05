@@ -9,6 +9,8 @@ static cleanliness c;
 static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
+//game buttons:
+static gameButton theGameButton;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -16,12 +18,14 @@ static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
 static int closet = 4;
+static int game = 4;
 static PImage background;
 static PImage aBackground;
 static PImage bBackground;
 static PImage cBackground;
 static PImage dBackground;
 static PImage closetBackground;
+static PImage gameBackground;
 
 //the draggable mood objects:
 static toy ball;
@@ -41,10 +45,13 @@ void setup() {
   cBackground = loadImage("bathroom.jpg");
   dBackground = loadImage("bedroom.jpg");
   closetBackground = loadImage("closetBackground.png");
+  gameBackground = loadImage("gameBackground.png");
   background = aBackground;
   //closet stuff:
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
+  //game stuff:
+  theGameButton = new gameButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -97,6 +104,7 @@ void draw() {
     theHatsButton.display(150, 500);
     //REMINDER: and the others
   }
+  theGameButton.display();
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
