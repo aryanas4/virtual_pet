@@ -20,6 +20,7 @@ public class level {
   }
   void display() {
     //level bar
+    stroke(0);
     fill(255);
     rect(110, 50, 200, 25, 15); //level bar
     rect(770, 50, 150, 50, 15); //coin bar
