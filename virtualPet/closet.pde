@@ -6,16 +6,61 @@ public class closet {
   final int PANTS = 3;
   final int SHOES = 4;
   final int MISC = 5;
+  ArrayList<closetItem> hatsList;
+  int currentHatIndex;
+  ArrayList<closetItem> glassesList;
+  int currentGlassesIndex;
+  ArrayList<closetItem> shirtsList;
+  int currentShirtIndex;
+  ArrayList<closetItem> pantsList;
+  int currentPantsIndex;
+  ArrayList<closetItem> shoesList;
+  int currentShoesIndex;
+  ArrayList<closetItem> miscList;
+  int currentMiscIndex;
   /*for each of the animations we have, there will be separate images that go on top of
   the cat of just the closet item so that we can have several items on at once
   this means there will be animation frames of just the closet item moving*/
+  public closet() { //set up all the items that are in the closet
+    //hats:
+    hatsList = new ArrayList<closetItem>();
+    currentHatIndex = 0;
+    hatsList.add(new closetItem(HATS, "hatIcon.png")); //REMINDER: image for testing purposes
+    hatsList.get(0).itemImg.resize(80, 54); //resize hat0
+    //glasses:
+    glassesList = new ArrayList<closetItem>();
+    currentGlassesIndex = 0;
+    glassesList.add(new closetItem(GLASSES, "glassesIcon.png"));
+    glassesList.get(0).itemImg.resize(100, 36);
+    //shirts:
+    shirtsList = new ArrayList<closetItem>();
+    currentShirtIndex = 0;
+    //pants:
+    pantsList = new ArrayList<closetItem>();
+    currentPantsIndex = 0;
+    //shoes:
+    shoesList = new ArrayList<closetItem>();
+    currentShoesIndex = 0;
+    //misc:
+    miscList = new ArrayList<closetItem>();
+    currentMiscIndex = 0;
+  }
   void display() {
+    //display the yellow box in which the items will be displayed:
     if (selectedItemType != -1) {
       fill(#FCFBCF);
       rect(1000/5, 800/6, 600, 150);
       fill(#284FA0);
       triangle(240, 216, 260, 236, 260, 196); //for clicking use the point 250,216 with dist < 10
       triangle(1000-240, 216, 1000-260, 236, 1000-260, 196); //for clicking use point 750, 216 with dist<10
+    }
+    if (selectedItemType == HATS) {
+      closetItem currentHat = hatsList.get(currentHatIndex);
+      currentHat.display();
+    }
+    if (selectedItemType == GLASSES) {
+      closetItem currentGlasses = glassesList.get(currentGlassesIndex);
+      currentGlasses.display();
     }
   }
 }
@@ -124,13 +169,24 @@ public class miscButton extends typeButton {
   }
 }
 
-public abstract class closetItem {
+public class closetItem {
   boolean wasBought;
   PImage itemImg;
   int itemType;
+  public closetItem(int numType, String imgName) {
+    itemType = numType;
+    itemImg = loadImage(imgName);
+  }
+  void display() {
+    image(itemImg, 500-itemImg.width/2, 216-itemImg.height/2);
+  }
+  //REMINDER: we may not need this:
+  /*void display(int xPos, int yPos) {
+    image(itemImg, xPos, yPos);
+  }
   void display(int xPos, int yPos, int currentType) {
     if (currentType == itemType) {
       image(itemImg, xPos, yPos);
     }
-  }
+  }*/
 }
