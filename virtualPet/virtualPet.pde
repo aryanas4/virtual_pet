@@ -2,6 +2,7 @@ static int room = 0;
 static pet thePet;
 static int countdown = 0;
 static closetButton theClosetButton;
+static closet theCloset;
 //the moods:
 static happiness a;
 static hunger b;
@@ -9,9 +10,17 @@ static cleanliness c;
 static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
+<<<<<<< HEAD
 //game buttons:
 static gameButton theGameButton;
 static game1Button game1Button;
+=======
+static glassesButton theGlassesButton;
+static shirtsButton theShirtsButton;
+static pantsButton thePantsButton;
+static shoesButton theShoesButton;
+static miscButton theMiscButton;
+>>>>>>> 4b70fbb1cafddb9582705812bca4719c85c7360b
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -36,7 +45,6 @@ static lights pillow;
 
 //level
 static level level;
-//REMINDER ADD MORE
 
 void setup() {
   size(1000, 800);
@@ -49,11 +57,20 @@ void setup() {
   gameBackground = loadImage("gameBackground.png");
   background = aBackground;
   //closet stuff:
+  theCloset = new closet();
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
+<<<<<<< HEAD
   //game stuff:
   theGameButton = new gameButton();
   game1Button = new game1Button();
+=======
+  theGlassesButton = new glassesButton();
+  theShirtsButton = new shirtsButton();
+  thePantsButton = new pantsButton();
+  theShoesButton = new shoesButton();
+  theMiscButton = new miscButton();
+>>>>>>> 4b70fbb1cafddb9582705812bca4719c85c7360b
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -105,8 +122,13 @@ void draw() {
   //display closet stuff:
   theClosetButton.display();
   if (room == closet) {
-    theHatsButton.display(150, 500);
-    //REMINDER: and the others
+    theCloset.display();
+    theHatsButton.display(150, 480);
+    theGlassesButton.display(200, 550);
+    theShirtsButton.display(280, 590);
+    thePantsButton.display(360, 600);
+    theShoesButton.display(450, 605);
+    theMiscButton.display(540, 607);
   }
   theGameButton.display();
   if (room == game) {
@@ -184,31 +206,31 @@ void draw() {
     ball.yPos = 450;
   }
   if (room == 0 && ball.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catBall1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catBall2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catBall3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catBallDown.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catBallUp.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catBallDown.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catBallUp.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catBallDown.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catBallUp.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catBall3.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catBall2.png");
     }
     if (countdown == 1) {
@@ -228,31 +250,31 @@ void draw() {
   }
   if (room == 1 && bowl.beingUsed) {
     //...animation REMINDER
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catEat1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catEat2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catEat3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catEat4.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catEat3.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catEat4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catEat3.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catEat4.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catEat2.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catEat1.png");
     }
     if (countdown == 1) {
@@ -271,31 +293,31 @@ void draw() {
     soap.yPos = 450;
   }
   if (room == 2 && soap.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catSoap1.png");
     }
-    if (countdown == 70) {
+    if (countdown == 43) {
       thePet.catAvatar = loadImage("catSoap2.png");
     }
-    if (countdown == 61) {
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catSoap3.png");
     }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catSoap4.png");
-    }
-    if (countdown == 43) {
-      thePet.catAvatar = loadImage("catSoap5.png");
-    }
-    if (countdown == 34) {
+    if (countdown == 31) {
       thePet.catAvatar = loadImage("catSoap4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catSoap5.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catSoap4.png");
+    }
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catSoap5.png");
+    }
+    if (countdown == 8) {
       thePet.catAvatar = loadImage("catSoap6.png");
     }
-    if (countdown == 7) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catSoap7.png");
     }
     if (countdown == 1) {
@@ -314,31 +336,31 @@ void draw() {
     pillow.yPos = 400;
   }
   if (room == 3 && pillow.beingUsed) {
-    if (countdown == 79) {
+    if (countdown == 49) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
-    if (countdown == 70) {
-      thePet.catAvatar = loadImage("catSleep2.png");
-    }
-    if (countdown == 61) {
-      thePet.catAvatar = loadImage("catSleep3.png");
-    }
-    if (countdown == 52) {
-      thePet.catAvatar = loadImage("catSleep4.png");
-    }
     if (countdown == 43) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 37) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 34) {
-      thePet.catAvatar = loadImage("catSleep2.png");
+    if (countdown == 31) {
+      thePet.catAvatar = loadImage("catSleep4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 16) {
+    if (countdown == 19) {
       thePet.catAvatar = loadImage("catSleep2.png");
     }
-    if (countdown == 7) {
+    if (countdown == 13) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 8) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
     if (countdown == 1) {
@@ -373,30 +395,72 @@ void mouseClicked() {
     thePet.catAvatar = loadImage("catHit1.png");
     a.decrease(0.03);
   }
-  if (dist(mouseX, mouseY, 200, 700) < 50) {
-    room = livingRoom;
+  changeRoom(200, 700, livingRoom, 50);
+  changeRoom(400, 700, kitchen, 50);
+  changeRoom(600, 700, bathroom, 50);
+  changeRoom(800, 700, bedroom, 50);
+  changeRoom(930, 730, closet, 35);
+  //changing which items in closet:
+  if (room == closet) {
+    closetItemChange(150, 480, "hats", 0);
+    closetItemChange(200, 550, "glasses", 1);
+    closetItemChange(280, 590, "shirts", 2);
+    closetItemChange(360, 600, "pants", 3);
+    closetItemChange(450, 605, "shoes", 4);
+    closetItemChange(540, 607, "misc", 5);
+  }
+}
+
+void changeRoom(int xPos, int yPos, int roomNum, int radius) {
+  if (dist(mouseX, mouseY, xPos, yPos) < radius) {
+    room = roomNum;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+    theCloset.selectedItemType = -1;
+    removeOtherSelectionsCloset("none");
+  }
+}
+
+void closetItemChange(int xPos, int yPos, String type, int typeNum) {
+  if (dist(mouseX, mouseY, xPos, yPos) < 35) {
+    theCloset.selectedItemType = typeNum;
+    removeOtherSelectionsCloset(type);
+    if (type.equals("hats")){
+      theHatsButton.isSelected = true;
+    } else if (type.equals("glasses")) {
+      theGlassesButton.isSelected = true;
+    } else if (type.equals("shirts")) {
+      theShirtsButton.isSelected = true;
+    } else if (type.equals("pants")) {
+      thePantsButton.isSelected = true;
+    } else if (type.equals("shoes")) {
+      theShoesButton.isSelected = true;
+    } else if (type.equals("misc")) {
+      theMiscButton.isSelected = true;
+    }
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
-  if (dist(mouseX, mouseY, 400, 700) < 50) {
-    room = kitchen;
-    countdown = 0;
-    thePet.catAvatar = loadImage("catNorm.png");
+}
+
+void removeOtherSelectionsCloset(String changeTo) {
+  if (!changeTo.equals("hats")) {
+    theHatsButton.isSelected = false;
   }
-  if (dist(mouseX, mouseY, 600, 700) < 50) {
-    room = bathroom;
-    countdown = 0;
-    thePet.catAvatar = loadImage("catNorm.png");
+  if (!changeTo.equals("glasses")) {
+    theGlassesButton.isSelected = false;
   }
-  if (dist(mouseX, mouseY, 800, 700) < 50) {
-    room = bedroom;
-    countdown = 0;
-    thePet.catAvatar = loadImage("catNorm.png");
+  if (!changeTo.equals("shirts")) {
+    theShirtsButton.isSelected = false;
   }
-  if (dist(mouseX, mouseY, 930, 730) < 35) {
-    room = closet;
-    countdown = 0;
-    thePet.catAvatar = loadImage("catNorm.png");
+  if (!changeTo.equals("pants")) {
+    thePantsButton.isSelected = false;
+  }
+  if (!changeTo.equals("shoes")) {
+    theShoesButton.isSelected = false;
+  }
+  if (!changeTo.equals("misc")) {
+    theMiscButton.isSelected = false;
   }
   if (dist(mouseX, mouseY, 930, 650) < 35) {
     room = game;
