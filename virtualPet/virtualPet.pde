@@ -9,6 +9,9 @@ static cleanliness c;
 static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
+//game buttons:
+static gameButton theGameButton;
+static game1Button game1Button;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -16,12 +19,14 @@ static int kitchen = 1;
 static int bathroom = 2;
 static int bedroom = 3;
 static int closet = 4;
+static int game = 5;
 static PImage background;
 static PImage aBackground;
 static PImage bBackground;
 static PImage cBackground;
 static PImage dBackground;
 static PImage closetBackground;
+static PImage gameBackground;
 
 //the draggable mood objects:
 static toy ball;
@@ -41,10 +46,14 @@ void setup() {
   cBackground = loadImage("bathroom.jpg");
   dBackground = loadImage("bedroom.jpg");
   closetBackground = loadImage("closetBackground.png");
+  gameBackground = loadImage("gameBackground.png");
   background = aBackground;
   //closet stuff:
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
+  //game stuff:
+  theGameButton = new gameButton();
+  game1Button = new game1Button();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -70,6 +79,8 @@ void changeBackground(int room) {
     background = dBackground;
   } else if (room == closet) {
     background = closetBackground;
+  } else if (room == game) {
+    background = gameBackground;
   }
 }
 
@@ -96,6 +107,10 @@ void draw() {
   if (room == closet) {
     theHatsButton.display(150, 500);
     //REMINDER: and the others
+  }
+  theGameButton.display();
+  if (room == game) {
+    game1Button.display(400, 150);
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -162,6 +177,8 @@ void draw() {
   //when the clickable mood objects are dragged to the cat, do the animation, change moods:
   if (room == 0 && !ball.beingUsed && !mousePressed && dist(ball.xPos+(ball.imgWidth/2), ball.yPos+(ball.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     ball.clicked(ball.beingUsed); //sets the countdown once
+    level.coin++; //increase coin
+    level.increase(0.05); //increase xpPercent
     ball.beingUsed = true;
     ball.xPos = 800;
     ball.yPos = 450;
@@ -203,6 +220,8 @@ void draw() {
   }
   if (room == 1 && !bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     bowl.clicked(bowl.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
     bowl.beingUsed = true;
     bowl.xPos = 200;
     bowl.yPos = 450;
@@ -245,6 +264,8 @@ void draw() {
   }
   if (room == 2 && !soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     soap.clicked(soap.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
     soap.beingUsed = true;
     soap.xPos = 200;
     soap.yPos = 450;
@@ -286,6 +307,8 @@ void draw() {
   }
   if (room == 3 && !pillow.beingUsed && !mousePressed && dist(pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     pillow.clicked(pillow.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
     pillow.beingUsed = true;
     pillow.xPos = 200;
     pillow.yPos = 400;
@@ -372,6 +395,11 @@ void mouseClicked() {
   }
   if (dist(mouseX, mouseY, 930, 730) < 35) {
     room = closet;
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+  }
+  if (dist(mouseX, mouseY, 930, 650) < 35) {
+    room = game;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }
