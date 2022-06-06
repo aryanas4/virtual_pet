@@ -394,6 +394,7 @@ void mouseClicked() {
   changeRoom(600, 700, bathroom, 50);
   changeRoom(800, 700, bedroom, 50);
   changeRoom(930, 730, closet, 35);
+  changeRoom(930, 650, game, 35);
   //changing which items in closet:
   if (room == closet) {
     closetItemChange(150, 480, "hats", 0);
