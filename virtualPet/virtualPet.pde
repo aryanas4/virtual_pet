@@ -10,17 +10,14 @@ static cleanliness c;
 static awakeness d;
 //closet buttons:
 static hatsButton theHatsButton;
-<<<<<<< HEAD
-//game buttons:
-static gameButton theGameButton;
-static game1Button game1Button;
-=======
 static glassesButton theGlassesButton;
 static shirtsButton theShirtsButton;
 static pantsButton thePantsButton;
 static shoesButton theShoesButton;
 static miscButton theMiscButton;
->>>>>>> 4b70fbb1cafddb9582705812bca4719c85c7360b
+//game buttons:
+static gameButton theGameButton;
+static game1Button game1Button;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -60,17 +57,14 @@ void setup() {
   theCloset = new closet();
   theClosetButton = new closetButton();
   theHatsButton = new hatsButton();
-<<<<<<< HEAD
-  //game stuff:
-  theGameButton = new gameButton();
-  game1Button = new game1Button();
-=======
   theGlassesButton = new glassesButton();
   theShirtsButton = new shirtsButton();
   thePantsButton = new pantsButton();
   theShoesButton = new shoesButton();
   theMiscButton = new miscButton();
->>>>>>> 4b70fbb1cafddb9582705812bca4719c85c7360b
+  //game stuff:
+  theGameButton = new gameButton();
+  game1Button = new game1Button();
   //the moods:
   a = new happiness();
   b = new hunger();
