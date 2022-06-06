@@ -11,6 +11,7 @@ static awakeness d;
 static hatsButton theHatsButton;
 //game buttons:
 static gameButton theGameButton;
+static game1Button game1Button;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -52,6 +53,7 @@ void setup() {
   theHatsButton = new hatsButton();
   //game stuff:
   theGameButton = new gameButton();
+  game1Button = new game1Button();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -107,6 +109,9 @@ void draw() {
     //REMINDER: and the others
   }
   theGameButton.display();
+  if (room == game) {
+    game1Button.display(400, 150);
+  }
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
