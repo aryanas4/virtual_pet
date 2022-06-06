@@ -35,3 +35,8 @@ buttons. Also cleaned up repetitive code and increased efficiency to decrease la
 05/27 - Fixed decrease method in mood class and adjusted constants. Added code so that the button's color is based on whether the mood percentage is good or too low. <br>
 05/30 - Uploaded images for the room backgrounds. Added the constant decrease rates to the moods. Made each of the mood displays buttons so that the player can switch the room they are currently in. Edited those buttons so that they display the mood via pie chart. <br>
 05/31 - Edited UML diagram and README file. <br>
+06/01 - Added level class and coin. Created methods to increase level and coin, and display method (not complete). <br>
+06/02 - Created level bar and coin bar to display level number and coin amount. Displayed both on the screen. <br>
+06/03 - Increase coin amount and level percentage when a draggable object is dragged to the cat. <br>
+06/04 - Created game class, game button, add game background, and diplayed game background when button is clicked. <br>
+06/05 - Added abstract class game type button and displayed game1 on the tv screen. <br>
