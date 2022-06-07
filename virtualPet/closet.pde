@@ -2,7 +2,7 @@ public class closet {
   int selectedItemType = -1;
   final int HATS = 0;
   final int GLASSES = 1;
-  final int SHRITS = 2;
+  final int SHIRTS = 2;
   final int PANTS = 3;
   final int SHOES = 4;
   final int MISC = 5;
@@ -35,12 +35,18 @@ public class closet {
     //shirts:
     shirtsList = new ArrayList<closetItem>();
     currentShirtIndex = 0;
+    shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png"));
+    shirtsList.get(0).itemImg.resize(70, 62);
     //pants:
     pantsList = new ArrayList<closetItem>();
     currentPantsIndex = 0;
+    pantsList.add(new closetItem(PANTS, "pantsIcon.png"));
+    pantsList.get(0).itemImg.resize(47, 85);
     //shoes:
     shoesList = new ArrayList<closetItem>();
     currentShoesIndex = 0;
+    shoesList.add(new closetItem(SHOES, "shoesIcon.png"));
+    shoesList.get(0).itemImg.resize(73, 60);
     //misc:
     miscList = new ArrayList<closetItem>();
     currentMiscIndex = 0;
@@ -61,6 +67,18 @@ public class closet {
     if (selectedItemType == GLASSES) {
       closetItem currentGlasses = glassesList.get(currentGlassesIndex);
       currentGlasses.display();
+    }
+    if (selectedItemType == SHIRTS) {
+      closetItem currentShirt = shirtsList.get(currentShirtIndex);
+      currentShirt.display();
+    }
+    if (selectedItemType == PANTS) {
+      closetItem currentPants = pantsList.get(currentPantsIndex);
+      currentPants.display();
+    }
+    if (selectedItemType == SHOES) {
+      closetItem currentShoes = shoesList.get(currentShoesIndex);
+      currentShoes.display();
     }
   }
 }

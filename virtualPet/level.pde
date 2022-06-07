@@ -3,7 +3,7 @@ public class level {
   int levelNum;
   float xpPercent = 0.05;
   public level() {
-   coin = 0;
+   coin = 50;
    levelNum = 1;
   }
   void addCoins(int amount) {
