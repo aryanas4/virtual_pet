@@ -26,8 +26,14 @@ public class closet {
     //hats:
     hatsList = new ArrayList<closetItem>();
     currentHatIndex = 0;
-    hatsList.add(new closetItem(HATS, "hatIcon.png", 10)); //REMINDER: image for testing purposes
+    hatsList.add(new closetItem(HATS, "redHat.png", 10));
     hatsList.get(0).itemImg.resize(80, 54); //resize hat0
+    hatsList.add(new closetItem(HATS, "yellowHat.png", 10));
+    hatsList.get(1).itemImg.resize(80, 54); //resize hat1
+    hatsList.add(new closetItem(HATS, "blueHat.png", 10));
+    hatsList.get(2).itemImg.resize(80, 54); //resize
+    hatsList.add(new closetItem(HATS, "redYellowHat.png", 20));
+    hatsList.get(3).itemImg.resize(80, 54); //resize
     //glasses:
     glassesList = new ArrayList<closetItem>();
     currentGlassesIndex = 0;
@@ -58,8 +64,8 @@ public class closet {
       fill(#FCFBCF);
       rect(1000/5, 800/6, 600, 150);
       fill(#284FA0);
-      triangle(240, 216, 260, 236, 260, 196); //for clicking use the point 250,216 with dist < 10
-      triangle(1000-240, 216, 1000-260, 236, 1000-260, 196); //for clicking use point 750, 216 with dist<10
+      triangle(240, 216, 260, 236, 260, 196);
+      triangle(1000-240, 216, 1000-260, 236, 1000-260, 196);
     }
     if (selectedItemType == HATS) {
       closetItem currentHat = hatsList.get(currentHatIndex);

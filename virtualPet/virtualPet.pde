@@ -406,15 +406,68 @@ void mouseClicked() {
   }
   //try on and select items from closet:
   if (room == closet) {
-    //thinking of having the item automatically be displayed for trying on instead of having to click it
-    /*if(dist(mouseX, mouseY, 500, 216) < 25) { //REMINDER to maybe change this value later
-      if (theCloset.selectedItemType == theCloset.HATS) {
-        theCloset.hatsList.get(theCloset.currentHatIndex).justTryingOn = true; //try on the item
-        //thePet.hatSelection = //the animation images for the hat...?
-        //REMINDER: set the selected item var from closet to the currently selected item!!!
+    if (dist(mouseX, mouseY, 750, 216) < 10) { //forward button
+      if (theCloset.selectedItemType == 0) { //hats
+        theCloset.currentHatIndex = increaseClosetIndex(theCloset.currentHatIndex, theCloset.hatsList.size());
       }
-    }*/
+      if (theCloset.selectedItemType == 1) { //glasses
+        theCloset.currentGlassesIndex = increaseClosetIndex(theCloset.currentGlassesIndex, theCloset.glassesList.size());
+      }
+      if (theCloset.selectedItemType == 2) { //shirts
+        theCloset.currentShirtIndex = increaseClosetIndex(theCloset.currentShirtIndex, theCloset.shirtsList.size());
+      }
+      if (theCloset.selectedItemType == 3) { //pants
+        theCloset.currentPantsIndex = increaseClosetIndex(theCloset.currentPantsIndex, theCloset.pantsList.size());
+      }
+      if (theCloset.selectedItemType == 4) { //shoes
+        theCloset.currentShoesIndex = increaseClosetIndex(theCloset.currentShoesIndex, theCloset.shoesList.size());
+      }
+      if (theCloset.selectedItemType == 5) { //misc
+        theCloset.currentMiscIndex = increaseClosetIndex(theCloset.currentMiscIndex, theCloset.miscList.size());
+      }
+    }
+    print(theCloset.currentHatIndex);
+    print(theCloset.hatsList.size());
+    //thinking of having the item automatically be displayed for trying on instead of having to click it
+    if (dist(mouseX, mouseY, 250, 216) < 10) { //backwards button
+      if (theCloset.selectedItemType == 0) { //hats
+        theCloset.currentHatIndex = decreaseClosetIndex(theCloset.currentHatIndex, theCloset.hatsList.size());
+      }
+      if (theCloset.selectedItemType == 1) { //glasses
+        theCloset.currentGlassesIndex = decreaseClosetIndex(theCloset.currentGlassesIndex, theCloset.glassesList.size());
+      }
+      if (theCloset.selectedItemType == 2) { //shirts
+        theCloset.currentShirtIndex = decreaseClosetIndex(theCloset.currentShirtIndex, theCloset.shirtsList.size());
+      }
+      if (theCloset.selectedItemType == 3) { //pants
+        theCloset.currentPantsIndex = decreaseClosetIndex(theCloset.currentPantsIndex, theCloset.pantsList.size());
+      }
+      if (theCloset.selectedItemType == 4) { //shoes
+        theCloset.currentShoesIndex = decreaseClosetIndex(theCloset.currentShoesIndex, theCloset.shoesList.size());
+      }
+      if (theCloset.selectedItemType == 5) { //misc
+        theCloset.currentMiscIndex = decreaseClosetIndex(theCloset.currentMiscIndex, theCloset.miscList.size());
+      }
+    }
   }
+}
+
+int increaseClosetIndex(int currentIndex, int size) {
+  if (currentIndex == size-1) {
+    currentIndex = 0;
+  } else {
+    currentIndex++;
+  }
+  return currentIndex;
+}
+
+int decreaseClosetIndex(int currentIndex, int size) {
+  if (currentIndex == 0) {
+    currentIndex = size - 1;
+  } else {
+    currentIndex--;
+  }
+  return currentIndex;
 }
 
 void changeRoom(int xPos, int yPos, int roomNum, int radius) {
