@@ -39,11 +39,26 @@ public class closet {
     currentGlassesIndex = 0;
     glassesList.add(new closetItem(GLASSES, "glassesIcon.png", 15));
     glassesList.get(0).itemImg.resize(100, 36);
+    glassesList.add(new closetItem(GLASSES, "sunglasses.png", 35));
+    glassesList.get(1).itemImg.resize(100, 36);
     //shirts:
     shirtsList = new ArrayList<closetItem>();
     currentShirtIndex = 0;
     shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png", 25));
-    shirtsList.get(0).itemImg.resize(70, 62);
+    shirtsList.get(0).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "whiteShirt.png", 25));
+    shirtsList.get(1).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "blueShirt.png", 25));
+    shirtsList.get(2).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "greenShirt.png", 25));
+    shirtsList.get(3).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "pinkShirt.png", 25));
+    shirtsList.get(4).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "smileyShirt.png", 30));
+    shirtsList.get(5).itemImg.resize(90, 82);
+    shirtsList.add(new closetItem(SHIRTS, "sarcasmShirt.png", 25));
+    shirtsList.get(6).itemImg.resize(90, 82);
+    
     //pants:
     pantsList = new ArrayList<closetItem>();
     currentPantsIndex = 0;

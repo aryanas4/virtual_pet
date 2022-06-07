@@ -426,8 +426,6 @@ void mouseClicked() {
         theCloset.currentMiscIndex = increaseClosetIndex(theCloset.currentMiscIndex, theCloset.miscList.size());
       }
     }
-    print(theCloset.currentHatIndex);
-    print(theCloset.hatsList.size());
     //thinking of having the item automatically be displayed for trying on instead of having to click it
     if (dist(mouseX, mouseY, 250, 216) < 10) { //backwards button
       if (theCloset.selectedItemType == 0) { //hats
