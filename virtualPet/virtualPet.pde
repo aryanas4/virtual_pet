@@ -404,6 +404,14 @@ void mouseClicked() {
     closetItemChange(450, 605, "shoes", 4);
     closetItemChange(540, 607, "misc", 5);
   }
+  //try on and select items from closet:
+  if (room == closet) {
+    if(dist(mouseX, mouseY, 500, 216) < 25) { //REMINDER to maybe change this value later
+      if (theCloset.selectedItemType == theCloset.HATS) {
+        theCloset.hatsList.get(theCloset.currentHatIndex).justTryingOn = true; //try on the item
+      }
+    }
+  }
 }
 
 void changeRoom(int xPos, int yPos, int roomNum, int radius) {

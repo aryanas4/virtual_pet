@@ -5,6 +5,12 @@ public class pet {
   float xPos;
   float yPos;
   PImage catAvatar;
+  PImage hatSelection;
+  PImage glassesSelection;
+  PImage shirtSelection;
+  PImage pantsSelection;
+  PImage shoesSelection;
+  PImage miscSelection;
   
   public pet() {
     xPos = width/2-250;
@@ -34,6 +40,24 @@ public class pet {
   
   
   void display() {
+    if (hatSelection != null) {
+      image(hatSelection, xPos, yPos, 500, 500);
+    }
+    if (glassesSelection != null) {
+      image(glassesSelection, xPos, yPos, 500, 500);
+    }
+    if (shirtSelection != null) {
+      image(hatSelection, xPos, yPos, 500, 500);
+    }
+    if (pantsSelection != null) {
+      image(hatSelection, xPos, yPos, 500, 500);
+    }
+    if (shoesSelection != null) {
+      image(hatSelection, xPos, yPos, 500, 500);
+    }
+    if (miscSelection != null) {
+      image(hatSelection, xPos, yPos, 500, 500);
+    }
     image(catAvatar, xPos, yPos, 500, 500);
     blinkBreathe();
     doIdleAction();

@@ -189,6 +189,7 @@ public class miscButton extends typeButton {
 
 public class closetItem {
   boolean wasBought;
+  boolean justTryingOn;
   PImage itemImg;
   int itemType;
   public closetItem(int numType, String imgName) {
