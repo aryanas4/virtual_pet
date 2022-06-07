@@ -16,8 +16,9 @@ static pantsButton thePantsButton;
 static shoesButton theShoesButton;
 static miscButton theMiscButton;
 //game buttons:
+static game theGame;
 static gameButton theGameButton;
-static game1Button game1Button;
+static flappyBirdButton theFlappyBirdButton;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -63,8 +64,9 @@ void setup() {
   theShoesButton = new shoesButton();
   theMiscButton = new miscButton();
   //game stuff:
+  theGame = new game();
   theGameButton = new gameButton();
-  game1Button = new game1Button();
+  theFlappyBirdButton = new flappyBirdButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -126,7 +128,8 @@ void draw() {
   }
   theGameButton.display();
   if (room == game) {
-    game1Button.display(400, 150);
+    theFlappyBirdButton.display(400, 150);
+    theGame.display();
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -404,6 +407,9 @@ void mouseClicked() {
     closetItemChange(450, 605, "shoes", 4);
     closetItemChange(540, 607, "misc", 5);
   }
+  if (room == game) {
+    gameItemChange(400, 150, "flappyBird", 0);
+  }
 }
 
 void changeRoom(int xPos, int yPos, int roomNum, int radius) {
@@ -433,6 +439,16 @@ void closetItemChange(int xPos, int yPos, String type, int typeNum) {
     } else if (type.equals("misc")) {
       theMiscButton.isSelected = true;
     }
+    countdown = 0;
+    thePet.catAvatar = loadImage("catNorm.png");
+  }
+}
+void gameItemChange(int xPos, int yPos, String type, int typeNum) {
+  if (dist(mouseX, mouseY, xPos, yPos) < 35) {
+    theGame.selectedGame = typeNum;
+    if (type.equals("flappyBird")){
+      theFlappyBirdButton.isSelected = true;
+    } 
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
   }

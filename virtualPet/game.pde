@@ -1,8 +1,15 @@
 public class game {
-  int selectedGame;
-  final int game1 = 0;
+  int selectedGame = -1;
+  final int flappyBird = 0;
   final int game2 = 1;
   final int game3 = 2;
+  void display() {
+    if (selectedGame != -1) {
+      fill(255);
+      rect(200, 800/6, 600, 150);
+      fill(#284FA0);
+    }
+  }
 }
 
 public class gameButton {
@@ -23,20 +30,23 @@ public abstract class gameTypeButton {
   void display(int xPos, int yPos) {
     stroke(255);
     if (isSelected) {
-      fill(#8379E3);
+      fill(#D3CE37);
     } else {
-      fill(#8E1313);
+      fill(#FCF873);
     }
     circle(xPos, yPos, 70);
-    image(iconInside, xPos-27, yPos-22);
   }
 }
 
-public class game1Button extends typeButton {
-  public game1Button() {
+public class flappyBirdButton extends typeButton {
+  public flappyBirdButton() {
     itemType = 0;
     isSelected = false;
     iconInside = loadImage("gamesIcon.png");
     iconInside.resize(55, 42);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-25);
   }
 }
