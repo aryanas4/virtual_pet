@@ -18,6 +18,7 @@ public class closet {
   int currentShoesIndex;
   ArrayList<closetItem> miscList;
   int currentMiscIndex;
+  closetItem currentSelectedItem; //REMINDER: use this to store which item is currently being looked at
   /*for each of the animations we have, there will be separate images that go on top of
   the cat of just the closet item so that we can have several items on at once
   this means there will be animation frames of just the closet item moving*/
@@ -25,27 +26,27 @@ public class closet {
     //hats:
     hatsList = new ArrayList<closetItem>();
     currentHatIndex = 0;
-    hatsList.add(new closetItem(HATS, "hatIcon.png")); //REMINDER: image for testing purposes
+    hatsList.add(new closetItem(HATS, "hatIcon.png", 10)); //REMINDER: image for testing purposes
     hatsList.get(0).itemImg.resize(80, 54); //resize hat0
     //glasses:
     glassesList = new ArrayList<closetItem>();
     currentGlassesIndex = 0;
-    glassesList.add(new closetItem(GLASSES, "glassesIcon.png"));
+    glassesList.add(new closetItem(GLASSES, "glassesIcon.png", 15));
     glassesList.get(0).itemImg.resize(100, 36);
     //shirts:
     shirtsList = new ArrayList<closetItem>();
     currentShirtIndex = 0;
-    shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png"));
+    shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png", 25));
     shirtsList.get(0).itemImg.resize(70, 62);
     //pants:
     pantsList = new ArrayList<closetItem>();
     currentPantsIndex = 0;
-    pantsList.add(new closetItem(PANTS, "pantsIcon.png"));
+    pantsList.add(new closetItem(PANTS, "pantsIcon.png", 30));
     pantsList.get(0).itemImg.resize(47, 85);
     //shoes:
     shoesList = new ArrayList<closetItem>();
     currentShoesIndex = 0;
-    shoesList.add(new closetItem(SHOES, "shoesIcon.png"));
+    shoesList.add(new closetItem(SHOES, "shoesIcon.png", 50));
     shoesList.get(0).itemImg.resize(73, 60);
     //misc:
     miscList = new ArrayList<closetItem>();
@@ -192,9 +193,11 @@ public class closetItem {
   boolean justTryingOn;
   PImage itemImg;
   int itemType;
-  public closetItem(int numType, String imgName) {
+  int price;
+  public closetItem(int numType, String imgName, int setCost) {
     itemType = numType;
     itemImg = loadImage(imgName);
+    price = setCost;
   }
   void display() {
     image(itemImg, 500-itemImg.width/2, 216-itemImg.height/2);

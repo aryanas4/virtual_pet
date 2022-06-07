@@ -406,11 +406,14 @@ void mouseClicked() {
   }
   //try on and select items from closet:
   if (room == closet) {
-    if(dist(mouseX, mouseY, 500, 216) < 25) { //REMINDER to maybe change this value later
+    //thinking of having the item automatically be displayed for trying on instead of having to click it
+    /*if(dist(mouseX, mouseY, 500, 216) < 25) { //REMINDER to maybe change this value later
       if (theCloset.selectedItemType == theCloset.HATS) {
         theCloset.hatsList.get(theCloset.currentHatIndex).justTryingOn = true; //try on the item
+        //thePet.hatSelection = //the animation images for the hat...?
+        //REMINDER: set the selected item var from closet to the currently selected item!!!
       }
-    }
+    }*/
   }
 }
 
