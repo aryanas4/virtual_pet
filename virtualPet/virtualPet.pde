@@ -34,6 +34,7 @@ static PImage cBackground;
 static PImage dBackground;
 static PImage closetBackground;
 static PImage gameBackground;
+static PImage zoomTV;
 
 //the draggable mood objects:
 static toy ball;
@@ -53,6 +54,7 @@ void setup() {
   dBackground = loadImage("bedroom.jpg");
   closetBackground = loadImage("closetBackground.png");
   gameBackground = loadImage("gameBackground.png");
+  zoomTV = loadImage("zoomTV.png");
   background = aBackground;
   //closet stuff:
   theCloset = new closet();
@@ -94,6 +96,9 @@ void changeBackground(int room) {
     background = closetBackground;
   } else if (room == game) {
     background = gameBackground;
+    if (theGame.selectedGame != -1) {
+      background = zoomTV;
+    }
   }
 }
 
@@ -128,7 +133,7 @@ void draw() {
   }
   theGameButton.display();
   if (room == game) {
-    theFlappyBirdButton.display(400, 150);
+    theFlappyBirdButton.display(100, 250);
     theGame.display();
   }
   //display the draggable mood objects:
@@ -408,7 +413,7 @@ void mouseClicked() {
     closetItemChange(540, 607, "misc", 5);
   }
   if (room == game) {
-    gameItemChange(400, 150, "flappyBird", 0);
+    gameItemChange(100, 250, "flappyBird", 0);
   }
 }
 

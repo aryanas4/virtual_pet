@@ -6,7 +6,7 @@ public class game {
   void display() {
     if (selectedGame != -1) {
       fill(255);
-      rect(200, 800/6, 600, 150);
+      rect(200, 300, 600, 400); //TV screen
       fill(#284FA0);
     }
   }
