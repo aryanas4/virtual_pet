@@ -97,7 +97,7 @@ void changeBackground(int room) {
 
 void draw() {
   background(255);
-  changeBackground(room);
+  changeBackground(room); //EFFICIENCY: maybe when only display the background image once when the room is switched
   image(background, 0, 0, 1000, 800);
   //always be decreasing all moods:
   if ((int) (Math.random()*500) > 495) {

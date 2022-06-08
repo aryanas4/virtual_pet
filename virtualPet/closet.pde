@@ -106,12 +106,15 @@ public class closet {
 }
 
 public class closetButton {
+  PImage hanger;
+  public closetButton() {
+    hanger = loadImage("clothesHangerIcon.png");
+    hanger.resize(55, 42);
+  }
   void display() {
     noStroke();
     fill(#B6F7E8);
-    PImage hanger = loadImage("clothesHangerIcon.png");
     circle(930, 730, 70);
-    hanger.resize(55, 42);
     image(hanger, 930-28, 730-27);
   }
 }
