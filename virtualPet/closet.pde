@@ -225,6 +225,10 @@ public class closetItem {
   }
   void display() {
     image(itemImg, 500-itemImg.width/2, 216-itemImg.height/2);
+    fill(#D6B23A);
+    rect(280, 240, 170, 30);
+    fill(0);
+    text("Buy now for "+price+" coins", 360, 260);
   }
   //REMINDER: we may not need this:
   /*void display(int xPos, int yPos) {
