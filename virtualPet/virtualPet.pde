@@ -146,7 +146,7 @@ void draw() {
       theFlappyBirdButton.x = 0;
     }
     image(theFlappyBirdButton.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
-    theFlappyBirdButton.y);
+    theFlappyBirdButton.y +400);
   } 
   //display the draggable mood objects:
   ball.display(room);
