@@ -45,6 +45,26 @@ public class flappyBirdButton extends typeButton {
       PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
       flappyBirdBackground.resize(775, 510); 
       image(flappyBirdBackground, 110, 80);
+      PImage bird = loadImage("flappyBird.png"); 
+      bird.resize(70, 50); 
+      image(bird, 110, 400);
+      PImage pipe = loadImage("flappyBirdPipe.png"); 
+      pipe.resize(450, 540); 
+      image(pipe, 110, 78);
+      //border around TV:
+      noFill();
+      stroke(0);
+      strokeWeight(12);
+      rect(110, 80, 775, 510);
+      /* add flappyBird to one spot (only allowing jump up and down)
+      add pipes (move left constantly and disappear when off screen)
+      if bird hits pipe - stop game
+      add start game button (key press 's')
+      draw 2 different rectangles to represent where the bird can fly through,
+      if bird goes past the rectangule x,y - it dies
+      2 types of pipes up and down (2 rects)
+      */
+      strokeWeight(1);
     }
   }
 }
