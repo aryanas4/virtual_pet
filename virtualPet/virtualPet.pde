@@ -133,9 +133,9 @@ void draw() {
   }
   theGameButton.display();
   if (room == game) {
-    theFlappyBirdButton.display(70, 250);
+    theFlappyBirdButton.display(60, 250);
   }
-  if (theFlappyBirdButton.isSelected) {
+  if (theFlappyBirdButton.isSelected && theFlappyBirdButton.on) {
     image(theFlappyBirdButton.flappyBirdBackground, theFlappyBirdButton.x, 80);
     image(theFlappyBirdButton.flappyBirdBackground, 
     theFlappyBirdButton.x + theFlappyBirdButton.flappyBirdBackground.width, 80);
@@ -143,7 +143,7 @@ void draw() {
     if (theFlappyBirdButton.x < -500) {
       theFlappyBirdButton.x = 0;
     }
-  }
+  } 
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
@@ -421,7 +421,7 @@ void mouseClicked() {
     closetItemChange(540, 607, "misc", 5);
   }
   if (room == game) {
-    gameItemChange(70, 250, "flappyBird", 0);
+    gameItemChange(60, 250, "flappyBird", 0);
   }
 }
 
@@ -528,8 +528,10 @@ void mouseDragged() {
 void keyPressed() {
   if (theFlappyBirdButton.isSelected) {
     if (key == ' ') {
-      fill(0);
-      rect(110, 80, 775, 510); //TV screen
+      theFlappyBirdButton.on = true;
+    }
+    if (key == BACKSPACE) {
+      theFlappyBirdButton.on = false;
     }
   }
 }

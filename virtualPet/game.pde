@@ -33,6 +33,8 @@ public abstract class gameTypeButton {
 
 public class flappyBirdButton extends typeButton {
   PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
+  PImage flappyBirdLogo = loadImage("FlappyBirdLogo.png"); 
+  boolean on = false;
   int x = -200;
   public flappyBirdButton() {
     itemType = 0;
@@ -43,9 +45,11 @@ public class flappyBirdButton extends typeButton {
   void display(int xPos, int yPos) {
     super.display(xPos, yPos);
     image(iconInside, xPos-25, yPos-25);
-    if (isSelected) {
+    if (isSelected && !on) {
       flappyBirdBackground.resize(775, 510); 
       image(flappyBirdBackground, 110, 80);
+      flappyBirdLogo.resize(400, 100); 
+      image(flappyBirdLogo, 450, 130);
       PImage bird = loadImage("flappyBird.png"); 
       bird.resize(70, 50); 
       image(bird, 110, 400);
@@ -61,7 +65,7 @@ public class flappyBirdButton extends typeButton {
       /* add flappyBird to one spot (only allowing jump up and down)
       add pipes (move left constantly and disappear when off screen)
       if bird hits pipe - stop game
-      add start game button (key press 's')
+      add start game button (key press ' ')
       draw 2 different rectangles to represent where the bird can fly through,
       if bird goes past the rectangule x,y - it dies
       2 types of pipes up and down (2 rects)
