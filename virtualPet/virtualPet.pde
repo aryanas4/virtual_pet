@@ -140,9 +140,13 @@ void draw() {
     image(theFlappyBirdButton.flappyBirdBackground, 
     theFlappyBirdButton.x + theFlappyBirdButton.flappyBirdBackground.width, 80);
     theFlappyBirdButton.x -= 30;
+    theFlappyBirdButton.v += 1;
+    theFlappyBirdButton.y += theFlappyBirdButton.v;
     if (theFlappyBirdButton.x < -500) {
       theFlappyBirdButton.x = 0;
     }
+    image(theFlappyBirdButton.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
+    theFlappyBirdButton.y);
   } 
   //display the draggable mood objects:
   ball.display(room);
@@ -529,6 +533,7 @@ void keyPressed() {
   if (theFlappyBirdButton.isSelected) {
     if (key == ' ') {
       theFlappyBirdButton.on = true;
+      theFlappyBirdButton.y -= 55;
     }
     if (key == BACKSPACE) {
       theFlappyBirdButton.on = false;

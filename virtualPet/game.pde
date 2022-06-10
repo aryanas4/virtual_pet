@@ -34,8 +34,14 @@ public abstract class gameTypeButton {
 public class flappyBirdButton extends typeButton {
   PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
   PImage flappyBirdLogo = loadImage("FlappyBirdLogo.png"); 
+  PImage bird = loadImage("flappyBird.png"); 
+  PImage pipe = loadImage("flappyBirdPipe.png"); 
   boolean on = false;
   int x = -200;
+  int score = 0;
+  int highScore = 0;
+  int v = 0;
+  int y;
   public flappyBirdButton() {
     itemType = 0;
     isSelected = false;
@@ -50,10 +56,8 @@ public class flappyBirdButton extends typeButton {
       image(flappyBirdBackground, 110, 80);
       flappyBirdLogo.resize(400, 100); 
       image(flappyBirdLogo, 450, 130);
-      PImage bird = loadImage("flappyBird.png"); 
       bird.resize(70, 50); 
       image(bird, 110, 400);
-      PImage pipe = loadImage("flappyBirdPipe.png"); 
       pipe.resize(450, 540); 
       image(pipe, 110, 78);
       //line(250, 500, 400, 500);
