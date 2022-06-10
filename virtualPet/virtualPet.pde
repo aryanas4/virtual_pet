@@ -19,6 +19,7 @@ static miscButton theMiscButton;
 static game theGame;
 static gameButton theGameButton;
 static flappyBirdButton theFlappyBirdButton;
+static bird theBird;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -134,19 +135,20 @@ void draw() {
   theGameButton.display();
   if (room == game) {
     theFlappyBirdButton.display(60, 250);
+    image(theBird.bird, 110, 400);
   }
   if (theFlappyBirdButton.isSelected && theFlappyBirdButton.on) {
-    image(theFlappyBirdButton.flappyBirdBackground, theFlappyBirdButton.x, 80);
+    image(theFlappyBirdButton.flappyBirdBackground, theBird.x, 80);
     image(theFlappyBirdButton.flappyBirdBackground, 
-    theFlappyBirdButton.x + theFlappyBirdButton.flappyBirdBackground.width, 80);
-    theFlappyBirdButton.x -= 30;
-    theFlappyBirdButton.v += 1;
-    theFlappyBirdButton.y += theFlappyBirdButton.v;
-    if (theFlappyBirdButton.x < -500) {
-      theFlappyBirdButton.x = 0;
+    theBird.x + theFlappyBirdButton.flappyBirdBackground.width, 80); 
+    theBird.x -= 30;
+    theBird.v += 1;
+    theBird.y += theBird.v;
+    if (theBird.x < -500) {
+      theBird.x = 0;
     }
-    image(theFlappyBirdButton.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
-    theFlappyBirdButton.y +400);
+    image(theBird.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
+    theBird.y +400);
   } 
   //display the draggable mood objects:
   ball.display(room);
@@ -533,7 +535,7 @@ void keyPressed() {
   if (theFlappyBirdButton.isSelected) {
     if (key == ' ') {
       theFlappyBirdButton.on = true;
-      theFlappyBirdButton.y -= 55;
+      theBird.v -= 15;
     }
     if (key == BACKSPACE) {
       theFlappyBirdButton.on = false;
