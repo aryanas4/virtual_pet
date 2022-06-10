@@ -405,10 +405,13 @@ void mouseClicked() {
     closetItemChange(540, 607, "misc", 5);
   }
   //buying closet items:
-  if (room == closet && !theCloset.currentSelectedItem.wasBought) {
+  if (room == closet && theCloset.currentSelectedItem != null && !theCloset.currentSelectedItem.wasBought) {
     if (dist(mouseX, mouseY, 300, 250) < 25) {
-      theCloset.currentSelectedItem.wasBought = true;
-      //decrease coins if player has enough to purchase
+      if (level.coin - theCloset.currentSelectedItem.price >= 0) {
+        theCloset.currentSelectedItem.wasBought = true; //store the fact that it was bought
+        theCloset.currentSelectedItem.justTryingOn = false;
+        level.coin -= theCloset.currentSelectedItem.price;
+      }
     }
   }
   //try on and select items from closet:

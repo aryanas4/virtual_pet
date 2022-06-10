@@ -18,7 +18,7 @@ public class closet {
   int currentShoesIndex;
   ArrayList<closetItem> miscList;
   int currentMiscIndex;
-  closetItem currentSelectedItem; //REMINDER: use this to store which item is currently being looked at
+  closetItem currentSelectedItem;
   /*for each of the animations we have, there will be separate images that go on top of
   the cat of just the closet item so that we can have several items on at once
   this means there will be animation frames of just the closet item moving*/
@@ -26,48 +26,47 @@ public class closet {
     //hats:
     hatsList = new ArrayList<closetItem>();
     currentHatIndex = 0;
-    hatsList.add(new closetItem(HATS, "redHat.png", 10));
+    hatsList.add(new closetItem(HATS, "redHat.png", 10, "red"));
     hatsList.get(0).itemImg.resize(80, 54); //resize hat0
-    hatsList.add(new closetItem(HATS, "yellowHat.png", 10));
+    hatsList.add(new closetItem(HATS, "yellowHat.png", 10, "yellow"));
     hatsList.get(1).itemImg.resize(80, 54); //resize hat1
-    hatsList.add(new closetItem(HATS, "blueHat.png", 10));
+    hatsList.add(new closetItem(HATS, "blueHat.png", 10, "blue"));
     hatsList.get(2).itemImg.resize(80, 54); //resize
-    hatsList.add(new closetItem(HATS, "redYellowHat.png", 20));
+    hatsList.add(new closetItem(HATS, "redYellowHat.png", 20, "redYellow"));
     hatsList.get(3).itemImg.resize(80, 54); //resize
     //glasses:
     glassesList = new ArrayList<closetItem>();
     currentGlassesIndex = 0;
-    glassesList.add(new closetItem(GLASSES, "glassesIcon.png", 15));
+    glassesList.add(new closetItem(GLASSES, "glassesIcon.png", 15, "normal"));
     glassesList.get(0).itemImg.resize(100, 36);
-    glassesList.add(new closetItem(GLASSES, "sunglasses.png", 35));
+    glassesList.add(new closetItem(GLASSES, "sunglasses.png", 35, "sun"));
     glassesList.get(1).itemImg.resize(100, 36);
     //shirts:
     shirtsList = new ArrayList<closetItem>();
     currentShirtIndex = 0;
-    shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "shirtIcon.png", 25, "red"));
     shirtsList.get(0).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "whiteShirt.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "whiteShirt.png", 25, "white"));
     shirtsList.get(1).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "blueShirt.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "blueShirt.png", 25, "blue"));
     shirtsList.get(2).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "greenShirt.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "greenShirt.png", 25, "green"));
     shirtsList.get(3).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "pinkShirt.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "pinkShirt.png", 25, "pink"));
     shirtsList.get(4).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "smileyShirt.png", 30));
+    shirtsList.add(new closetItem(SHIRTS, "smileyShirt.png", 30, "smiley"));
     shirtsList.get(5).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "sarcasmShirt.png", 35));
+    shirtsList.add(new closetItem(SHIRTS, "sarcasmShirt.png", 35, "sarcasm"));
     shirtsList.get(6).itemImg.resize(90, 82);
-    
     //pants:
     pantsList = new ArrayList<closetItem>();
     currentPantsIndex = 0;
-    pantsList.add(new closetItem(PANTS, "pantsIcon.png", 30));
+    pantsList.add(new closetItem(PANTS, "pantsIcon.png", 30, "blue"));
     pantsList.get(0).itemImg.resize(47, 85);
     //shoes:
     shoesList = new ArrayList<closetItem>();
     currentShoesIndex = 0;
-    shoesList.add(new closetItem(SHOES, "shoesIcon.png", 50));
+    shoesList.add(new closetItem(SHOES, "shoesIcon.png", 50, "green"));
     shoesList.get(0).itemImg.resize(73, 60);
     //misc:
     miscList = new ArrayList<closetItem>();
@@ -81,27 +80,39 @@ public class closet {
       fill(#284FA0);
       triangle(240, 216, 260, 236, 260, 196);
       triangle(1000-240, 216, 1000-260, 236, 1000-260, 196);
+      //if (currentSelectedItem != null && !currentSelectedItem.wasBought) currentSelectedItem.justTryingOn = true;
     }
     if (selectedItemType == HATS) {
+      currentSelectedItem = hatsList.get(currentHatIndex);
       closetItem currentHat = hatsList.get(currentHatIndex);
       currentHat.display();
+      thePet.theHat = theCloset.currentSelectedItem;
     }
     if (selectedItemType == GLASSES) {
+      currentSelectedItem = glassesList.get(currentGlassesIndex);
       closetItem currentGlasses = glassesList.get(currentGlassesIndex);
       currentGlasses.display();
+      thePet.theGlasses = theCloset.currentSelectedItem;
     }
     if (selectedItemType == SHIRTS) {
+      currentSelectedItem = shirtsList.get(currentShirtIndex);
       closetItem currentShirt = shirtsList.get(currentShirtIndex);
       currentShirt.display();
+      thePet.theShirt = theCloset.currentSelectedItem;
     }
     if (selectedItemType == PANTS) {
+      currentSelectedItem = pantsList.get(currentPantsIndex);
       closetItem currentPants = pantsList.get(currentPantsIndex);
       currentPants.display();
+      thePet.thePants = theCloset.currentSelectedItem;
     }
     if (selectedItemType == SHOES) {
+      currentSelectedItem = shoesList.get(currentShoesIndex);
       closetItem currentShoes = shoesList.get(currentShoesIndex);
       currentShoes.display();
+      thePet.theShoes = theCloset.currentSelectedItem;
     }
+    //REMINDER: add the misc one
   }
 }
 
@@ -218,23 +229,27 @@ public class closetItem {
   PImage itemImg;
   int itemType;
   int price;
-  public closetItem(int numType, String imgName, int setCost) {
+  String identifier;
+  public closetItem(int numType, String imgName, int setCost, String label) {
     itemType = numType;
     itemImg = loadImage(imgName);
     price = setCost;
+    identifier = label;
   }
   void display() {
     image(itemImg, 500-itemImg.width/2, 216-itemImg.height/2);
     if (!wasBought) {
-      fill(#D6B23A);
+      if (level.coin - theCloset.currentSelectedItem.price >= 0) {
+        fill(#D6B23A);
+      } else {
+        fill(#E56868); //button is red if the player cannot afford the item
+      }
       circle(300, 250, 50);
-      //rect(280, 240, 170, 30);
       fill(0);
       textSize(17);
       text(price, 290, 255);
       textSize(10);
       text(" coins", 310, 260);
-      //text("Buy now for "+price+" coins", 360, 260);
     }
   }
   //REMINDER: we may not need this:
