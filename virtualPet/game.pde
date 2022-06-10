@@ -32,17 +32,18 @@ public abstract class gameTypeButton {
 }
 
 public class flappyBirdButton extends typeButton {
+  PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
+  int x = -200;
   public flappyBirdButton() {
     itemType = 0;
     isSelected = false;
-    iconInside = loadImage("gamesIcon.png");
-    iconInside.resize(55, 42);
+    iconInside = loadImage("flappyBird.png");
+    iconInside.resize(60, 42);
   }
   void display(int xPos, int yPos) {
     super.display(xPos, yPos);
     image(iconInside, xPos-25, yPos-25);
     if (isSelected) {
-      PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
       flappyBirdBackground.resize(775, 510); 
       image(flappyBirdBackground, 110, 80);
       PImage bird = loadImage("flappyBird.png"); 
@@ -51,6 +52,7 @@ public class flappyBirdButton extends typeButton {
       PImage pipe = loadImage("flappyBirdPipe.png"); 
       pipe.resize(450, 540); 
       image(pipe, 110, 78);
+      //line(250, 500, 400, 500);
       //border around TV:
       noFill();
       stroke(0);

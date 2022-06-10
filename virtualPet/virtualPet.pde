@@ -135,6 +135,15 @@ void draw() {
   if (room == game) {
     theFlappyBirdButton.display(70, 250);
   }
+  if (theFlappyBirdButton.isSelected) {
+    image(theFlappyBirdButton.flappyBirdBackground, theFlappyBirdButton.x, 80);
+    image(theFlappyBirdButton.flappyBirdBackground, 
+    theFlappyBirdButton.x + theFlappyBirdButton.flappyBirdBackground.width, 80);
+    theFlappyBirdButton.x -= 30;
+    if (theFlappyBirdButton.x < -500) {
+      theFlappyBirdButton.x = 0;
+    }
+  }
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
