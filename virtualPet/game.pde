@@ -3,13 +3,6 @@ public class game {
   final int flappyBird = 0;
   final int game2 = 1;
   final int game3 = 2;
-  void display() {
-    if (selectedGame != -1) {
-      fill(255);
-      rect(110, 80, 775, 510); //TV screen
-      fill(#284FA0);
-    }
-  }
 }
 
 public class gameButton {
@@ -48,5 +41,10 @@ public class flappyBirdButton extends typeButton {
   void display(int xPos, int yPos) {
     super.display(xPos, yPos);
     image(iconInside, xPos-25, yPos-25);
+    if (isSelected) {
+      PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
+      flappyBirdBackground.resize(775, 510); 
+      image(flappyBirdBackground, 110, 80);
+    }
   }
 }

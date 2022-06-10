@@ -134,7 +134,6 @@ void draw() {
   theGameButton.display();
   if (room == game) {
     theFlappyBirdButton.display(70, 250);
-    theGame.display();
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -425,6 +424,7 @@ void changeRoom(int xPos, int yPos, int roomNum, int radius) {
     theCloset.selectedItemType = -1;
     theGame.selectedGame = -1;
     removeOtherSelectionsCloset("none");
+    removeOtherSelectionsGame("none");
   }
 }
 
@@ -452,6 +452,7 @@ void closetItemChange(int xPos, int yPos, String type, int typeNum) {
 void gameItemChange(int xPos, int yPos, String type, int typeNum) {
   if (dist(mouseX, mouseY, xPos, yPos) < 35) {
     theGame.selectedGame = typeNum;
+    removeOtherSelectionsGame(type);
     if (type.equals("flappyBird")){
       theFlappyBirdButton.isSelected = true;
     } 
@@ -486,6 +487,12 @@ void removeOtherSelectionsCloset(String changeTo) {
   }
 }
 
+void removeOtherSelectionsGame(String changeTo) {
+  if (!changeTo.equals("flappyBird")) {
+    theFlappyBirdButton.isSelected = false;
+  }
+}
+
 //for dragging all the clickable mood objects:
 void mouseDragged() {
   //toy - ball:
@@ -507,5 +514,13 @@ void mouseDragged() {
   if (dist(mouseX, mouseY, pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2)) < pillow.imgWidth/2) {
     pillow.xPos = mouseX-(pillow.imgWidth/2);
     pillow.yPos = mouseY-(pillow.imgHeight/2);
+  }
+}
+void keyPressed() {
+  if (theFlappyBirdButton.isSelected) {
+    if (key == ' ') {
+      fill(0);
+      rect(110, 80, 775, 510); //TV screen
+    }
   }
 }
