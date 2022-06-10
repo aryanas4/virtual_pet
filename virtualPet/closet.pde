@@ -56,7 +56,7 @@ public class closet {
     shirtsList.get(4).itemImg.resize(90, 82);
     shirtsList.add(new closetItem(SHIRTS, "smileyShirt.png", 30));
     shirtsList.get(5).itemImg.resize(90, 82);
-    shirtsList.add(new closetItem(SHIRTS, "sarcasmShirt.png", 25));
+    shirtsList.add(new closetItem(SHIRTS, "sarcasmShirt.png", 35));
     shirtsList.get(6).itemImg.resize(90, 82);
     
     //pants:
@@ -225,10 +225,17 @@ public class closetItem {
   }
   void display() {
     image(itemImg, 500-itemImg.width/2, 216-itemImg.height/2);
-    fill(#D6B23A);
-    rect(280, 240, 170, 30);
-    fill(0);
-    text("Buy now for "+price+" coins", 360, 260);
+    if (!wasBought) {
+      fill(#D6B23A);
+      circle(300, 250, 50);
+      //rect(280, 240, 170, 30);
+      fill(0);
+      textSize(17);
+      text(price, 290, 255);
+      textSize(10);
+      text(" coins", 310, 260);
+      //text("Buy now for "+price+" coins", 360, 260);
+    }
   }
   //REMINDER: we may not need this:
   /*void display(int xPos, int yPos) {
