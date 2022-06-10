@@ -133,7 +133,7 @@ void draw() {
   }
   theGameButton.display();
   if (room == game) {
-    theFlappyBirdButton.display(100, 250);
+    theFlappyBirdButton.display(70, 250);
     theGame.display();
   }
   //display the draggable mood objects:
@@ -413,7 +413,7 @@ void mouseClicked() {
     closetItemChange(540, 607, "misc", 5);
   }
   if (room == game) {
-    gameItemChange(100, 250, "flappyBird", 0);
+    gameItemChange(70, 250, "flappyBird", 0);
   }
 }
 
@@ -423,6 +423,7 @@ void changeRoom(int xPos, int yPos, int roomNum, int radius) {
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
     theCloset.selectedItemType = -1;
+    theGame.selectedGame = -1;
     removeOtherSelectionsCloset("none");
   }
 }
