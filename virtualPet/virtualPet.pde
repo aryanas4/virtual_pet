@@ -404,6 +404,13 @@ void mouseClicked() {
     closetItemChange(450, 605, "shoes", 4);
     closetItemChange(540, 607, "misc", 5);
   }
+  //buying closet items:
+  if (room == closet && !theCloset.currentSelectedItem.wasBought) {
+    if (dist(mouseX, mouseY, 300, 250) < 25) {
+      theCloset.currentSelectedItem.wasBought = true;
+      //decrease coins if player has enough to purchase
+    }
+  }
   //try on and select items from closet:
   if (room == closet) {
     if (dist(mouseX, mouseY, 750, 216) < 10) { //forward button
