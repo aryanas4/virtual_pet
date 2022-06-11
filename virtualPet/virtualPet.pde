@@ -152,6 +152,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       thePet.currentIdleAction = "";
@@ -185,6 +186,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       thePet.currentIdleAction = "";
@@ -229,6 +231,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       ball.beingUsed = false;
@@ -243,7 +246,6 @@ void draw() {
     bowl.yPos = 450;
   }
   if (room == 1 && bowl.beingUsed) {
-    //...animation REMINDER
     if (countdown == 49) {
       thePet.catAvatar = loadImage("catEat1.png");
     }
@@ -273,6 +275,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       bowl.beingUsed = false;
@@ -316,6 +319,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       soap.beingUsed = false;
@@ -359,6 +363,7 @@ void draw() {
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
     }
     if (countdown == 0) {
       pillow.beingUsed = false;
@@ -386,6 +391,7 @@ void draw() {
 //when you click the cat, it gets hit:
 void mouseClicked() {
   if (dist(mouseX, mouseY, thePet.xPos+250, thePet.yPos+250) < 100) {
+    if (thePet.theHat != null) thePet.hatSelection = loadImage(thePet.theHat.identifier + "HatHit.png");
     thePet.catAvatar = loadImage("catHit1.png");
     a.decrease(0.03);
   }
@@ -460,6 +466,12 @@ void mouseClicked() {
   }
 }
 
+void setClothingToStill() { //REMINDER: are we still using this?
+  if (thePet.theHat != null && thePet.theHat.identifier != null) {
+    thePet.hatSelection = loadImage(thePet.theHat.identifier + "HatStill.png");
+  }
+}
+
 int increaseClosetIndex(int currentIndex, int size) {
   if (currentIndex == size-1) {
     currentIndex = 0;
@@ -483,6 +495,7 @@ void changeRoom(int xPos, int yPos, int roomNum, int radius) {
     room = roomNum;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
+    setClothingToStill();
     theCloset.selectedItemType = -1;
     removeOtherSelectionsCloset("none");
   }
@@ -507,6 +520,7 @@ void closetItemChange(int xPos, int yPos, String type, int typeNum) {
     }
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
+    setClothingToStill();
   }
 }
 
@@ -533,6 +547,7 @@ void removeOtherSelectionsCloset(String changeTo) {
     room = game;
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
+    setClothingToStill();
   }
 }
 

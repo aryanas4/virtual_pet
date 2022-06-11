@@ -35,6 +35,8 @@ public class pet {
   
   void blinkBreathe() {
     if (!isBusy) {
+      setClothingToStill();
+      //REMINDER ^ OF THIS!!!
       if ((int)(Math.random()*100) > 92) { //blink at random times
         catAvatar = loadImage("catBlink.png");
       } else {
@@ -43,13 +45,14 @@ public class pet {
     }
   }
   
+
   
   void display() {
     image(catAvatar, xPos, yPos, 500, 500);
     blinkBreathe();
     doIdleAction();
     if (theHat != null && theHat.identifier != null) {
-      hatSelection = loadImage(theHat.identifier + "HatStill.png");
+      //hatSelection = loadImage(theHat.identifier + "HatStill.png");
       if ((room == closet && theCloset.selectedItemType == 0) || theHat.wasBought) { //display if trying on or bought
         image(hatSelection, xPos, yPos, 500, 500);
       }
