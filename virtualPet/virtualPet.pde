@@ -212,30 +212,39 @@ void draw() {
   if (room == 0 && ball.beingUsed) {
     if (countdown == 49) {
       thePet.catAvatar = loadImage("catBall1.png");
+      animateAllClothing("Ball1.png");
     }
     if (countdown == 43) {
       thePet.catAvatar = loadImage("catBall2.png");
+      animateAllClothing("Ball2.png");
     }
     if (countdown == 37) {
       thePet.catAvatar = loadImage("catBall3.png");
+      animateAllClothing("Ball3.png");
     }
     if (countdown == 31) {
       thePet.catAvatar = loadImage("catBallDown.png");
+      animateAllClothing("Ball4.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catBallUp.png");
+      animateAllClothing("Ball5.png");
     }
     if (countdown == 19) {
       thePet.catAvatar = loadImage("catBallDown.png");
+      animateAllClothing("Ball4.png");
     }
     if (countdown == 13) {
       thePet.catAvatar = loadImage("catBallUp.png");
+      animateAllClothing("Ball5.png");
     }
     if (countdown == 8) {
       thePet.catAvatar = loadImage("catBall3.png");
+      animateAllClothing("Ball3.png");
     }
     if (countdown == 3) {
       thePet.catAvatar = loadImage("catBall2.png");
+      animateAllClothing("Ball2.png");
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
@@ -256,12 +265,15 @@ void draw() {
   if (room == 1 && bowl.beingUsed) {
     if (countdown == 49) {
       thePet.catAvatar = loadImage("catEat1.png");
+      animateAllClothing("Eat1.png");
     }
     if (countdown == 43) {
       thePet.catAvatar = loadImage("catEat2.png");
+      animateAllClothing("Eat2.png");
     }
     if (countdown == 37) {
       thePet.catAvatar = loadImage("catEat3.png");
+      animateAllClothing("Eat3.png");
     }
     if (countdown == 31) {
       thePet.catAvatar = loadImage("catEat4.png");
@@ -277,9 +289,11 @@ void draw() {
     }
     if (countdown == 8) {
       thePet.catAvatar = loadImage("catEat2.png");
+      animateAllClothing("Eat2.png");
     }
     if (countdown == 3) {
       thePet.catAvatar = loadImage("catEat1.png");
+      animateAllClothing("Eat1.png");
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
@@ -582,16 +596,42 @@ void mouseDragged() {
 }
 
 void animateAllClothing(String fileName) {
-  if (thePet.theHat != null) thePet.hatSelection = loadImage(thePet.theHat.identifier+"Hat"+fileName);
+  if (thePet.theHat != null) {
+    if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png")) {
+      thePet.hatSelection = loadImage(thePet.theHat.identifier+"HatStill.png");
+    } else {
+      thePet.hatSelection = loadImage(thePet.theHat.identifier+"Hat"+fileName);
+    }
+  }
   if (thePet.theGlasses != null) {
     if (fileName.equals("Circle3.png") || fileName.equals("Circle4.png") || fileName.equals("Circle5.png") || fileName.equals("Circle6.png")) {
       thePet.glassesSelection = loadImage("blank.png");
+    } else if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png")) {
+      thePet.glassesSelection = loadImage(thePet.theGlasses.identifier+"GlassesStill.png");
     } else {
       thePet.glassesSelection = loadImage(thePet.theGlasses.identifier+"Glasses"+fileName);
     }
   }
-  if (thePet.theShirt != null) thePet.shirtSelection = loadImage(thePet.theShirt.identifier+"Shirt"+fileName);
-  if (thePet.thePants != null) thePet.pantsSelection = loadImage(thePet.thePants.identifier+"Pants"+fileName);
-  if (thePet.theShoes != null) thePet.shoesSelection = loadImage(thePet.theShoes.identifier+"Shoes"+fileName);
+  if (thePet.theShirt != null) {
+    if (fileName.equals("Eat2.png")) {
+      thePet.shirtSelection = loadImage(thePet.theShirt.identifier + "ShirtEat1.png");
+    } else {
+      thePet.shirtSelection = loadImage(thePet.theShirt.identifier+"Shirt"+fileName);
+    }
+  }
+  if (thePet.thePants != null) {
+    if (fileName.equals("Eat1.png") || fileName.equals("Eat2.png") || fileName.equals("Eat3.png")) {
+      thePet.pantsSelection = loadImage(thePet.thePants.identifier+"PantsEat.png");
+    } else {
+      thePet.pantsSelection = loadImage(thePet.thePants.identifier+"Pants"+fileName);
+    }
+  }
+  if (thePet.theShoes != null) {
+    if (fileName.equals("Eat1.png") || fileName.equals("Eat2.png") || fileName.equals("Eat3.png")) {
+      thePet.shoesSelection = loadImage("blank.png");
+    } else {
+      thePet.shoesSelection = loadImage(thePet.theShoes.identifier+"Shoes"+fileName);
+    }
+  }
   if (thePet.theMisc != null) thePet.miscSelection = loadImage(thePet.theMisc.identifier+"Misc"+fileName);
 }
