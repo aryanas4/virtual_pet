@@ -38,3 +38,14 @@ Also created images for several hat and shirt options. <br>
 05/27 - Fixed decrease method in mood class and adjusted constants. Added code so that the button's color is based on whether the mood percentage is good or too low. <br>
 05/30 - Uploaded images for the room backgrounds. Added the constant decrease rates to the moods. Made each of the mood displays buttons so that the player can switch the room they are currently in. Edited those buttons so that they display the mood via pie chart. <br>
 05/31 - Edited UML diagram and README file. <br>
+06/01 - Added level class and coin. Created methods to increase level and coin, and display method (not complete). <br>
+06/02 - Created level bar and coin bar to display level number and coin amount. Displayed both on the screen. <br>
+06/03 - Increase coin amount and level percentage when a draggable object is dragged to the cat. <br>
+06/04 - Created game class, game button, add game background, and diplayed game background when button is clicked. <br>
+06/05 - Added abstract class game type button and displayed game1 on the tv screen. <br>
+06/06 - Added background image for game class and display it. Also merged onto main. <br>
+06/07 - Create the window that opens when a game is clicked. <br>
+06/08 - change flappyBird button location and change background image to zoomTV when flappyBird button is clicked (image not cropped yet). <br>
+06/09 - Crop zoomTv image and edit screen size of rectangle to match TV screen size. ALlow player to return to game room when game button is clicked. <br>
+06/10 - Add flappy bird background, let it move and displayed when space key is pressed. Display flappy bird bird on to screen and let it fall unless space key is pressed. Add flappy bird word logo, pipe, and bird to start page. Add border to TV screen. <br>
+06/12 - Fix the lag issue of flapping bird and display the pipes. Let bird die when it hits the pipes or out of the game border and display the score and highscore. Increase coin amount, happiness, and level percent when game is played. <br>
