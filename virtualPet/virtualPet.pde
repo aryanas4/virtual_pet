@@ -20,7 +20,8 @@ static game theGame;
 static gameButton theGameButton;
 static flappyBirdButton theFlappyBirdButton;
 static bird theBird;
-static int pipe1[] = {110, 80, 110, 390};
+static int x = 1000;
+static int x2 = 1500;
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -141,20 +142,58 @@ void draw() {
     theFlappyBirdButton.display(60, 250);
   }
   if (theFlappyBirdButton.isSelected && theFlappyBirdButton.on) {
-    image(theFlappyBirdButton.flappyBirdBackground, theBird.x, 80);
+    image(theFlappyBirdButton.flappyBirdBackground, theBird.x, 80); // background moving
     image(theFlappyBirdButton.flappyBirdBackground, 
     theBird.x + theFlappyBirdButton.flappyBirdBackground.width, 80); 
-    theBird.x -= 20;
-    theBird.v += 1;
-    theBird.y += theBird.v;
+    //line(0, 370, 1000, 370);
+    //line(0, 460, 1000, 460);
+    theBird.x -= 20; 
     if (theBird.x < -500) {
       theBird.x = 0;
     }
-    image(theFlappyBirdButton.pipeUp, pipe1[0], pipe1[1]);
-    image(theFlappyBirdButton.pipeDown, pipe1[2], pipe1[3]);
-    image(theBird.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
-    theBird.y);
-  } 
+    theBird.v += 1; //bird falling
+    theBird.y += theBird.v;
+    image(theBird.bird, 400, theBird.y); //bird
+    image(theFlappyBirdButton.pipeUp, x, 80);
+    image(theFlappyBirdButton.pipeDown, x, 390);
+    image(theFlappyBirdButton.pipeUp2, x2, 80);
+    image(theFlappyBirdButton.pipeDown2, x2, 460);
+    x -= 20;
+    if (x == 0) {
+      x = 1000;
+    }
+    x2 -= 20;
+    if (x2 == 0) {
+      x2 = 1500;
+    }
+    if (abs(x - x2) < 500) {
+      x = 1000;
+      x2 = 1500;
+    }
+    if (x == width/2 || x2 == width/2) {
+      theBird.highScore = max(++theBird.score, theBird.highScore);
+    }
+    if (theBird.y > 510 || theBird.y < 80) { // hits over game border, bird dies
+      theFlappyBirdButton.on = false;
+      x = 1000;
+      x2 = 1500;
+    }
+    if ((x > 390 && x < 410) && (theBird.y < 270 || theBird.y > 390)) { // hits pipe, bird dies
+      theFlappyBirdButton.on = false;
+      x = 1000;
+      x2 = 1500;
+    } 
+    if ((x2 > 390 && x2 < 410) && (theBird.y < 365 || theBird.y > 460)) { // hits pipe, bird dies
+      theFlappyBirdButton.on = false;
+      x = 1000;
+      x2 = 1500;
+    } 
+    rect(10, 120, 160, 90);
+    fill(0);
+    textSize(20);
+    text("SCORE: " + theBird.score, 66, 160);
+    text("HIGHSCORE: " + theBird.highScore, 90, 190);
+  }
   //display the draggable mood objects:
   ball.display(room);
   bowl.display(room);
@@ -543,5 +582,7 @@ void keyPressed() {
     theBird.y = 400;
     theBird.score = 0;
     theFlappyBirdButton.on = true;
+    x = 1000;
+    x2 = 1500;
   }
 }
