@@ -175,16 +175,25 @@ void draw() {
     }
     if (theBird.y > 510 || theBird.y < 80) { // hits over game border, bird dies
       theFlappyBirdButton.on = false;
+      level.coin += theBird.score;
+      level.increase(0.1);
+      a.increase(0.05);
       x = 1000;
       x2 = 1500;
     }
     if ((x > 390 && x < 410) && (theBird.y < 270 || theBird.y > 390)) { // hits pipe, bird dies
       theFlappyBirdButton.on = false;
+      level.coin += theBird.score;
+      level.increase(0.1);
+      a.increase(0.05);
       x = 1000;
       x2 = 1500;
     } 
     if ((x2 > 390 && x2 < 410) && (theBird.y < 365 || theBird.y > 460)) { // hits pipe, bird dies
       theFlappyBirdButton.on = false;
+      level.coin += theBird.score;
+      level.increase(0.1);
+      a.increase(0.05);
       x = 1000;
       x2 = 1500;
     } 
