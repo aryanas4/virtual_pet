@@ -27,6 +27,9 @@ https://docs.google.com/document/d/1zT0yE5kdDezPBd3Bx0NLJ2_vZuhQRmfpnMFUgeLkObY/
 06/03 - Added the glasses button to the closet room. Also merged onto main. <br>
 06/05 - Added icons for each button in closet. Added the display in the closet room for items. Added a highlight feature to the
 buttons. Also cleaned up repetitive code and increased efficiency to decrease lag. Also made animations faster. <br>
+06/06 - Created several ArrayLists for the closet items. When you click the respective button, clothing items are displayed. <br>
+06/07 - Displayed the clothing options in a clickthrough. Now you can use the arrows to browse through different clothing options.
+Also created images for several hat and shirt options. <br>
 
 **Zoe:** <br>
 05/24 - Created the mood class and coded all the basic increase/decrease methods as per the UML diagram. Also added the circle displays for each of the 4 moods. <br>
