@@ -22,7 +22,7 @@ public class pet {
     yPos = height/2-250;
     catAvatar = loadImage("catNorm.png");
     isBusy = false;
-    idleActions = new String[] {"reachUp", "circle"}; //REMINDER: add more idle actions later
+    idleActions = new String[] {"reachUp", "circle"};
   }
   
   void doIdleAction() {

@@ -38,6 +38,7 @@ static PImage gameBackground;
 static toy ball;
 static food bowl;
 static cleaner soap;
+static cleaner toothbrush;
 static lights pillow;
 
 //level
@@ -75,6 +76,7 @@ void setup() {
   ball = new toy("ballStill.png", 800, 450, 80, 80);
   bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
   soap = new cleaner("soapStill.png", 800, 450, 80, 80);
+  toothbrush = new cleaner("toothbrushStill.png", 500, 70, 100, 100);
   pillow = new lights("pillowStill.png", 200, 400, 160,160);
   //level
   level = new level();
@@ -134,6 +136,7 @@ void draw() {
   ball.display(room);
   bowl.display(room);
   soap.display(room);
+  toothbrush.display(room);
   pillow.display(room);
   //display the level
   level.display();
@@ -350,6 +353,50 @@ void draw() {
     }
     if (countdown == 0) {
       soap.beingUsed = false;
+    }
+  }
+  if (room == 2 && !toothbrush.beingUsed && !mousePressed && dist(toothbrush.xPos+(toothbrush.imgWidth/2), toothbrush.yPos+(toothbrush.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    toothbrush.clicked(toothbrush.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
+    toothbrush.beingUsed = true;
+    toothbrush.xPos = 500;
+    toothbrush.yPos = 70;
+  }
+  if (room == 2 && toothbrush.beingUsed) {
+    if (countdown == 39) {
+      thePet.catAvatar = loadImage("catBrush1.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catBrush2.png");
+    }
+    if (countdown == 29) {
+      thePet.catAvatar = loadImage("catBrush3.png");
+    }
+    if (countdown == 24) {
+      thePet.catAvatar = loadImage("catBrush2.png");
+    }
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catBrush3.png");
+    }
+    if (countdown == 14) {
+      thePet.catAvatar = loadImage("catBrush2.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catBrush3.png");
+    }
+    if (countdown == 4) {
+      thePet.catAvatar = loadImage("catBrush2.png");
+    }
+    if (countdown == 2) {
+      thePet.catAvatar = loadImage("catBrush1.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
+    }
+    if (countdown == 0) {
+      toothbrush.beingUsed = false;
     }
   }
   if (room == 3 && !pillow.beingUsed && !mousePressed && dist(pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
@@ -611,6 +658,11 @@ void mouseDragged() {
   if (dist(mouseX, mouseY, soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2)) < soap.imgWidth/2) {
     soap.xPos = mouseX-(soap.imgWidth/2);
     soap.yPos = mouseY-(soap.imgHeight/2);
+  }
+  //cleaner - toothbrush:
+  if (dist(mouseX, mouseY, toothbrush.xPos+(toothbrush.imgWidth/2), toothbrush.yPos+(toothbrush.imgHeight/2)) < toothbrush.imgWidth/2) {
+    toothbrush.xPos = mouseX-(toothbrush.imgWidth/2);
+    toothbrush.yPos = mouseY-(toothbrush.imgHeight/2);
   }
   //lights - pillow:
   if (dist(mouseX, mouseY, pillow.xPos+(pillow.imgWidth/2), pillow.yPos+(pillow.imgHeight/2)) < pillow.imgWidth/2) {
