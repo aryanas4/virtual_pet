@@ -58,25 +58,25 @@ public class pet {
       }
     }
     if (theGlasses != null && theGlasses.identifier != null) {
-      glassesSelection = loadImage(theGlasses.identifier + "GlassesStill.png");
+      //glassesSelection = loadImage(theGlasses.identifier + "GlassesStill.png");
       if ((room == closet && theCloset.selectedItemType == 1) || theGlasses.wasBought) {
         image(glassesSelection, xPos, yPos, 500, 500);
       }
     }
     if (theShirt != null && theShirt.identifier != null) {
-      shirtSelection = loadImage(theShirt.identifier + "ShirtStill.png");
+      //shirtSelection = loadImage(theShirt.identifier + "ShirtStill.png");
       if ((room == closet && theCloset.selectedItemType == 2) || theShirt.wasBought) {
         image(shirtSelection, xPos, yPos, 500, 500);
       }
     }
     if (thePants != null && thePants.identifier != null) {
-      pantsSelection = loadImage(thePants.identifier + "PantsStill.png");
+      //pantsSelection = loadImage(thePants.identifier + "PantsStill.png");
       if ((room == closet && theCloset.selectedItemType == 3) || thePants.wasBought) {
         image(pantsSelection, xPos, yPos, 500, 500);
       }
     }
     if (theShoes != null && theShoes.identifier != null) {
-      shoesSelection = loadImage(theShoes.identifier + "ShoesStill.png");
+      //shoesSelection = loadImage(theShoes.identifier + "ShoesStill.png");
       if ((room == closet && theCloset.selectedItemType == 4) || theShoes.wasBought) {
         image(shoesSelection, xPos, yPos, 500, 500);
       }

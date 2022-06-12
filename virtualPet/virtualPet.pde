@@ -162,27 +162,35 @@ void draw() {
   if (thePet.currentIdleAction.equals("circle")) {
     if (countdown == 29) {
       thePet.catAvatar = loadImage("catCircle1.png");
+      animateAllClothing("Circle1.png");
     }
     if (countdown == 25) {
       thePet.catAvatar = loadImage("catCircle2.png");
+      animateAllClothing("Circle2.png");
     }
     if (countdown == 21) {
       thePet.catAvatar = loadImage("catCircle3.png");
+      animateAllClothing("Circle3.png");
     }
     if (countdown == 17) {
       thePet.catAvatar = loadImage("catCircle4.png");
+      animateAllClothing("Circle4.png");
     }
     if (countdown == 13) {
       thePet.catAvatar = loadImage("catCircle5.png");
+      animateAllClothing("Circle5.png");
     }
     if (countdown == 9) {
       thePet.catAvatar = loadImage("catCircle6.png");
+      animateAllClothing("Circle6.png");
     }
     if (countdown == 5) {
       thePet.catAvatar = loadImage("catCircle7.png");
+      animateAllClothing("Circle7.png");
     }
     if (countdown == 3) {
       thePet.catAvatar = loadImage("catCircle8.png");
+      animateAllClothing("Circle8.png");
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
@@ -466,10 +474,8 @@ void mouseClicked() {
   }
 }
 
-void setClothingToStill() { //REMINDER: are we still using this?
-  if (thePet.theHat != null && thePet.theHat.identifier != null) {
-    thePet.hatSelection = loadImage(thePet.theHat.identifier + "HatStill.png");
-  }
+void setClothingToStill() {
+  animateAllClothing("Still.png");
 }
 
 int increaseClosetIndex(int currentIndex, int size) {
@@ -573,4 +579,19 @@ void mouseDragged() {
     pillow.xPos = mouseX-(pillow.imgWidth/2);
     pillow.yPos = mouseY-(pillow.imgHeight/2);
   }
+}
+
+void animateAllClothing(String fileName) {
+  if (thePet.theHat != null) thePet.hatSelection = loadImage(thePet.theHat.identifier+"Hat"+fileName);
+  if (thePet.theGlasses != null) {
+    if (fileName.equals("Circle3.png") || fileName.equals("Circle4.png") || fileName.equals("Circle5.png") || fileName.equals("Circle6.png")) {
+      thePet.glassesSelection = loadImage("blank.png");
+    } else {
+      thePet.glassesSelection = loadImage(thePet.theGlasses.identifier+"Glasses"+fileName);
+    }
+  }
+  if (thePet.theShirt != null) thePet.shirtSelection = loadImage(thePet.theShirt.identifier+"Shirt"+fileName);
+  if (thePet.thePants != null) thePet.pantsSelection = loadImage(thePet.thePants.identifier+"Pants"+fileName);
+  if (thePet.theShoes != null) thePet.shoesSelection = loadImage(thePet.theShoes.identifier+"Shoes"+fileName);
+  if (thePet.theMisc != null) thePet.miscSelection = loadImage(thePet.theMisc.identifier+"Misc"+fileName);
 }
