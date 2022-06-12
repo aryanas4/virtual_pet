@@ -318,6 +318,7 @@ void draw() {
   if (room == 2 && soap.beingUsed) {
     if (countdown == 39) {
       thePet.catAvatar = loadImage("catSoap1.png");
+      clothingToBlank();
     }
     if (countdown == 34) {
       thePet.catAvatar = loadImage("catSoap2.png");
@@ -362,6 +363,7 @@ void draw() {
   if (room == 3 && pillow.beingUsed) {
     if (countdown == 39) {
       thePet.catAvatar = loadImage("catSleep1.png");
+      clothingToBlank();
     }
     if (countdown == 34) {
       thePet.catAvatar = loadImage("catSleep2.png");
@@ -617,6 +619,15 @@ void mouseDragged() {
   }
 }
 
+void clothingToBlank() {
+  if(thePet.theHat != null) thePet.hatSelection = loadImage("blank.png");
+  if(thePet.theGlasses != null) thePet.glassesSelection = loadImage("blank.png");
+  if(thePet.theShirt != null) thePet.shirtSelection = loadImage("blank.png");
+  if(thePet.thePants != null) thePet.pantsSelection = loadImage("blank.png");
+  if(thePet.theShoes != null) thePet.shoesSelection = loadImage("blank.png");
+  if(thePet.theMisc != null) thePet.miscSelection = loadImage("blank.png");
+}
+
 void animateAllClothing(String fileName) {
   if (thePet.theHat != null) {
     if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png") || fileName.contains("Reach")) {
@@ -657,5 +668,11 @@ void animateAllClothing(String fileName) {
       thePet.shoesSelection = loadImage(thePet.theShoes.identifier+"Shoes"+fileName);
     }
   }
-  if (thePet.theMisc != null) thePet.miscSelection = loadImage(thePet.theMisc.identifier+"Misc"+fileName);
+  if (thePet.theMisc != null){ 
+    if (fileName.equals("Eat1.png") || fileName.contains("Reach") || fileName.equals("Ball1.png")) {
+      thePet.miscSelection = loadImage(thePet.theMisc.identifier+"MiscStill.png");
+    } else {
+      thePet.miscSelection = loadImage(thePet.theMisc.identifier+"Misc"+fileName);
+    }
+  }
 }

@@ -81,11 +81,10 @@ public class pet {
       }
     }
     if (theMisc != null && theMisc.identifier != null) {
-      //REMINDER!!!::::
-      /*miscSelection = loadImage(theMisc.identifier + "ShoesStill.png");
+      //miscSelection = loadImage(theMisc.identifier + "MiscStill.png");
       if ((room == closet && theCloset.selectedItemType == 5) || theMisc.wasBought) {
         image(miscSelection, xPos, yPos, 500, 500);
-      }*/
+      }
     }
   }
 }

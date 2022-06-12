@@ -71,6 +71,8 @@ public class closet {
     //misc:
     miscList = new ArrayList<closetItem>();
     currentMiscIndex = 0;
+    miscList.add(new closetItem(MISC, "earringsIcon.png", 13, "earrings"));
+    miscList.get(0).itemImg.resize(80, 57);
   }
   void display() {
     //display the yellow box in which the items will be displayed:
@@ -112,7 +114,12 @@ public class closet {
       currentShoes.display();
       thePet.theShoes = theCloset.currentSelectedItem;
     }
-    //REMINDER: add the misc one
+    if (selectedItemType == MISC) {
+      currentSelectedItem = miscList.get(currentMiscIndex);
+      closetItem currentMisc = miscList.get(currentMiscIndex);
+      currentMisc.display();
+      thePet.theMisc = theCloset.currentSelectedItem;
+    }
   }
 }
 
