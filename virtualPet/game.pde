@@ -1,8 +1,6 @@
 public class game {
   int selectedGame = -1;
   final int flappyBird = 0;
-  final int game2 = 1;
-  final int game3 = 2;
 }
 
 public class gameButton {
@@ -35,6 +33,8 @@ public class flappyBirdButton extends typeButton {
   PImage flappyBirdBackground = loadImage("flappyBirdBackground.jpg"); 
   PImage flappyBirdLogo = loadImage("FlappyBirdLogo.png"); 
   PImage pipe = loadImage("flappyBirdPipe.png"); 
+  PImage pipeUp = loadImage("pipeUp.png"); 
+  PImage pipeDown = loadImage("pipeDown.png"); 
   boolean on = false;
   public flappyBirdButton() {
     itemType = 0;
@@ -44,6 +44,8 @@ public class flappyBirdButton extends typeButton {
     flappyBirdBackground.resize(775, 510); 
     flappyBirdLogo.resize(400, 100); 
     pipe.resize(450, 540); 
+    pipeUp.resize(70,200);
+    pipeDown.resize(68,200);
   }
   void display(int xPos, int yPos) {
     super.display(xPos, yPos);
@@ -52,7 +54,7 @@ public class flappyBirdButton extends typeButton {
       image(flappyBirdBackground, 110, 80);
       image(flappyBirdLogo, 450, 130); 
       image(pipe, 110, 78);
-      //line(250, 500, 400, 500);
+      image(theBird.bird, 110, 400);
       //border around TV:
       noFill();
       stroke(0);
@@ -70,6 +72,6 @@ public class bird {
   int v = 0;
   int y;
   public bird() {
-    bird.resize(70, 50);
+    bird.resize(60, 40);
   }
 }

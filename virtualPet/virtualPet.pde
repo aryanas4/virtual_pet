@@ -20,6 +20,7 @@ static game theGame;
 static gameButton theGameButton;
 static flappyBirdButton theFlappyBirdButton;
 static bird theBird;
+static int pipe1[] = {110, 80, 110, 390};
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -70,6 +71,7 @@ void setup() {
   theGame = new game();
   theGameButton = new gameButton();
   theFlappyBirdButton = new flappyBirdButton();
+  theBird = new bird();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -120,7 +122,9 @@ void draw() {
   c.display();
   d.display();
   //display the pet:
-  thePet.display();
+  if (theGame.selectedGame == -1) {
+    thePet.display();
+  }
   //display closet stuff:
   theClosetButton.display();
   if (room == closet) {
@@ -135,20 +139,21 @@ void draw() {
   theGameButton.display();
   if (room == game) {
     theFlappyBirdButton.display(60, 250);
-    image(theBird.bird, 110, 400);
   }
   if (theFlappyBirdButton.isSelected && theFlappyBirdButton.on) {
     image(theFlappyBirdButton.flappyBirdBackground, theBird.x, 80);
     image(theFlappyBirdButton.flappyBirdBackground, 
     theBird.x + theFlappyBirdButton.flappyBirdBackground.width, 80); 
-    theBird.x -= 30;
+    theBird.x -= 20;
     theBird.v += 1;
     theBird.y += theBird.v;
     if (theBird.x < -500) {
       theBird.x = 0;
     }
+    image(theFlappyBirdButton.pipeUp, pipe1[0], pipe1[1]);
+    image(theFlappyBirdButton.pipeDown, pipe1[2], pipe1[3]);
     image(theBird.bird, theFlappyBirdButton.flappyBirdBackground.width/2, 
-    theBird.y +400);
+    theBird.y);
   } 
   //display the draggable mood objects:
   ball.display(room);
@@ -532,13 +537,11 @@ void mouseDragged() {
   }
 }
 void keyPressed() {
-  if (theFlappyBirdButton.isSelected) {
-    if (key == ' ') {
-      theFlappyBirdButton.on = true;
-      theBird.v -= 15;
-    }
-    if (key == BACKSPACE) {
-      theFlappyBirdButton.on = false;
-    }
+  theBird.v = -15;
+  if (theFlappyBirdButton.on == false) { 
+    theBird.x = 0;
+    theBird.y = 400;
+    theBird.score = 0;
+    theFlappyBirdButton.on = true;
   }
 }
