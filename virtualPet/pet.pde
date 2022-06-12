@@ -29,14 +29,13 @@ public class pet {
     if (!isBusy && (int)(Math.random()*100) > 98) { //not busy and 1% chance
       int randomNum = (int)(Math.random()*(idleActions.length)); //pick a random number
       currentIdleAction = idleActions[randomNum];
-      countdown = 30; //set the countdown to start the animation (in virtualPet draw() )
+      countdown = 20; //set the countdown to start the animation (in virtualPet draw() )
     }
   }
   
   void blinkBreathe() {
     if (!isBusy) {
       setClothingToStill();
-      //REMINDER ^ OF THIS!!!
       if ((int)(Math.random()*100) > 92) { //blink at random times
         catAvatar = loadImage("catBlink.png");
       } else {

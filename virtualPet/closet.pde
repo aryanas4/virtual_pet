@@ -145,6 +145,17 @@ public abstract class typeButton {
   }
 }
 
+public class clearAllButton {
+  void display() {
+    stroke(255);
+    fill(#E87373);
+    circle(630, 607, 70);
+    fill(0);
+    textSize(10);
+    text("CLEAR", 630, 610);
+  }
+}
+
 public class hatsButton extends typeButton {
   public hatsButton() {
     itemType = 0;
@@ -252,13 +263,4 @@ public class closetItem {
       text(" coins", 310, 260);
     }
   }
-  //REMINDER: we may not need this:
-  /*void display(int xPos, int yPos) {
-    image(itemImg, xPos, yPos);
-  }
-  void display(int xPos, int yPos, int currentType) {
-    if (currentType == itemType) {
-      image(itemImg, xPos, yPos);
-    }
-  }*/
 }

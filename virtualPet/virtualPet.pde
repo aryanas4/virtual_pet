@@ -15,10 +15,10 @@ static shirtsButton theShirtsButton;
 static pantsButton thePantsButton;
 static shoesButton theShoesButton;
 static miscButton theMiscButton;
+static clearAllButton theClearButton;
 //game buttons:
 static gameButton theGameButton;
 static game1Button game1Button;
-//REMINDER: add the rest
 
 static int livingRoom = 0;
 static int kitchen = 1;
@@ -62,6 +62,7 @@ void setup() {
   thePantsButton = new pantsButton();
   theShoesButton = new shoesButton();
   theMiscButton = new miscButton();
+  theClearButton = new clearAllButton();
   //game stuff:
   theGameButton = new gameButton();
   game1Button = new game1Button();
@@ -123,6 +124,7 @@ void draw() {
     thePantsButton.display(360, 600);
     theShoesButton.display(450, 605);
     theMiscButton.display(540, 607);
+    theClearButton.display();
   }
   theGameButton.display();
   if (room == game) {
@@ -144,11 +146,13 @@ void draw() {
   }
   //reaching up animation: (idle action)
   if (thePet.currentIdleAction.equals("reachUp")) {
-    if (countdown == 29) {
+    if (countdown == 19) {
       thePet.catAvatar = loadImage("catReach1.png");
+      animateAllClothing("Reach1.png");
     }
-    if (countdown == 15) {
+    if (countdown == 10) {
       thePet.catAvatar = loadImage("catReach2.png");
+      animateAllClothing("Reach2.png");
     }
     if (countdown == 1) {
       thePet.catAvatar = loadImage("catNorm.png");
@@ -160,23 +164,23 @@ void draw() {
   }
   //circling animation: (idle action)
   if (thePet.currentIdleAction.equals("circle")) {
-    if (countdown == 29) {
+    if (countdown == 19) {
       thePet.catAvatar = loadImage("catCircle1.png");
       animateAllClothing("Circle1.png");
     }
-    if (countdown == 25) {
+    if (countdown == 17) {
       thePet.catAvatar = loadImage("catCircle2.png");
       animateAllClothing("Circle2.png");
     }
-    if (countdown == 21) {
+    if (countdown == 15) {
       thePet.catAvatar = loadImage("catCircle3.png");
       animateAllClothing("Circle3.png");
     }
-    if (countdown == 17) {
+    if (countdown == 13) {
       thePet.catAvatar = loadImage("catCircle4.png");
       animateAllClothing("Circle4.png");
     }
-    if (countdown == 13) {
+    if (countdown == 11) {
       thePet.catAvatar = loadImage("catCircle5.png");
       animateAllClothing("Circle5.png");
     }
@@ -184,19 +188,19 @@ void draw() {
       thePet.catAvatar = loadImage("catCircle6.png");
       animateAllClothing("Circle6.png");
     }
-    if (countdown == 5) {
+    if (countdown == 7) {
       thePet.catAvatar = loadImage("catCircle7.png");
       animateAllClothing("Circle7.png");
     }
-    if (countdown == 3) {
+    if (countdown == 5) {
       thePet.catAvatar = loadImage("catCircle8.png");
       animateAllClothing("Circle8.png");
     }
-    if (countdown == 1) {
+    if (countdown == 3) {
       thePet.catAvatar = loadImage("catNorm.png");
       setClothingToStill();
     }
-    if (countdown == 0) {
+    if (countdown == 2) {
       thePet.currentIdleAction = "";
     }
   }
@@ -210,39 +214,39 @@ void draw() {
     ball.yPos = 450;
   }
   if (room == 0 && ball.beingUsed) {
-    if (countdown == 49) {
+    if (countdown == 39) {
       thePet.catAvatar = loadImage("catBall1.png");
       animateAllClothing("Ball1.png");
     }
-    if (countdown == 43) {
+    if (countdown == 34) {
       thePet.catAvatar = loadImage("catBall2.png");
       animateAllClothing("Ball2.png");
     }
-    if (countdown == 37) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catBall3.png");
       animateAllClothing("Ball3.png");
     }
-    if (countdown == 31) {
+    if (countdown == 24) {
       thePet.catAvatar = loadImage("catBallDown.png");
       animateAllClothing("Ball4.png");
-    }
-    if (countdown == 25) {
-      thePet.catAvatar = loadImage("catBallUp.png");
-      animateAllClothing("Ball5.png");
     }
     if (countdown == 19) {
-      thePet.catAvatar = loadImage("catBallDown.png");
-      animateAllClothing("Ball4.png");
-    }
-    if (countdown == 13) {
       thePet.catAvatar = loadImage("catBallUp.png");
       animateAllClothing("Ball5.png");
     }
-    if (countdown == 8) {
+    if (countdown == 14) {
+      thePet.catAvatar = loadImage("catBallDown.png");
+      animateAllClothing("Ball4.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catBallUp.png");
+      animateAllClothing("Ball5.png");
+    }
+    if (countdown == 4) {
       thePet.catAvatar = loadImage("catBall3.png");
       animateAllClothing("Ball3.png");
     }
-    if (countdown == 3) {
+    if (countdown == 2) {
       thePet.catAvatar = loadImage("catBall2.png");
       animateAllClothing("Ball2.png");
     }
@@ -263,35 +267,35 @@ void draw() {
     bowl.yPos = 450;
   }
   if (room == 1 && bowl.beingUsed) {
-    if (countdown == 49) {
+    if (countdown == 39) {
       thePet.catAvatar = loadImage("catEat1.png");
       animateAllClothing("Eat1.png");
     }
-    if (countdown == 43) {
+    if (countdown == 34) {
       thePet.catAvatar = loadImage("catEat2.png");
       animateAllClothing("Eat2.png");
     }
-    if (countdown == 37) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catEat3.png");
       animateAllClothing("Eat3.png");
     }
-    if (countdown == 31) {
+    if (countdown == 24) {
       thePet.catAvatar = loadImage("catEat4.png");
-    }
-    if (countdown == 25) {
-      thePet.catAvatar = loadImage("catEat3.png");
     }
     if (countdown == 19) {
-      thePet.catAvatar = loadImage("catEat4.png");
-    }
-    if (countdown == 13) {
       thePet.catAvatar = loadImage("catEat3.png");
     }
-    if (countdown == 8) {
+    if (countdown == 14) {
+      thePet.catAvatar = loadImage("catEat4.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catEat3.png");
+    }
+    if (countdown == 4) {
       thePet.catAvatar = loadImage("catEat2.png");
       animateAllClothing("Eat2.png");
     }
-    if (countdown == 3) {
+    if (countdown == 2) {
       thePet.catAvatar = loadImage("catEat1.png");
       animateAllClothing("Eat1.png");
     }
@@ -312,31 +316,31 @@ void draw() {
     soap.yPos = 450;
   }
   if (room == 2 && soap.beingUsed) {
-    if (countdown == 49) {
+    if (countdown == 39) {
       thePet.catAvatar = loadImage("catSoap1.png");
     }
-    if (countdown == 43) {
+    if (countdown == 34) {
       thePet.catAvatar = loadImage("catSoap2.png");
     }
-    if (countdown == 37) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catSoap3.png");
     }
-    if (countdown == 31) {
+    if (countdown == 24) {
       thePet.catAvatar = loadImage("catSoap4.png");
-    }
-    if (countdown == 25) {
-      thePet.catAvatar = loadImage("catSoap5.png");
     }
     if (countdown == 19) {
-      thePet.catAvatar = loadImage("catSoap4.png");
-    }
-    if (countdown == 13) {
       thePet.catAvatar = loadImage("catSoap5.png");
     }
-    if (countdown == 8) {
+    if (countdown == 14) {
+      thePet.catAvatar = loadImage("catSoap4.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catSoap5.png");
+    }
+    if (countdown == 4) {
       thePet.catAvatar = loadImage("catSoap6.png");
     }
-    if (countdown == 3) {
+    if (countdown == 2) {
       thePet.catAvatar = loadImage("catSoap7.png");
     }
     if (countdown == 1) {
@@ -356,31 +360,31 @@ void draw() {
     pillow.yPos = 400;
   }
   if (room == 3 && pillow.beingUsed) {
-    if (countdown == 49) {
+    if (countdown == 39) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
-    if (countdown == 43) {
+    if (countdown == 34) {
       thePet.catAvatar = loadImage("catSleep2.png");
     }
-    if (countdown == 37) {
+    if (countdown == 29) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 31) {
+    if (countdown == 24) {
       thePet.catAvatar = loadImage("catSleep4.png");
     }
-    if (countdown == 25) {
-      thePet.catAvatar = loadImage("catSleep3.png");
-    }
     if (countdown == 19) {
-      thePet.catAvatar = loadImage("catSleep2.png");
-    }
-    if (countdown == 13) {
       thePet.catAvatar = loadImage("catSleep3.png");
     }
-    if (countdown == 8) {
+    if (countdown == 14) {
       thePet.catAvatar = loadImage("catSleep2.png");
     }
-    if (countdown == 3) {
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catSleep3.png");
+    }
+    if (countdown == 4) {
+      thePet.catAvatar = loadImage("catSleep2.png");
+    }
+    if (countdown == 2) {
       thePet.catAvatar = loadImage("catSleep1.png");
     }
     if (countdown == 1) {
@@ -484,6 +488,24 @@ void mouseClicked() {
       if (theCloset.selectedItemType == 5) { //misc
         theCloset.currentMiscIndex = decreaseClosetIndex(theCloset.currentMiscIndex, theCloset.miscList.size());
       }
+    }
+  }
+  if (room == closet) {
+    if(dist(mouseX, mouseY, 630, 607) < 35) {
+      theCloset.selectedItemType = -1;
+      theCloset.currentSelectedItem = null;
+      thePet.theHat = null;
+      thePet.hatSelection = null;
+      thePet.theGlasses = null;
+      thePet.glassesSelection = null;
+      thePet.theShirt = null;
+      thePet.shirtSelection = null;
+      thePet.thePants = null;
+      thePet.pantsSelection = null;
+      thePet.theShoes = null;
+      thePet.shoesSelection = null;
+      thePet.theMisc = null;
+      thePet.miscSelection = null;
     }
   }
 }
@@ -597,7 +619,7 @@ void mouseDragged() {
 
 void animateAllClothing(String fileName) {
   if (thePet.theHat != null) {
-    if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png")) {
+    if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png") || fileName.contains("Reach")) {
       thePet.hatSelection = loadImage(thePet.theHat.identifier+"HatStill.png");
     } else {
       thePet.hatSelection = loadImage(thePet.theHat.identifier+"Hat"+fileName);
@@ -606,7 +628,7 @@ void animateAllClothing(String fileName) {
   if (thePet.theGlasses != null) {
     if (fileName.equals("Circle3.png") || fileName.equals("Circle4.png") || fileName.equals("Circle5.png") || fileName.equals("Circle6.png")) {
       thePet.glassesSelection = loadImage("blank.png");
-    } else if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png")) {
+    } else if (fileName.equals("Ball1.png") || fileName.equals("Eat1.png") || fileName.contains("Reach")) {
       thePet.glassesSelection = loadImage(thePet.theGlasses.identifier+"GlassesStill.png");
     } else {
       thePet.glassesSelection = loadImage(thePet.theGlasses.identifier+"Glasses"+fileName);
@@ -622,6 +644,8 @@ void animateAllClothing(String fileName) {
   if (thePet.thePants != null) {
     if (fileName.equals("Eat1.png") || fileName.equals("Eat2.png") || fileName.equals("Eat3.png")) {
       thePet.pantsSelection = loadImage(thePet.thePants.identifier+"PantsEat.png");
+    } else if (fileName.contains("Reach")) {
+      thePet.pantsSelection = loadImage(thePet.thePants.identifier + "PantsReach.png");
     } else {
       thePet.pantsSelection = loadImage(thePet.thePants.identifier+"Pants"+fileName);
     }

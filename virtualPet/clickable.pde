@@ -18,7 +18,7 @@ public abstract class clickable {
   void display(int currentRoom) {
     if (currentRoom == whichRoom) {
       image(objectImg, xPos, yPos, imgWidth, imgHeight);
-    } //REMINDER: do we need an else so that the image isn't always there?
+    }
   }
 }
 
@@ -30,7 +30,7 @@ public class toy extends clickable {
   void clicked(boolean isUsed) {
     if(!isUsed) {
       thePet.currentIdleAction = "";
-      countdown = 50; //set countdown for the animation
+      countdown = 40; //set countdown for the animation
       a.increase(0.03);
       d.decrease(0.02);
     }
