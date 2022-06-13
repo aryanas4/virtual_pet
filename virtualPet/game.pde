@@ -84,3 +84,43 @@ public class bird {
     bird.resize(60, 40);
   }
 }
+public class pongButton extends typeButton {
+  boolean on = false;
+  int score = 0;
+  int highScore = 0;
+  public pongButton() {
+    itemType = 1;
+    isSelected = false;
+    iconInside = loadImage("pong.png");
+    iconInside.resize(55, 36);
+  }
+  void display(int xPos, int yPos) {
+    super.display(xPos, yPos);
+    image(iconInside, xPos-25, yPos-25);
+    if (isSelected) {
+      //border around TV:
+      noFill();
+      stroke(0);
+      strokeWeight(12);
+      rect(110, 80, 775, 510);
+      strokeWeight(1);
+    }
+    if (isSelected && !on) {
+      fill(0);
+      rect(110, 80, 775, 510); //background
+      fill(0, 0, 255);
+      ellipse(400, 400, 10, 10);
+      rect(110, 80, 111, 510); //wall
+      rect(775-30, 100, 10, 110); //paddle
+      fill(255);
+      textSize(50);
+      text("Easy Pong", 550, 200);
+      textSize(35);
+      text("HIGHSCORE: " + highScore, 560, 280);
+      textSize(25);
+      text("PRESS SPACE KEY TO PLAY ", 590, 330);
+      text("PRESS r TO RESTART ", 590, 360);
+      text("SLIDE MOUSE TO MOVE PADDLE ", 590, 390);
+    }
+  }
+}

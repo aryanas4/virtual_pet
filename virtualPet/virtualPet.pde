@@ -19,10 +19,17 @@ static clearAllButton theClearButton;
 //game buttons:
 static game theGame;
 static gameButton theGameButton;
+//flappy bird:
 static flappyBirdButton theFlappyBirdButton;
 static bird theBird;
 static int x = 1000;
 static int x2 = 1500;
+//easy pong:
+static pongButton easyPongButton; 
+float pX = 400;
+float pY = 400;
+float vX = random(6, 10);
+float vY = random(6, 10);
 
 static int livingRoom = 0;
 static int kitchen = 1;
@@ -75,6 +82,7 @@ void setup() {
   theGameButton = new gameButton();
   theFlappyBirdButton = new flappyBirdButton();
   theBird = new bird();
+  easyPongButton = new pongButton();
   //the moods:
   a = new happiness();
   b = new hunger();
@@ -144,11 +152,12 @@ void draw() {
   theGameButton.display();
   if (room == game) {
     theFlappyBirdButton.display(60, 250);
+    easyPongButton.display(60, 350);
   }
   if (theFlappyBirdButton.isSelected && theFlappyBirdButton.on) {
     image(theFlappyBirdButton.flappyBirdBackground, theBird.x, 80); // background moving
     image(theFlappyBirdButton.flappyBirdBackground, 
-    theBird.x + theFlappyBirdButton.flappyBirdBackground.width, 80); 
+      theBird.x + theFlappyBirdButton.flappyBirdBackground.width, 80); 
     //line(0, 370, 1000, 370);
     //line(0, 460, 1000, 460);
     theBird.x -= 20; 
@@ -206,6 +215,49 @@ void draw() {
     textSize(20);
     text("SCORE: " + theBird.score, 66, 160);
     text("HIGHSCORE: " + theBird.highScore, 90, 190);
+  }
+  //easy pong:
+  if (easyPongButton.isSelected && easyPongButton.on) {
+    fill(0);
+    rect(110, 80, 775, 510); //background
+    fill(0, 0, 255);
+    rect(110, 80, 111, 510); //wall
+    ellipse(pX, pY, 10, 10);
+    if (mouseY < 588 && mouseY > 82) {
+      rect(775-30, mouseY-50, 10, 50);
+    }
+    pX += vX;
+    pY+= vY;
+    if (pX > 775-30 && pX < 775-20 && pY > mouseY-50 && pY < mouseY+50) { //hits paddel
+      vX = vX * -1;
+      easyPongButton.highScore = max(++easyPongButton.score, easyPongButton.highScore);
+    } 
+    if (pX < 220) { //hits wall
+      vX *= -1.3;
+      vY *= 1.3;
+      pX += vX;
+    }
+    if (pY > 588 || pY < 82) { //hits border
+      vY *= -1;
+    }
+    if (pX > 775) { //if paddle did not hit ball
+      easyPongButton.on = false;
+      pX = 775/2; 
+      pY = 510/2;
+      vX = random(6, 10);
+      vY = random(6, 10);
+      level.coin += easyPongButton.score;
+      level.increase(0.1);
+      a.increase(0.05);
+      easyPongButton.score = 0;
+    }
+    noFill();
+    stroke(255);
+    rect(260, 120, 310, 90);
+    fill(255);
+    textSize(20);
+    text("SCORE: " + easyPongButton.score, 316, 160);
+    text("HIGHSCORE: " + easyPongButton.highScore, 340, 190);
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -562,6 +614,7 @@ void mouseClicked() {
   }
   if (room == game) {
     gameItemChange(60, 250, "flappyBird", 0);
+    gameItemChange(60, 350, "easyPong", 1);
   }
   //buying closet items:
   if (room == closet && theCloset.currentSelectedItem != null && !theCloset.currentSelectedItem.wasBought) {
@@ -676,7 +729,7 @@ void closetItemChange(int xPos, int yPos, String type, int typeNum) {
   if (dist(mouseX, mouseY, xPos, yPos) < 35) {
     theCloset.selectedItemType = typeNum;
     removeOtherSelectionsCloset(type);
-    if (type.equals("hats")){
+    if (type.equals("hats")) {
       theHatsButton.isSelected = true;
     } else if (type.equals("glasses")) {
       theGlassesButton.isSelected = true;
@@ -698,8 +751,11 @@ void gameItemChange(int xPos, int yPos, String type, int typeNum) {
   if (dist(mouseX, mouseY, xPos, yPos) < 35) {
     theGame.selectedGame = typeNum;
     removeOtherSelectionsGame(type);
-    if (type.equals("flappyBird")){
+    if (type.equals("flappyBird")) {
       theFlappyBirdButton.isSelected = true;
+    } 
+    if (type.equals("easyPong")) {
+      easyPongButton.isSelected = true;
     } 
     countdown = 0;
     thePet.catAvatar = loadImage("catNorm.png");
@@ -737,6 +793,9 @@ void removeOtherSelectionsGame(String changeTo) {
   if (!changeTo.equals("flappyBird")) {
     theFlappyBirdButton.isSelected = false;
   }
+  if (!changeTo.equals("easyPong")) {
+    easyPongButton.isSelected = false;
+  }
 }
 
 //for dragging all the clickable mood objects:
@@ -768,14 +827,28 @@ void mouseDragged() {
   }
 }
 void keyPressed() {
-  theBird.v = -15;
-  if (theFlappyBirdButton.on == false) { 
-    theBird.x = 0;
-    theBird.y = 400;
-    theBird.score = 0;
-    theFlappyBirdButton.on = true;
-    x = 1000;
-    x2 = 1500;
+  if (theFlappyBirdButton.isSelected) {
+    theBird.v = -15;
+    if (theFlappyBirdButton.on == false) { 
+      theBird.x = 0;
+      theBird.y = 400;
+      theBird.score = 0;
+      theFlappyBirdButton.on = true;
+      x = 1000;
+      x2 = 1500;
+    }
+  }
+  if (easyPongButton.isSelected) {
+    if (key == ' ') {
+      easyPongButton.on = true;
+    }
+    if (key == 'r') {
+      easyPongButton.score = 0;
+      pX = 775/2;
+      pY = 510/2;
+      vX = random(6, 10);
+      vY = random(6, 10);
+    }
   }
 }
 
