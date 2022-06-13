@@ -25,6 +25,10 @@ static int x = 1000;
 static int x2 = 1500;
 //easy pong:
 static pongButton easyPongButton; 
+float pX = 400;
+float pY = 400;
+float vX = random(6, 10);
+float vY = random(6, 10);
 //REMINDER: add the rest
 
 static int livingRoom = 0;
@@ -207,6 +211,49 @@ void draw() {
     textSize(20);
     text("SCORE: " + theBird.score, 66, 160);
     text("HIGHSCORE: " + theBird.highScore, 90, 190);
+  }
+  //easy pong:
+  if (easyPongButton.isSelected && easyPongButton.on) {
+    fill(0);
+    rect(110, 80, 775, 510); //background
+    fill(0, 0, 255);
+    rect(110, 80, 111, 510); //wall
+    ellipse(pX, pY, 10, 10);
+    if (mouseY < 588 && mouseY > 82) {
+      rect(775-30, mouseY-50, 10, 50);
+    }
+    pX += vX;
+    pY+= vY;
+    if (pX > 775-30 && pX < 775-20 && pY > mouseY-50 && pY < mouseY+50) { //hits paddel
+      vX = vX * -1;
+      easyPongButton.highScore = max(++easyPongButton.score, easyPongButton.highScore);
+    } 
+    if (pX < 220) { //hits wall
+      vX *= -1.3;
+      vY *= 1.3;
+      pX += vX;
+    }
+    if (pY > 588 || pY < 82) { //hits border
+      vY *= -1;
+    }
+    if (pX > 775) { //if paddle did not hit ball
+      easyPongButton.on = false;
+      pX = 775/2; 
+      pY = 510/2;
+      vX = random(6, 10);
+      vY = random(6, 10);
+      level.coin += easyPongButton.score;
+      level.increase(0.1);
+      a.increase(0.05);
+      easyPongButton.score = 0;
+    }
+    noFill();
+    stroke(255);
+    rect(260, 120, 310, 90);
+    fill(255);
+    textSize(20);
+    text("SCORE: " + easyPongButton.score, 316, 160);
+    text("HIGHSCORE: " + easyPongButton.highScore, 340, 190);
   }
   //display the draggable mood objects:
   ball.display(room);
@@ -609,6 +656,15 @@ void keyPressed() {
     }
   }
   if (easyPongButton.isSelected) {
-    easyPongButton.on = true;
+    if (key == ' ') {
+      easyPongButton.on = true;
+    }
+    if (key == 'r') {
+      easyPongButton.score = 0;
+      pX = 775/2;
+      pY = 510/2;
+      vX = random(6, 10);
+      vY = random(6, 10);
+    }
   }
 }

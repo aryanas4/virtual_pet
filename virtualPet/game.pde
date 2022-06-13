@@ -86,42 +86,41 @@ public class bird {
 }
 public class pongButton extends typeButton {
   boolean on = false;
-  float pX, pY, vX, vY;
+  int score = 0;
+  int highScore = 0;
   public pongButton() {
     itemType = 1;
     isSelected = false;
     iconInside = loadImage("pong.png");
     iconInside.resize(55, 36);
   }
-  void reset() { //775, 510
-    pX = 775/2;
-    pY = 510/2;
-    vX = random(3, 6);
-    vY = random(3, 6);
-  }
   void display(int xPos, int yPos) {
     super.display(xPos, yPos);
     image(iconInside, xPos-25, yPos-25);
-    if (isSelected && !on) {
-      fill(0);
-      rect(110, 80, 775, 510); //background
-      fill(0, 0, 255);
-      ellipse(400, 400, 10, 10);
-      rect(110, 80, 111, 510); //wall
-      rect(775-30, 100, 10, 200); //paddle
+    if (isSelected) {
       //border around TV:
       noFill();
       stroke(0);
       strokeWeight(12);
       rect(110, 80, 775, 510);
       strokeWeight(1);
+    }
+    if (isSelected && !on) {
+      fill(0);
+      rect(110, 80, 775, 510); //background
+      fill(0, 0, 255);
+      ellipse(400, 400, 10, 10);
+      rect(110, 80, 111, 510); //wall
+      rect(775-30, 100, 10, 110); //paddle
       fill(255);
       textSize(50);
       text("Easy Pong", 550, 200);
       textSize(35);
-      text("HIGHSCORE: " + theBird.highScore, 560, 280);
+      text("HIGHSCORE: " + highScore, 560, 280);
       textSize(25);
-      text("PRESS ANY KEY TO PLAY ", 590, 330);
+      text("PRESS SPACE KEY TO PLAY ", 590, 330);
+      text("PRESS r TO RESTART ", 590, 360);
+      text("SLIDE MOUSE TO MOVE PADDLE ", 590, 390);
     }
   }
 }
