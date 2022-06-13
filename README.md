@@ -30,6 +30,9 @@ buttons. Also cleaned up repetitive code and increased efficiency to decrease la
 06/06 - Created several ArrayLists for the closet items. When you click the respective button, clothing items are displayed. <br>
 06/07 - Displayed the clothing options in a clickthrough. Now you can use the arrows to browse through different clothing options.
 Also created images for several hat and shirt options. <br>
+06/08 - Added the price tag for each closet item. They are now purchasable. <br>
+06/10 - Drew many images for the closet items when worn. <br>
+06/12 - Final touches! Added more clickables (mouse toy, stick toy, more foods, toothbrush, etc.). Drew all images for closet items when worn when the cat is performing an action. Added earrings for the cat in closet. Completed final merge and updated prototype document. <br>
 
 **Zoe:** <br>
 05/24 - Created the mood class and coded all the basic increase/decrease methods as per the UML diagram. Also added the circle displays for each of the 4 moods. <br>
