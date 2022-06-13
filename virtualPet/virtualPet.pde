@@ -48,7 +48,12 @@ static PImage zoomTV;
 
 //the draggable mood objects:
 static toy ball;
+static toy stick;
+static toy mouse;
 static food bowl;
+static food apple;
+static food candy;
+static food watermelon;
 static cleaner soap;
 static cleaner toothbrush;
 static lights pillow;
@@ -90,7 +95,12 @@ void setup() {
   d = new awakeness();
   //the draggable mood objects:
   ball = new toy("ballStill.png", 800, 450, 80, 80);
+  stick = new toy("poleStill.png", 80, 250, 320, 320);
+  mouse = new toy("mouseStill.png", 620, 550, 120, 120);
   bowl = new food("foodBowlStill.png", 200, 450, 80, 80);
+  apple = new food("appleStill.png", 100, 480, 80, 80);
+  candy = new food("candyStill.png", 700, 450, 70, 50);
+  watermelon = new food("watermelonStill.png", 840, 500, 80, 80);
   soap = new cleaner("soapStill.png", 800, 450, 80, 80);
   toothbrush = new cleaner("toothbrushStill.png", 500, 70, 100, 100);
   pillow = new lights("pillowStill.png", 200, 400, 160,160);
@@ -261,7 +271,12 @@ void draw() {
   }
   //display the draggable mood objects:
   ball.display(room);
+  stick.display(room);
+  mouse.display(room);
   bowl.display(room);
+  apple.display(room);
+  candy.display(room);
+  watermelon.display(room);
   soap.display(room);
   toothbrush.display(room);
   pillow.display(room);
@@ -388,6 +403,95 @@ void draw() {
       ball.beingUsed = false;
     }
   }
+  if (room == 0 && !stick.beingUsed && !mousePressed && dist(stick.xPos+(stick.imgWidth/2), stick.yPos+(stick.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    stick.clicked(stick.beingUsed); //sets the countdown once
+    level.coin++; //increase coin
+    level.increase(0.05); //increase xpPercent
+    stick.beingUsed = true;
+    stick.xPos = 80;
+    stick.yPos = 250;
+  }
+  if (room == 0 && stick.beingUsed) {
+    if (countdown == 39) {
+      thePet.catAvatar = loadImage("catStick1.png");
+    }
+    if (countdown == 36) {
+      thePet.catAvatar = loadImage("catStick2.png");
+      animateAllClothing("Reach1.png");
+    }
+    if (countdown == 29) {
+      thePet.catAvatar = loadImage("catStick3.png");
+      animateAllClothing("Reach2.png");
+    }
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catStick2.png");
+      animateAllClothing("Reach1.png");
+    }
+    if (countdown == 10) {
+      thePet.catAvatar = loadImage("catStick3.png");
+      animateAllClothing("Reach2.png");
+    }
+    if (countdown == 6) {
+      thePet.catAvatar = loadImage("catStick2.png");
+      animateAllClothing("Reach1.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
+    }
+    if (countdown == 0) {
+      stick.beingUsed = false;
+    }
+  }
+  if (room == 0 && !mouse.beingUsed && !mousePressed && dist(mouse.xPos+(mouse.imgWidth/2), mouse.yPos+(mouse.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    mouse.clicked(mouse.beingUsed); //sets the countdown once
+    level.coin++; //increase coin
+    level.increase(0.05); //increase xpPercent
+    mouse.beingUsed = true;
+    mouse.xPos = 620;
+    mouse.yPos = 550;
+  }
+  if (room == 0 && mouse.beingUsed) {
+    if (countdown == 39) {
+      thePet.catAvatar = loadImage("catMouse1.png");
+      animateAllClothing("Circle1.png");
+    }
+    if (countdown == 34) {
+      thePet.catAvatar = loadImage("catMouse2.png");
+      animateAllClothing("Circle2.png");
+    }
+    if (countdown == 29) {
+      thePet.catAvatar = loadImage("catMouse3.png");
+      animateAllClothing("Circle3.png");
+    }
+    if (countdown == 24) {
+      thePet.catAvatar = loadImage("catMouse4.png");
+      animateAllClothing("Circle4.png");
+    }
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catMouse5.png");
+      animateAllClothing("Circle5.png");
+    }
+    if (countdown == 14) {
+      thePet.catAvatar = loadImage("catMouse6.png");
+      animateAllClothing("Circle6.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catMouse7.png");
+      animateAllClothing("Circle7.png");
+    }
+    if (countdown == 4) {
+      thePet.catAvatar = loadImage("catMouse8.png");
+      animateAllClothing("Circle8.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
+    }
+    if (countdown == 0) {
+      mouse.beingUsed = false;
+    }
+  }
   if (room == 1 && !bowl.beingUsed && !mousePressed && dist(bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
     bowl.clicked(bowl.beingUsed); //sets the countdown once
     level.coin++;
@@ -435,6 +539,48 @@ void draw() {
     }
     if (countdown == 0) {
       bowl.beingUsed = false;
+    }
+  }
+  if (room == 1 && !apple.beingUsed && !mousePressed && dist(apple.xPos+(apple.imgWidth/2), apple.yPos+(apple.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    apple.clicked(apple.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
+    apple.beingUsed = true;
+    apple.xPos = 100;
+    apple.yPos = 480;
+  }
+  if (room == 1 && apple.beingUsed) {
+    chewFood();
+    if (countdown == 0) {
+      apple.beingUsed = false;
+    }
+  }
+  if (room == 1 && !candy.beingUsed && !mousePressed && dist(candy.xPos+(candy.imgWidth/2), candy.yPos+(candy.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    candy.clicked(candy.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
+    candy.beingUsed = true;
+    candy.xPos = 700;
+    candy.yPos = 450;
+  }
+  if (room == 1 && candy.beingUsed) {
+    chewFood();
+    if (countdown == 0) {
+      candy.beingUsed = false;
+    }
+  }
+  if (room == 1 && !watermelon.beingUsed && !mousePressed && dist(watermelon.xPos+(watermelon.imgWidth/2), watermelon.yPos+(watermelon.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
+    watermelon.clicked(watermelon.beingUsed); //sets the countdown once
+    level.coin++;
+    level.increase(0.05); //increase xpPercent
+    watermelon.beingUsed = true;
+    watermelon.xPos = 840;
+    watermelon.yPos = 500;
+  }
+  if (room == 1 && watermelon.beingUsed) {
+    chewFood();
+    if (countdown == 0) {
+      watermelon.beingUsed = false;
     }
   }
   if (room == 2 && !soap.beingUsed && !mousePressed && dist(soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2), thePet.xPos+250, thePet.yPos+250) < 225) {
@@ -577,8 +723,28 @@ void draw() {
     ball.yPos = 450;
   }
   if (!mousePressed) {
+    stick.xPos = 80;
+    stick.yPos = 250;
+  }
+  if (!mousePressed) {
+    mouse.xPos = 620;
+    mouse.yPos = 550;
+  }
+  if (!mousePressed) {
     bowl.xPos = 200;
     bowl.yPos = 450;
+  }
+  if (!mousePressed) {
+    apple.xPos = 100;
+    apple.yPos = 480;
+  }
+  if (!mousePressed) {
+    candy.xPos = 700;
+    candy.yPos = 450;
+  }
+  if (!mousePressed) {
+    watermelon.xPos = 840;
+    watermelon.yPos = 500;
   }
   if (!mousePressed) {
     soap.xPos = 800;
@@ -588,6 +754,31 @@ void draw() {
     pillow.xPos = 200;
     pillow.yPos = 400;
   }
+}
+
+void chewFood() {
+  if (countdown == 39) {
+      thePet.catAvatar = loadImage("catChew1.png");
+    }
+    if (countdown == 29) {
+      thePet.catAvatar = loadImage("catChew2.png");
+    }
+    if (countdown == 19) {
+      thePet.catAvatar = loadImage("catChew1.png");
+    }
+    if (countdown == 9) {
+      thePet.catAvatar = loadImage("catChew2.png");
+    }
+    if (countdown == 4) {
+      thePet.catAvatar = loadImage("catChew1.png");
+    }
+    if (countdown == 2) {
+      thePet.catAvatar = loadImage("catChew2.png");
+    }
+    if (countdown == 1) {
+      thePet.catAvatar = loadImage("catNorm.png");
+      setClothingToStill();
+    }
 }
 
 //when you click the cat, it gets hit:
@@ -805,10 +996,35 @@ void mouseDragged() {
     ball.xPos = mouseX-(ball.imgWidth/2);
     ball.yPos = mouseY-(ball.imgHeight/2);
   }
+  //toy - stick:
+  if (dist(mouseX, mouseY, stick.xPos+(stick.imgWidth/2), stick.yPos+(stick.imgHeight/2)) < stick.imgWidth/2) {
+    stick.xPos = mouseX-(stick.imgWidth/2);
+    stick.yPos = mouseY-(stick.imgHeight/2);
+  }
+  //toy - mouse:
+  if (dist(mouseX, mouseY, mouse.xPos+(mouse.imgWidth/2), mouse.yPos+(mouse.imgHeight/2)) < mouse.imgWidth/2) {
+    mouse.xPos = mouseX-(mouse.imgWidth/2);
+    mouse.yPos = mouseY-(mouse.imgHeight/2);
+  }
   //food - bowl:
   if (dist(mouseX, mouseY, bowl.xPos+(bowl.imgWidth/2), bowl.yPos+(bowl.imgHeight/2)) < bowl.imgWidth/2) {
     bowl.xPos = mouseX-(bowl.imgWidth/2);
     bowl.yPos = mouseY-(bowl.imgHeight/2);
+  }
+  //food - apple:
+  if (dist(mouseX, mouseY, apple.xPos+(apple.imgWidth/2), apple.yPos+(apple.imgHeight/2)) < apple.imgWidth/2) {
+    apple.xPos = mouseX-(apple.imgWidth/2);
+    apple.yPos = mouseY-(apple.imgHeight/2);
+  }
+  //food - candy:
+  if (dist(mouseX, mouseY, candy.xPos+(candy.imgWidth/2), candy.yPos+(candy.imgHeight/2)) < candy.imgWidth/2) {
+    candy.xPos = mouseX-(candy.imgWidth/2);
+    candy.yPos = mouseY-(candy.imgHeight/2);
+  }
+  //food - watermelon:
+  if (dist(mouseX, mouseY, watermelon.xPos+(watermelon.imgWidth/2), watermelon.yPos+(watermelon.imgHeight/2)) < watermelon.imgWidth/2) {
+    watermelon.xPos = mouseX-(watermelon.imgWidth/2);
+    watermelon.yPos = mouseY-(watermelon.imgHeight/2);
   }
   //cleaner - soap:
   if (dist(mouseX, mouseY, soap.xPos+(soap.imgWidth/2), soap.yPos+(soap.imgHeight/2)) < soap.imgWidth/2) {
