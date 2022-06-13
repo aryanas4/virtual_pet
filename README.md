@@ -10,7 +10,11 @@ We would like to create a (visual) virtual pet (a cat) in Processing that the pl
 https://docs.google.com/document/d/1zT0yE5kdDezPBd3Bx0NLJ2_vZuhQRmfpnMFUgeLkObY/edit?usp=sharing
 
 ###### Compile/run instructions:
-[INSERT LATER]
+Click the run button in the processing window to begin. <br>
+Use the 4 buttons on the bottom of your screen to navigate to different rooms. <br>
+In those rooms, you will find several objects that you can drag to your cat in order to alter its mood. In the living room, you may drag the mouse, the stick, or the ball. In the kitchen, you may drag the bowl, apple, candy, or watermelon. In the bathroom, you may drag the toothbrush or soap bar. And in the bedroom, you may drag the blanket over to your cat. <br>
+By clicking the closet button in the bottom left of your screen, you will be transported to the closet where you may buy clothing items for your cat. You can click through the various options to select one. If bought, the item you stop at is the item your cat will be wearing. If you would like to clear all selections and remove all of the accessories from your cat, click the red CLEAR button. <br>
+By clicking the game button located above the closet button, you will be transported to the game room. Here, you can select from two mini-games via the buttons on the left of your screen. You may play Flappy Bird or Pong to earn more coins and XP. <br>
 
 ###### Development Log:
 
